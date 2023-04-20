@@ -32,4 +32,19 @@ const login = async (req, res, next) => {
   }
 };
 
-export { login };
+const logout = async (req, res, next) => {
+  try {
+    // 클라이언트에서 전달받은 JWT 토큰 추출
+    const token = req.headers.authorization.split(" ")[1];
+
+    // JWT 토큰 검증
+    await jwt.verify(token, process.env.JWT_SECRET);
+
+    // 로그아웃 성공 시, 응답 반환
+    res.status(200).json({ message: "로그아웃되었습니다." });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { login, logout };
