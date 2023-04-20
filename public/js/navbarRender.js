@@ -24,6 +24,11 @@ function navbarRender(loggedInUser) {
                   <img src="/public/img/WMlogin.png" alt="login-icon" class="navbar-icon">
                   <a href="/src/views/logIn/login.html" class="navbar-text">로그인</a>
               </li>
+              <li class="navbar-content">
+                  <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
+                  <a href="/src/views/cart" class="navbar-text">장바구니</a>
+              </li>
+
           </ul>
       </nav>
     </div>
