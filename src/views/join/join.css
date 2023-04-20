@@ -1,5 +1,5 @@
-html {
-    margin-bottom: 20px;
+* {
+    margin: 0;
     padding: 0;
 }
 
@@ -9,7 +9,7 @@ html {
     flex-direction: column;
     align-items: center;
     width:350px;
-    height:380px;
+    height:1180px;
     top:20%;
     left:50%;
     margin: -175px 0px 0px -190px;
@@ -27,13 +27,14 @@ html {
     width: 100%;
     color:#8E8E8E;
     text-align: left;
+    margin-top:10px;
 }
 
 .join-text{
+    text-indent: 10px;
     width:100%;
     height:40px;
     margin: 3px 0 3px 0 ;
-    padding: 0 10px 0 10px;
     background-color:#FAF4de;
     border: 1px solid #DBDBDB;
     border-radius: 3px;
@@ -46,12 +47,12 @@ html {
 .join-birth {
     display:flex;
     flex-direction: row;
-    width:108%;
+    width:100%;
     margin: 3px 0 3px 0 ;
 }
 
 .join-birth-input {
-    width: 90px;
+    width: 80px;
     height:40px;
     padding: 0 10px 0 10px;
     background-color: #FAF4de;
@@ -63,15 +64,15 @@ html {
 .join-post {
     display:flex;
     flex-direction: row;
-    width: 108%;
+    width: 100%;
     flex-wrap: wrap;
     margin: 3px 0 3px 0 ;
 }
 
 .join-post-input {
+    text-indent: 10px;
     width: 100px;
     height: 40px;
-    padding: 0 10px 0 10px;
     background-color: #FAF4de;
     border: 1px solid #DBDBDB;
     border-radius: 3px;
@@ -81,14 +82,14 @@ html {
 .join-addr {
     display: flex;
     flex-direction: column;
-    width: 108%;
+    width: 100%;
     margin-top: 10px;
     flex-wrap: wrap;
 }
 .join-addr-input {
-    width: 280px;
+    text-indent: 10px;
+    width: 100%;
     height: 40px;
-    padding: 0 10px 0 10px;
     background-color:#FAF4de;
     border: 1px solid #DBDBDB;
     border-radius: 3px;
@@ -96,6 +97,7 @@ html {
 }
 
 #post-search-btn {
+    text-indent: 0px;
     color:white;
     background-color: #f6c74b;
     border-radius: 5px;
@@ -106,10 +108,9 @@ html {
 }
 
 .join-btn{
-    width:108%;
+    width:100%;
     height:33px;
     margin: 10px 0 5px 0;
-    padding: 0 10px 0 10px;
     color:white;
     background-color: #f6c74b;
     border-radius: 5px;
@@ -119,9 +120,52 @@ html {
     cursor: pointer;
 }
 
-.bottom-space {
-    position: fixed;
-    bottom: 0;
-    height: 200px; /* 여백 크기 */
-    width: 100%;
-  }
+.id-error {
+    width:100%;
+    color:#8E8E8E;
+    text-align: left;
+    font-size: 12px;
+}
+
+.pw-error {
+    width:100%;
+    color:#8E8E8E;
+    text-align: left;
+    font-size: 12px;
+}
+
+.pw-cfm-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.name-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.addr-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.phone-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.year-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.day-error {
+    width:100%;
+    text-align: left;
+    font-size: 12px;
+}
