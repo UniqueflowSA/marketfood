@@ -1,9 +1,9 @@
-import db from "../models";
+import authModel from "../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const login = async (userId, password) => {
-  const user = await db.User.findOne({ where: { userId } });
+  const user = await authModel.User.findOne({ where: { userId } });
   if (!user) {
     throw new Error("없는 아이디입니다.");
   }
