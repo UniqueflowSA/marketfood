@@ -1,4 +1,4 @@
-import userModel from "../models";
+import userModel from "../db";
 
 const createUser = async (userInfo) => {
   const createdUser = await userModel.User.create(userInfo);

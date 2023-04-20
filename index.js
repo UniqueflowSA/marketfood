@@ -1,4 +1,4 @@
-import { app } from './src/app';
+import { app } from '/Users/seunghwankim/myproject/intro-me/intro-me/seunghwankim/project1/market-food/src/app.js';
 import 'dotenv/config';
 
 const PORT = process.env.PORT || 4000;

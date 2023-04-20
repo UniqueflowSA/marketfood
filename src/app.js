@@ -9,8 +9,8 @@ import {
   viewsRouter,
   productRouter,
   orderRouter,
-} from "./routers";
-import { errorHandler } from "./middlewares";
+} from "./routers/index.js";
+//import { errorHandler } from "./middlewares/index.js";
 import mongoose from "mongoose";
 
 const app = express();

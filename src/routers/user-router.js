@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { createUser, getUser, updateUser, deleteUser } from "../controllers/user-controller";
+import { createUser, getUser, updateUser, deleteUser } from "../controllers/user-controller.js";
+
 
 // 폴더에서 import하면, 자동으로 폴더의 index.js에서 가져옴
 
