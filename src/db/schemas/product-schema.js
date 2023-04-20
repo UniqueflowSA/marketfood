@@ -1,25 +1,29 @@
 import mongoose from "mongoose";
 
+const { Schema } = mongoose;
 
-const ProductSchema = new mongoose.Schema({
-  product-id:{//상품
+const ProductSchema = new Schema({
+  productId:{//상품 / 상품 아이디 자동으로 increase?
     type:String || Number,
     required:true,
   },
   product:{//상품명
     type:String || Number,
+    required: true,
   },
-  product-option:{//추가옵션
+  productOption:{//추가옵션
     type:String || Number,
-  }
+    required: true,
+  },
+  price:{
+    type:Number,
+    required: true,
+  },
+  // 업로드한 날짜... 필요한가..?
+  //
 });
 
-// 비밀번호 확인
-AuthSchema.methods.checkPassword = async function (password) {
-  const result = await bcrypt.compare(password, this.password);
-  return result;
-};
 
-const Auth = mongoose.model("Auth", AuthSchema);
+const Product = mongoose.model("Product", productSchema);
 
-export { Auth };
+export { Product };

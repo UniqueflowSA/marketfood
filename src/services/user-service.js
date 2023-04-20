@@ -1,17 +1,17 @@
-import db from "../models";
+import userModel from "../models";
 
 const createUser = async (userInfo) => {
-  const createdUser = await db.User.create(userInfo);
+  const createdUser = await userModel.User.create(userInfo);
   return createdUser;
 };
 
 const getUser = async (userId) => {
-  const foundUser = await db.User.findByPk(userId);
+  const foundUser = await userModel.User.findByPk(userId);
   return foundUser;
 };
 
 const updateUser = async (userId, updatedInfo) => {
-  const [numRowsUpdated, [updatedUser]] = await db.User.update(
+  const [numRowsUpdated, [updatedUser]] = await userModel.User.update(
     updatedInfo,
     {
       returning: true,
@@ -25,7 +25,7 @@ const updateUser = async (userId, updatedInfo) => {
 };
 
 const deleteUser = async (userId) => {
-  const numRowsDeleted = await db.User.destroy({
+  const numRowsDeleted = await userModel.User.destroy({
     where: { id: userId },
   });
   if (numRowsDeleted !== 1) {
@@ -33,4 +33,9 @@ const deleteUser = async (userId) => {
   }
 };
 
-export default { createUser, getUser, updateUser, deleteUser };
+export const userService = {
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser
+};
