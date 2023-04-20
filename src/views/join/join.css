@@ -1,5 +1,5 @@
-* {
-    margin: 0;
+html {
+    margin-bottom: 20px;
     padding: 0;
 }
 
@@ -118,3 +118,10 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.bottom-space {
+    position: fixed;
+    bottom: 0;
+    height: 200px; /* 여백 크기 */
+    width: 100%;
+  }
