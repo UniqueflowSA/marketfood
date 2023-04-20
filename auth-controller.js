@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
     next(error);
   }
 };
-
+  
 const logout = async (req, res, next) => {
   try {
     // 클라이언트에서 전달받은 JWT 토큰 추출
