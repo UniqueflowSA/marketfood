@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WorldMarket</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" type="module"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 상단바 -->
+    <!-- <div class="navbar-container">
+        <nav class="navbar">
+            <div class="navbar-logo-container">
+                <a href="/main"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+            </div>
+            <ul calss="navbar-nav">
+                <li class="navbar-content">
+                    <img src="/public/img/WMlogin.png" alt="login-icon" class="navbar-icon">
+                    <a href="/user/login" class="navbar-text">로그인</a>
+                </li>
+            </ul>
+        </nav>
+    </div> -->
+
+    <!-- 캐러셀 -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <ul class="carousel-imgs">
+                <li class="carousel-img"><img src="/public/img/WMbanner1.jpg" alt=""></li>
+                <li class="carousel-img"><img src="/public/img/WMbanner2.jpg" alt=""></li>
+                <li class="carousel-img"><img src="/public/img/WMbanner3.jpg" alt=""></li>
+                <li class="carousel-img"><img src="/public/img/WMbanner4.jpg" alt=""></li>
+                <li class="carousel-img"><img src="/public/img/WMbanner1.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="carousel-indicators">
+            <button class="carousel-button-clicked"></button>
+            <button class="carousel-button"></button>
+            <button class="carousel-button"></button>
+            <button class="carousel-button"></button>
+        </div>
+        <button class="carousel-prev">
+            <img src="/public/img/WMleft.png" alt="" class="prev-button">
+        </button>
+        <button class="carousel-next">
+            <img src="/public/img/WMright.png" alt="" class="next-button">
+        </button>
+    </div>
+
+    <!-- 메인컨텐츠 -->
+    <div class="main-container">
+        <div class="main-box">
+            <div class="main-header-container">
+                <div class="main-header-title">
+                    <h3>전세계식품</h3>
+                    <h6>전세계의 식료품을 만나보세요</h6>
+                </div>
+                <div class="main-header-category">
+                    <button class="main-header-button-clicked">국가별</button>
+                    <button class="main-header-button">종류별</button>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="main-nav-clicked">
+                    <li class="main-nav-list"><a href="" class="main-nav-content-clicked"><img src="/public/img/korean-icon.png" alt="" class="country-img">미국</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">프랑스</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">이탈리아</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">베트남</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">일본</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content"><img src="/public/img/korean-icon.png" alt="" class="country-img">중국</a></li>
+                </ul>
+                <ul class="main-nav-unclicked">
+                    <li class="main-nav-list"><a href="" class="main-nav-content-clicked">시즈닝</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content">허브</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content">소스</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content">오일</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content">솔트</a></li>
+                    <div class="main-nav-line"></div>
+                    <li class="main-nav-list"><a href="" class="main-nav-content">스파이스</a></li>
+                </ul>
+            </nav>
+            <div class="main-item-container">
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex01.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex02.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex03.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex04.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex05.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex06.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item-grid">
+                    <a href="" class="item-link">
+                        <img src="/public/img/product-img/itemex07.jpg" alt="" class="item-img">
+                        <div class="item-text">
+                            <div class="item-title">예시 상품 제목입니다</div>
+                            <div class="item-price">₩10,000</div>
+                            <div class="item-category"><img src="/public/img/korean-icon.png" alt="" class="country-img">스페인</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단바 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>2023 Team 부글부글 - 김문진 / 김승환 / 김예은 / 이수영 / 이종욱 / 임준영</p>
+            <p>Copyright ⓒ 2023 - 부글부글. All rights reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
