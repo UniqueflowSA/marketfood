@@ -336,19 +336,19 @@
 }
   
 @media (max-width: 1000px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(33%, auto));
     }
 }
 
 @media (max-width: 900px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(50%, auto));
     }
 }
 
 @media (max-width: 600px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(100%, auto));
     }
  }
