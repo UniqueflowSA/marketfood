@@ -1,12 +1,10 @@
-import { navbarRender } from "/public/js/navbarRender.js";
-navbarRender();
+import { main } from "/public/js/main.js";
+main();
 
 // 캐러셀 슬라이드
 const carousel = document.querySelector(".carousel");
 const carouselImgs = carousel.querySelector(".carousel-imgs");
 const carouselimg = carouselImgs.querySelectorAll(".carousel-img");
-
-const carouselnav = document.querySelectorAll(".carousel-indicators button");
 
 let currentImg = 0;
 
@@ -16,11 +14,12 @@ setInterval(function() {
     carouselImgs.animate({
         marginLeft: [from + "px", to + "px"]
     }, {
-        duration: 1500,
+        duration: 500,
         easing: "ease",
         iterations: 1,
         fill: "both"
     });
+
     currentImg++;
     if (currentImg === (carouselimg.length -1)) {
         currentImg = 0;
@@ -28,7 +27,7 @@ setInterval(function() {
 }, 6000)
 
 
-// 캐러셀 이동
+// 캐러셀 버튼이동
 const carouselLeft = document.querySelector(".carousel-prev");
 const carouselRight = document.querySelector(".carousel-next");
 
@@ -41,11 +40,12 @@ carouselLeft.onclick = () => {
     carouselImgs.animate({
         marginLeft: [from + "px", to + "px"]
     }, {
-        duration: 1500,
+        duration: 500,
         easing: "ease",
         iterations: 1,
         fill: "both"
     });
+
     currentImg--;
 }
 
@@ -58,7 +58,7 @@ carouselRight.onclick = () => {
     carouselImgs.animate({
         marginLeft: [from + "px", to + "px"]
     }, {
-        duration: 1500,
+        duration: 500,
         easing: "ease",
         iterations: 1,
         fill: "both"
@@ -67,7 +67,9 @@ carouselRight.onclick = () => {
 }
 
 
-// 캐러셀 네비
+// 캐러셀 네비 - 시간 남으면 구현
+
+// const carouselnav = document.querySelectorAll(".carousel-indicators button");
 
 // for (let i = 0; i < carouselnav.length; i++) {
 //     carouselnav[i].onclick = () => {
@@ -84,37 +86,91 @@ carouselRight.onclick = () => {
 //         // 캐러셀 네비게이션 버튼 자동으로 넘어가는 코드와 클릭하면 사진 변경되는 코드 필요
 //         }
 //     }
-// } 
+// }
 
 
 // 제품 카테고리 변경
 const categoryButton = document.querySelectorAll(".main-header-category button");
-const categoryMenu = document.querySelectorAll(".main-nav ul")
+const categoryMenu = document.querySelectorAll(".main-nav-unclicked ul")
+
+// 쿼리셀렉트올 main-nav-cetegory-clicked li 하고 배열의 첫번째파트 데이터를 패치
 
 for (let i = 0; i < categoryButton.length; i++) {
     categoryButton[i].onclick = () => {
-        let unclickedCategory = document.querySelector(".main-header-button");
-        if (categoryButton[i] == unclickedCategory) {
-            if (i == 0){
-                categoryButton[0].classList.remove("main-header-button");
-                categoryButton[0].classList.add("main-header-button-clicked");
-                categoryMenu[0].classList.remove("main-nav-unclicked")
-                categoryMenu[0].classList.add("main-nav-clicked")
-                categoryButton[1].classList.add("main-header-button");
-                categoryButton[1].classList.remove("main-header-button-clicked");
-                categoryMenu[1].classList.add("main-nav-unclicked")
-                categoryMenu[1].classList.remove("main-nav-clicked")
+
+        // 버튼키기
+        if (categoryButton[i].classList.contains("main-header-button-unclicked") == true) {
+
+            // 다른버튼끄기
+            for (let j = 0; j < categoryButton.length; j++) {
+                if (j !== i && categoryButton[j].classList.contains("main-header-button-clicked")) {
+                    categoryButton[j].classList.replace("main-header-button-clicked", "main-header-button-unclicked");
+                    categoryMenu[j].classList.replace("main-nav-cetegory-clicked", "main-nav-cetegory-unclicked");
+                }
             }
-            if (i == 1){
-                categoryButton[1].classList.remove("main-header-button");
-                categoryButton[1].classList.add("main-header-button-clicked");
-                categoryMenu[1].classList.remove("main-nav-unclicked")
-                categoryMenu[1].classList.add("main-nav-clicked")
-                categoryButton[0].classList.add("main-header-button");
-                categoryButton[0].classList.remove("main-header-button-clicked");
-                categoryMenu[0].classList.add("main-nav-unclicked")
-                categoryMenu[0].classList.remove("main-nav-clicked")
+
+            categoryButton[i].classList.replace("main-header-button-unclicked", "main-header-button-clicked")
+            categoryMenu[i].classList.replace("main-nav-cetegory-unclicked", "main-nav-cetegory-clicked")
+            let unclickedMainNav = document.querySelector(".main-nav-unclicked")
+            unclickedMainNav.classList.replace("main-nav-unclicked", "main-nav-clicked")
+            // 쿼리셀렉트올 main-nav-cetegory-clicked li 하고 배열의 첫번째파트 데이터를 패치 추가
+            
+        } else if (categoryButton[i].classList.contains("main-header-button-clicked") == true) {
+            // 버튼끄기
+            categoryButton[i].classList.replace("main-header-button-clicked", "main-header-button-unclicked")
+            let unclickedMainNav = document.querySelector(".main-nav-clicked")
+            unclickedMainNav.classList.replace("main-nav-clicked", "main-nav-unclicked")
+            categoryMenu[i].classList.replace("main-nav-cetegory-clicked", "main-nav-cetegory-unclicked")
+            // 전체 메뉴 데이터 가져오는 패치 추가
+        }
+
+        let categoryMenuList = document.querySelectorAll("main-nav-cetegory-clicked li")
+
+        for (let i = 0; i < categoryMenuList.length; i++) {
+            categoryMenuList[i].onclick = () => {
+                let categoryMenuListContent = categoryMenuList[i].querySelector("p")
+
+                if (categoryMenuListContent.classList.contains("main-nav-content-unclicked") == true){
+
+                    // // 다른버튼끄기
+                    // for (let j = 0; j < categoryMenuList.length; j++) {
+                    //     if (j !== i && categoryMenuList[j].querySelector("p").classList.contains("main-header-content-clicked")) {
+                    //         categoryMenuList[j].querySelector("p").classList.replace("main-header-content-clicked", "main-header-content-unclicked");
+                    //     }
+                    // }
+
+                    // 버튼키기
+                    categoryMenuListContent.classList.replace("main-nav-content-unclicked","main-nav-content-clicked")
+                    // 클릭한 쿼리셀렉트올 main-nav-cetegory-clicked li 배열의 파트 데이터를 패치
                 }
             }
         }
+    }
 }
+
+// 쿼리셀렉트올 main-nav-cetegory-clicked li 온클릭했는데
+// main-nav-content-unclicked면 main-nav-content-clicked로 바꿔주고
+// 클릭한 쿼리셀렉트올 main-nav-cetegory-clicked li 배열의 파트 데이터를 패치
+
+// let categoryMenuList = document.querySelectorAll("main-nav-cetegory-unclicked li")
+
+// for (let i = 0; i < categoryMenuList.length; i++) {
+//     categoryMenuList[i].onclick = () => {
+//         let categoryMenuListContent = categoryMenuList[i].querySelector("p")
+
+//         if (categoryMenuListContent.classList.contains("main-nav-content-unclicked") == true){
+
+//             // // 다른버튼끄기
+//             // for (let j = 0; j < categoryMenuList.length; j++) {
+//             //     if (j !== i && categoryMenuList[j].querySelector("p").classList.contains("main-header-content-clicked")) {
+//             //         categoryMenuList[j].querySelector("p").classList.replace("main-header-content-clicked", "main-header-content-unclicked");
+//             //     }
+//             // }
+
+//             // 버튼키기
+//             categoryMenuListContent.classList.replace("main-nav-content-unclicked","main-nav-content-clicked")
+//             // 클릭한 쿼리셀렉트올 main-nav-cetegory-clicked li 배열의 파트 데이터를 패치
+//         }
+//     }
+// }
+

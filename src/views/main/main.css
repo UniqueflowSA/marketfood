@@ -3,10 +3,9 @@
 * {
     margin: 0;
     padding: 0;
-    /* font-family: 'Nanum Gothic'; */
 }
 
-/* 상단바 */
+/* 상단바 공용에서 만들어서 씀 */
     /* .navbar-container {
         display: flex;
         justify-content: center;
@@ -177,6 +176,7 @@
     align-items: center;
     position: relative;
 
+    margin-top: 10px;
     height: 100px;
 }
 
@@ -186,6 +186,7 @@
 }
 
 .main-header-title h3 {
+    font-weight: 600;
     font-size: 27px;
 }
 
@@ -200,14 +201,14 @@
     left: 0;
 }
 
-.main-header-button {
+.main-header-button-unclicked {
     cursor: pointer;
     padding: 10px;
     margin-right: 10px;
     border: 2px solid #ebcf9b;
     border-radius: 15%;
 
-    font-weight: 700;
+    font-weight: 600;
     font-size: 15px;
     color: #ebcf9b;
     background-color: white;
@@ -220,14 +221,14 @@
     border: 2px solid #ebcf9b;
     border-radius: 15%;
 
-    font-weight: 700;
+    font-weight: 600;
     font-size: 15px;
     color: white;
     background-color: #ebcf9b;
 }
 
 /* 메인컨텐츠-네비 */
-.main-nav {
+.main-nav-clicked {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -237,18 +238,18 @@
     margin-top: 25px;
 }
 
-.main-nav-clicked {
+.main-nav-unclicked {
+    display: none;
+}
+
+.main-nav-cetegory-clicked {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.main-nav-unclicked {
+.main-nav-cetegory-unclicked {
     display: none;
-}
-
-.main-nav-list {
-    list-style: none;
 }
 
 .main-nav-line {
@@ -257,7 +258,21 @@
     background-color: #ebcf9b;
 }
 
-.main-nav-content {
+.main-nav-content-unclicked {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 45px;
+
+    font-size: 17px;
+    font-weight: 400;
+    color: #555555;
+}
+
+.main-nav-content-clicked {
+    cursor: pointer;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -266,7 +281,7 @@
 
     font-size: 17px;
     font-weight: 700;
-    color: #555555;
+    color: #e94e33;
 }
 
 .country-img{
@@ -274,19 +289,6 @@
     height: auto;
     padding-right: 10px;
 }
-
-.main-nav-content-clicked {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-decoration: none;
-    margin: 0 45px;
-
-    font-size: 17px;
-    font-weight: 900;
-    color: #e94e33;
-}
-
 
 /* 메인컨텐츠-제품목록 */
 .main-item-container {
@@ -349,24 +351,25 @@
 
  .item-title {
     padding: 10px 0;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
  }
 
  .item-price {
     padding: 5px 0;
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 700;
  }
 
  .item-category {
     display: flex;
     align-items: center;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 400;
+    color: #555555;
  }
 
- /* 하단바 */
+ /* 하단바 공용에서 만들어서 씀*/
     /* .footer {
         display: flex;
         justify-content: center;
