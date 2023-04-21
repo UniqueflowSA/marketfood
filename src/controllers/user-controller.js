@@ -1,5 +1,5 @@
 
-import { userService } from "market-food/src/services/user-service.js";
+import { userService } from "../services/user-service.js";
 
 const createUser = async (req, res, next) => {
   try {

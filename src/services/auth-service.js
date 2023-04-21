@@ -1,4 +1,4 @@
-import authModel from "market-food/src/db/models/auth-model.js";
+import authModel from "../db/models/auth-model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

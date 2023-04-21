@@ -22,4 +22,4 @@ AuthSchema.methods.checkPassword = async function (password) {
 
 const AuthModel = mongoose.model("Auth", AuthSchema);
 
-export { AuthModel };
+export default AuthModel;

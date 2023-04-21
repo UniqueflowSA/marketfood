@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import userRouter from "./user-router.js";
 import authRouter from "./auth-router.js";
 // import categoryRouter from "./category-router.js";
@@ -6,7 +6,7 @@ import authRouter from "./auth-router.js";
 // import productRouter from "./product-router.js";
 // import orderRouter from "./order-router.js";
 
-const router = express.Router();
+const router = Router();
 
 router.use("/user", userRouter);
 router.use("/auth", authRouter);
@@ -15,4 +15,4 @@ router.use("/auth", authRouter);
 // router.use("/product", productRouter);
 // router.use("/order", orderRouter);
 
-export default router;
+export { router, userRouter, authRouter };
