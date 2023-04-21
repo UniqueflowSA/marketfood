@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+*{/* 폰트 프리텐다드적용(임의) */
+  font-family: 'Pretendard-Regular';
+}
+ul{ /* 리스트 태그 불릿제거 */
+   list-style:none;
+   padding-left:0px;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+.btn__default{
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+
+html, body{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* 상품이 없을때(empty)있을 때를 구분 */
+/* 공통 */
+body> header{
+  height: 100px;
+  background-color: bisque;
+}
+main{
+  margin: 0 5%;
+}
+footer{
+  height: 200px;
+  background-color: lightgrey;
+}
+.cart__header{
+  font-size: 20pt;
+  height: 100px;
+  border-bottom: solid 2px #000;
+  text-align: center;
+  
+}
+
+/* 비었을 때(기본값) */
+.cart__detail__empty{
+  text-align: center;
+}
+.delete__btn{
+  display: none;
+}
+.display__none{
+  display: none;
+}
+
+.cart__body__empty{
+  height: 200px;
+  font-size: 25pt;
+  padding-top: 70px;
+}
+.cart__footer__empty{
+  height: 100px;
+  border-top: solid 2px #000;
+}
+.empty__btn{
+  color: #fff;
+  font-weight: 200;
+  background-color: #E94E33;
+  height: 25px;
+  width: 200px;
+
+  margin-top: 20px;
+
+}
+
+/* 상품이 존재할 때 */
+.cart__detail__empty__none{ /* 비어있는 페이지 삭제 */
+  display: none;
+}
+.cart__body{
+  height: 100%;
+}
+.cart__body__list{
+  height:150px; 
+  display: flex;
+  flex-direction: row;
+  background-color: #E94E33;
+}
+.list__img__item{
+  width: 20%;
+  height: 100px;
+  background-color: aqua;
+}
+.list__name__item{
+  
+  width: 55%;
+  background-color: bisque;
+}
+.list__info__item{
+  width: 25%;
+  background-color: seagreen;
+}
+.cart__body__cost__container{
+  border-top: solid 2px #000;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+}
+.blank{
+  height: 100%;
+  width: 75%;
+}
+.body__total__cost{
+  display: flex;
+  flex-direction: column;
+}
+.body__total__cost > *{
+  display: flex;
+  flex-direction: row;
+}
+
+.cart__footer{
+
+}
