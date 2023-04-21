@@ -1,51 +1,53 @@
 import cors from "cors";
 import express from "express";
+import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
-import router from './routers/index.js';
-// import {
-//   userRouter,
-//   authRouter,
-//   categoryRouter,
-//   nationRouter,
-//   viewsRouter,
-//   productRouter,
-//   orderRouter,
-// } from "./routers";
-import { errorHandler } from "./middlewares";
+import {
+  userRouter,
+  authRouter,
+  // categoryRouter,
+  // nationRouter,
+  // viewsRouter,
+  // productRouter,
+  // orderRouter,
+} from "./routers/index.js";
+//import { errorHandler } from "./middlewares/index.js";
 import mongoose from "mongoose";
 
-app.use(express.static(path.join(path.resolve(), 'public')));
-
+const __filename = fileURLToPath(import.meta.url); // 현재 파일 경로
+const __dirname = path.dirname(__filename); // 현재 파일이 위치한 디렉토리 경로
 
 const app = express();
 
-// CORS 에러 방지
 app.use(cors());
-
-// Content-Type: application/json 형태의 데이터를 인식하고 핸들링할 수 있게 함.
 app.use(express.json());
-
-// Content-Type: application/x-www-form-urlencoded 형태의 데이터를
-// 인식하고 핸들링할 수 있게 함.
 app.use(express.urlencoded({ extended: false }));
-
-
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
+// MongoDB 연결
+mongoose.connect("mongodb://localhost/myapp", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// html, css, js 라우팅
-app.use(viewsRouter);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", function () {
+  console.log("MongoDB connected!");
+});
 
+// HTML, CSS, JS 라우팅
+//app.use("/", viewsRouter);
 
-app.use('/api', router);
+// API 라우팅
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);
-// app.use("/api/views", viewsRouter);
 // app.use("/api/product", productRouter);
 // app.use("/api/order", orderRouter);
-// app.use(errorHandler);
 
+// 에러 핸들러
+//app.use(errorHandler);
 
 export { app };

@@ -1,23 +1,19 @@
 {
   "name": "market-food",
   "version": "1.0.0",
-  "author": "team-3",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.2",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "start": "node index.js",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+    "start": "node index.js"
   }
 }
