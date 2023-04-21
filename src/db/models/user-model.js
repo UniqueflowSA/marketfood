@@ -1,5 +1,5 @@
 import { model } from 'mongoose';
-import { UserSchema } from '../schemas/user-schema';
+import { UserSchema } from 'market-food/src/db/schemas/user-schema';
 
 const User = model('User', UserSchema);
 

@@ -1,4 +1,4 @@
-import { authService } from "../services/auth-service.js";
+import { authService } from "market-food/src/services/auth-service.js";
 
 const login = async (req, res) => {
   const { userId, password } = req.body;

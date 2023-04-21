@@ -13,12 +13,6 @@ const AuthSchema = new mongoose.Schema({
 },
 });
 
-// 비밀번호 확인
-AuthSchema.methods.checkPassword = async function (password) {
-  const result = await bcrypt.compare(password, this.password);
-  return result;
-};
-
 const Auth = mongoose.model("Auth", AuthSchema);
 
 export { Auth };
