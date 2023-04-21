@@ -21,12 +21,12 @@ class ProductService {
     }
   }
 
-  async editProduct(productId, toUpdate) {
+  async updateProduct(productId, toUpdate) {
     const updatedProduct = await productModel.update({productId, update : toUpdate});
     return updatedProduct;
   }
 
-  async removeProduct(productId) {
+  async deleteProduct(productId) {
     const { removeCount } = await productModel.delete(productId);
 
     if(removeCount === 0 ){
