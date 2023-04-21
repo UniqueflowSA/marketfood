@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="cart_style.css">
-    <script src="cart_srcript.js"></script>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cart_style.css">
+  <script defer src="cart_srcript.js"></script>
+  <title>Document</title>
 </head>
 <body>
-  <header class="top-bar"> <!-- 상단 바 및 헤더 부분 -->
-  </header>
- <main><!-- 제품 리스트, 가격, 합계 -->
-  <header class="title">
-    <h2>MY CART</h2>
-    
-  </header>
-  <section class="product-tap"> <!-- 선택상품 리스트 -->
-    <p class="delete_btn deleteAll">Delete All</p>
-    <div class="product-list container">
-      <div class="product-img item">
-        <a href="">
-        </a>
+  <!-- 공통 -->
+  <header></header>
+  
+  <main>
+    <header class="cart__header">
+      <h2 class="cart__title">MY CART</h2>
+      <button class="delete__btn display__none" id="all__delete"> All Delete</button>
+    </header>
+    <!-- 카트가 비어있을 때(기본값) -->
+    <section class="cart__detail__empty">
+      <div class="cart__body__empty">
+         장바구니가 비었습니다!
       </div>
-      <div class="product-name item">
-        <p>제품명</p>
-        <p class="delete_btn">Delete</p>
+      <div class="cart__footer__empty">
+        <button class="shopping__page__btn empty__btn btn__default">쇼핑페이지로</button>
       </div>
-      <div class="product-info item">
-        <ul>
-          <li id="product-quan">수량</li>
-          <li id="product-price">가격</li>
-          <li id="product-del">배송비</li>
-        </ul>
-      </div>
-    </div>
-    <div class="price container">
-      
-      <div class="blank"></div>
-      
-      <div class="price-info item">
-        <ul>
-          <li>가격</li>
-          <li>배송비</li>
-        </ul></div>
-    </div>
-    <div class="total container">
-      <div class="blank"></div>
-    
-      <div class="total-info item">
-        <p>합계</p>
-      </div>
-    </div>
-  </section>
-  <footer class="payment-tap container">
-    <div class="blank"></div>
-      <div class="payment_btn item">
-        <button>결제페이지로</button>
-        <button><a href="">shop 페이지로 </a></button>
-        <button>NAVER BTN</button>
-      </div>
-    </div>
-    
-  </footer>
+    </section>
 
- </main>
- <footer class="shop-info"><!-- 쇼핑몰하단정보 -->
+    <!-- 카트 안에 물건이 있을 때 -->
+    <section class="cart__detail display__none">
+      <div class="cart__body">
+        <div class="cart__body__list">
+          <div class="list__img__item">
+            <a href="#none"><img src="" alt="sss"></a>
+          </div>
+          <div class="list__name__item">
+            <!-- 상품정보 파트 -->
+            <p class="list__name">product name</p>
+            <button class="delete__btn" id="select__delete"> Delete</button>
+          </div>
+          <div class="list__info__item">
+            <!-- 수량 및 가격 -->
+            <div class="info__quan">
+              <div class="">수량:</div>
+              <button class="info__quan__minus__btn">-</button>
+              <p class="info__quan__num"></p>
+              <button class="info__quan__plus__btn">+</button>
+            </div>
+            <div class="info__price">
+              <div class="">가격:</div>
+              <div id="info__product__price"></div>
+            </div>
+          </div>
+        </div>  
+          <div class="cart__body__cost__container">
+            <div class="blank"></div>
 
- </footer>   
+            <div class="body__total__cost">
+
+              <div class="total__cost__product__item">
+                <div class="">가격:</div>
+                <div class="total__cost__product__price"></div>  
+              </div>
+                
+              <div id="total__cost__del__item">
+                <div class="">배송비:</div>
+                <div id="total__cost__del__price"> 2500</div>
+              </div>
+            
+              <div id="total__cost__total__item">
+                <div class="">총합:</div>
+                <div class="total__cost__total__price"></div>
+              </div>
+              
+            </div>
+          </div>
+        
+      </div>
+      <div class="cart__footer">
+        <button class="order__page__btn btn__default">결제페이지로</button>
+        <button class="shopping__page__btn btn__default">쇼핑페이지로</button>
+      </div>
+    </section>
+
+
+  </main>
+  <!-- 공통 -->
+  <footer></footer>
+  
 </body>
 </html>
