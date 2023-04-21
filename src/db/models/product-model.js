@@ -20,17 +20,23 @@ class ProductModel {
     return newProduct;
   }
 
-  async update(id, update) {
-    const updatedProduct = await Product.findByIdAndUpdate(id, update, {
-      new: true,
-    });
+  async update(productId, update) {
+    const filter = { _id: productId };
+    const option = { returnOriginal: false };
+
+    const updatedProduct = await Product.findOneAndUpdate(
+      filter,
+      update,
+      option
+    );
     return updatedProduct;
   }
 
-  async delete(id) {
-    const deletedProduct = await Product.findByIdAndDelete(id);
+  async delete(productId) {
+    const deletedProduct = await Product.findByIdAndDelete(productId);
     return deletedProduct;
   }
 }
 
-export const ProductModel = new ProductModel();
+const ProductModel = new ProductModel();
+export { ProductModel };
