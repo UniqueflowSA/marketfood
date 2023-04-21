@@ -10,4 +10,4 @@ productRouter.put("/:productId", updateProdect);
 productRouter.delete("/:productId", deleteProdect);
 
 
-module.exports = productRouter;
+export {productRouter};

@@ -19,16 +19,44 @@ const ProductSchema = new Schema({
     type:Number,
     required: true,
   },
-  sellerId:{
+  sellerId:{ // 판매자 아이디
     type:Schema.Types.ObjectId,
     ref:'user',
     required: true,
   },
-  // 업로드한 날짜... 필요한가..?
-  //
+  categoryId: {//카테고리
+    type: Schema.Types.ObjectId,
+    ref: "categorys",
+    required: true,
+  },
+  manufacturer: { // 제조사
+    type: String,
+    required: true,
+  },
+  shortDescription: {// 짧은 설명
+    type: String,
+    required: true,
+  },
+  detailDescription: { // 상세 설명
+    type: String,
+    required: true,
+  },
+  imageKey: { // 이미지
+    type: String,
+    required: true,
+  },
+  inventory: {// 재고량
+    type: Number,
+    min: 0,
+    default: 10,
+    required: true,
+  },{
+    collection: "product",
+    timestamps: true,
+  }
 });
 
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", ProductSchema);
 
 export { Product };
