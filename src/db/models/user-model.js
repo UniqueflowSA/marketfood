@@ -3,7 +3,7 @@ import { UserSchema } from '../schemas/user-schema.js';
 
 const User = model('User', UserSchema);
 
-export default class UserModel {
+class UserModel {
   async findByEmail(email) {
     const user = await User.findOne({ email });
     return user;
@@ -31,3 +31,5 @@ export default class UserModel {
     return deletedUser;
   }
 }
+
+export default new UserModel();
