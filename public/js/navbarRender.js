@@ -17,12 +17,12 @@ function navbarRender(loggedInUser) {
       <div class="navbar-container">
       <nav class="navbar">
           <div class="navbar-logo-container">
-              <a href="/main"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+              <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
           <ul calss="navbar-nav">
               <li class="navbar-content">
                   <img src="/public/img/WMlogin.png" alt="login-icon" class="navbar-icon">
-                  <a href="/user/login" class="navbar-text">로그인</a>
+                  <a href="/src/views/logIn/login.html" class="navbar-text">로그인</a>
               </li>
           </ul>
       </nav>
