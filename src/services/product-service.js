@@ -1,4 +1,4 @@
-import { productModel } from "../db";
+import { productModel } from "../db/models/product-model.js";
 
 class ProductService {
   async addProduct(productInfo) {
