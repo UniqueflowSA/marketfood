@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+.all-wrap {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 50px;
+}
+
 /* 상단바 공용에서 만들어서 씀 */
     /* .navbar-container {
         display: flex;
@@ -169,6 +175,16 @@
       width: 700px;
     }
 }
+@media (max-width: 720px) {
+    .main-box {
+      width: 500px;
+    }
+}
+@media (max-width: 510px) {
+    .main-box {
+      width: 300px;
+    }
+}
 
 .main-header-container {
     display: flex;
@@ -266,9 +282,9 @@
     text-decoration: none;
     margin: 0 45px;
 
-    font-size: 17px;
-    font-weight: 400;
-    color: #555555;
+    font-size: 18px;
+    font-weight: 700;
+    color: #777777;
 }
 
 .main-nav-content-clicked {
@@ -279,7 +295,7 @@
     text-decoration: none;
     margin: 0 45px;
 
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     color: #e94e33;
 }
