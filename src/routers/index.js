@@ -1,10 +1,18 @@
-// 이 routers 폴더에서 만들어진 모듈들을 깔끔하게 묶어주는 역할을 index.js가 함.
-// 나중에 import 할 때의 코드도 짧아지는 효과가 있음.
+import { Router } from "express";
+import userRouter from "./user-router.js";
+import authRouter from "./auth-router.js";
+// import categoryRouter from "./category-router.js";
+// import nationRouter from "./nation-router.js";
+// import productRouter from "./product-router.js";
+// import orderRouter from "./order-router.js";
 
-export * from './view-router';
-export * from './auth-router';
-export * from './product-router';
-export * from './order-router';
-export * from './nation-router';
-export * from "./category-router";
-export * from "./user-router";
+const router = Router();
+
+router.use("/user", userRouter);
+router.use("/auth", authRouter);
+// router.use("/category", categoryRouter);
+// router.use("/nation", nationRouter);
+// router.use("/product", productRouter);
+// router.use("/order", orderRouter);
+
+export { router, userRouter, authRouter };
