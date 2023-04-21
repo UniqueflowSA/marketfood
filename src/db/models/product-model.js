@@ -1,13 +1,19 @@
 import { model } from 'mongoose';
 import { ProductSchema } from '../schemas/product-schema';
 
-const Product = model('Product', ProductSchema);
+const Product = model('Products', ProductSchema);
 
 class ProductModel {
-  async findProductId(id) {
-  const Product = await Product.findOne({ id });
+
+  async findByTitle(title) {
+  const Product = await Product.findOne({ title });
   return Product;
   }
+
+  async findById(productId) {
+    const Product = await Product.findOne({ _id:productId });
+    return Product;
+    }
 
   async create(product) {
     const newProduct = await Product.create(product);
