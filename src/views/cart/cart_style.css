@@ -20,6 +20,7 @@ a{
   border-radius: 0;
   border: none;
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 html, body{
@@ -46,20 +47,15 @@ footer{
   height: 100px;
   border-bottom: solid 2px #000;
   text-align: center;
-  
+}
+.display__none{
+  display: none;
 }
 
 /* 비었을 때(기본값) */
 .cart__detail__empty{
   text-align: center;
 }
-.delete__btn{
-  display: none;
-}
-.display__none{
-  display: none;
-}
-
 .cart__body__empty{
   height: 200px;
   font-size: 25pt;
@@ -81,51 +77,53 @@ footer{
 }
 
 /* 상품이 존재할 때 */
-.cart__detail__empty__none{ /* 비어있는 페이지 삭제 */
-  display: none;
+#all__delete{
+  display: block;
+  font-size: 12pt;
 }
-.cart__body{
+.cart__detail{
   height: 100%;
 }
-.cart__body__list{
+.cart__product__list{
   height:150px; 
   display: flex;
   flex-direction: row;
-  background-color: #E94E33;
+  /* background-color: #E94E33; */
 }
-.list__img__item{
+.list__img__block{
   width: 20%;
   height: 100px;
   background-color: aqua;
 }
-.list__name__item{
+.list__name__block{
   
   width: 55%;
   background-color: bisque;
 }
-.list__info__item{
+.list__info__block{
   width: 25%;
   background-color: seagreen;
 }
-.cart__body__cost__container{
+.product__quan{
+
+}
+.cart__order__list{
   border-top: solid 2px #000;
   height: 150px;
   display: flex;
   flex-direction: row;
+  background-color: aqua;
 }
 .blank{
   height: 100%;
   width: 75%;
 }
-.body__total__cost{
+.total__price__block{
   display: flex;
   flex-direction: column;
 }
-.body__total__cost > *{
-  display: flex;
-  flex-direction: row;
-}
 
 .cart__footer{
-
+  display: flex;
+  flex-direction: column;
 }
