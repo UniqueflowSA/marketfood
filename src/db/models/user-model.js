@@ -15,7 +15,8 @@ export default class UserModel {
   }
 
   async create(userInfo) {
-    const newUser = await User.create(userInfo);
+    const newUser = new User(userInfo);
+    await newUser.save();
     return newUser;
   }
 

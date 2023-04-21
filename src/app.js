@@ -8,7 +8,7 @@ import {
   // categoryRouter,
   // nationRouter,
   // viewsRouter,
-  // productRouter,
+  productRouter,
   // orderRouter,
 } from "./routers/index.js";
 //import { errorHandler } from "./middlewares/index.js";
@@ -40,11 +40,15 @@ db.once("open", function () {
 //app.use("/", viewsRouter);
 
 // API 라우팅
+// app.use("/", userRouter);
+// app.use("/", authRouter);
+// app.use("/", productRouter);
+
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/product", productRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);
-app.use("/api/product", productRouter);
 // app.use("/api/order", orderRouter);
 
 // 에러 핸들러

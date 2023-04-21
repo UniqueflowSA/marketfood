@@ -6,7 +6,7 @@ import { createUser, getUser, updateUser, deleteUser } from "../controllers/user
 
 const userRouter = Router();
 
-userRouter.post("/", createUser);
+userRouter.post("/signup", createUser);
 userRouter.get("/:userId", getUser);
 userRouter.patch("/:userId", updateUser);
 userRouter.delete("/:userId", deleteUser);
