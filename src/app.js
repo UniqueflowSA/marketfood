@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
 // MongoDB 연결
-mongoose.connect("mongodb://localhost/myapp", {
+mongoose.connect("mongodb://localhost/marketDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
