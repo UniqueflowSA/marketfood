@@ -67,25 +67,33 @@ window.addEventListener('load',()=>{
 		const productPrice = document.querySelector(`#product__price__num__${product_id}`)
 		const deleteBtn = document.querySelector(`#select__delete__${product_id}`)
 		const productItem = document.querySelector(`#productItem__${product_id}`)
+		const orderPrice = document.querySelector('order__price__num')
+		const totalPrice = document.querySelector('#total__price__num')
 
 
 		let crrentNum = parseInt(quantityNum.textContent)
 		plusBtn.addEventListener('click',()=>{
 			quantityNum.textContent = crrentNum + 1
+			productPrice.textContent = (price * Number(quantityNum))
 		})
 		minusBtn.addEventListener('click',()=>{
 			quantityNum.textContent = crrentNum - 1
+			productPrice.textContent = (price * Number(quantityNum))
 		})
 		deleteBtn.addEventListener('click', ()=>{
 			const key = localStorage.key(product_id)
 			localStorage.removeItem(key)
 			productItem.remove()
 		})
+		const orderPriceFunc= ()=>{
+			
+		}
 
 
 
 
 	}else if(orders.length === 0 ){ //장바구니 비었을 때
+
 		allDeleteBtn.classList.add('display__none')
 		cartEmpty.classList.remove('display__none')
 		cartHaveProduct.classList.add('display__none')
@@ -94,72 +102,6 @@ window.addEventListener('load',()=>{
 })
 
 	
-
-
-
-
-
-
-// 제품정보 HTML코드만들기
-// for(const i of product){
-//     const productItem = document.createElement('div')
-// 		productItem.classList.add('product__item')
-
-// 		const imgDiv = document.createElement('div')
-// 		const productImg = document.createElement('img')
-// 		productImg.src = i.imgUrl
-// 		imgDiv.appendChild(productImg)
-// 		productItem.appendChild(imgWrapper)
-
-// 		const nameDiv = document.createElement('div')
-// 		const productName = document.createElement('p')
-// 		productName.textContent = product.name
-// 		const deleteBtn = document.createElement("button")
-// 		deleteBtn.classList.add('delete__btn')
-// 		deleteBtn.textContent = 'Delete'
-// 		nameDiv.appendChild(productName)
-// 		nameDiv.appendChild(deleteBtn)
-// 		productItem.appendChild(nameWrapper)
-
-// 		const infoDiv = document.createElement('div')
-// 		const quanDiv = document.createElement('div')
-// 		const quanLabel = document.createElement('div')
-// 		quanLabel.textContent = '수량:'
-// 		const quanMinusBtn = document.createElement('button')
-// 		quanMinusBtn.classList.add('info__quan__minus__btn')
-// 		quanMinusBtn.textContent = '-'
-// 		const quanNum = document.createElement('span')
-// 		quantity.textContent = product.quantity 
-// 		const quanPlusBtn = document.createElement('button')
-// 		quanPlusBtn.classList.add('info__quan__plus__btn')
-// 		quanPlusBtn.textContent = "+"
-// 		quanDiv.appendChild(quanLabel)
-// 		quanDiv.appendChild(quanMinusBtn)
-// 		quanDiv.appendChild(quantity)
-// 		quanDiv.appendChild(quanPlusBtn)
-// 		infoDiv.appendChild(quanDiv)
-
-// 		const priceDiv = document.createElement('div')
-// 		const priceLabel = document.createElement('div')
-// 		priceLabel.textContent = '가격: '
-// 		const price =document.createElement('div')
-// 		price.textContent = product.price
-// 		priceDiv.appendChild(priceLabel)
-// 		priceDiv.appendChild(price)
-// 		priceDiv.appendChild(priceDiv)
-
-// 		productItem.appendChild(infoDiv)
-
-// 		cartList.appendChild(productItem)
-// }
-
-
-
-
-
-
-
-
 
 
 
