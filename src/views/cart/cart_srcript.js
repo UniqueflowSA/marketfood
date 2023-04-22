@@ -17,21 +17,78 @@ const shoppingBtn = document.querySelector(".shopping__page__btn")
 window.addEventListener('load',()=>{
 	const localLength = localStorage.length;
 	const orders = []
-	for(let i=1;i<localLenght+1;i++){
+	for(let i=1;i<localLength+1;i++){
 		if(localStorage.getItem(String(i))){ //LocalStorage에서 정보가져오기
 			orders.push(JSON.parse(localStorage.getItem(String(i))))
 		}
 	}
 	const allDeleteBtn = document.querySelector('#all__delete')
-	const emptyPage = document.querySelector('#cart__empty')
-	const cartDetail = document.querySelector('#cart__have__product')
-
+	const cartEmpty = document.querySelector('#cart__empty')
+	const cartHaveProduct = document.querySelector('#cart__have__product')
+	const cartProductList = document.querySelector('.cart__product__list')
 
 	if(orders.length > 0){ //장바구니 상품이 있을 때
+		allDeleteBtn.classList.remove('display__none')
+		cartEmpty.classList.add('display__none')
+		cartHaveProduct.classList.remove('display__none')
+
+		orders.forEach((product) =>{
+			const{ product_id, productName, price, quantity,image} = product
+			cartProductList.insertAdjacentHTML('beforeend',
+			`
+			<div id='productItem__${product_id}'>
+				<div class="list__img__block">
+					<a href="#none"><img id="product__img__${product_id}" src="${image}" alt="상품이미지파일"></a>
+				</div>
+				<div class="list__name__block">
+					<!-- 상품정보 파트 -->
+					<span id="product__name__${product_id}">${productName}</span>
+					<button class="btn__defalut" id="select__delete__${product_id}"> Delete</button>
+				</div>
+				<div class="list__info__block">
+					<!-- 수량 및 가격 -->
+					<div class="product__quan">
+						<span>수량:</span>
+						<button class="btn__default" id="minus__btn__${product_id}">-</button>
+						<span id="quan__num__${product_id}">${quantity}</span>
+						<button class="btn__default" id="plus__btn__${product_id}">+</button>
+					</div>
+					<div class="product__price">
+						<span>가격</span>
+						<span id="product__price__num__${product_id}">${price}</span>
+					</div>
+				</div>
+			</div>
+			`)
+		})
+		const plusBtn = document.querySelector(`#plus__btn__${product_id}`)
+		const minusBtn = document.querySelector(`#minus__btn__${product_id}`)
+		const quantityNum= document.querySelector(`#quan__num__${product_id}`)
+		const productPrice = document.querySelector(`#product__price__num__${product_id}`)
+		const deleteBtn = document.querySelector(`#select__delete__${product_id}`)
+		const productItem = document.querySelector(`#productItem__${product_id}`)
+
+
+		let crrentNum = parseInt(quantityNum.textContent)
+		plusBtn.addEventListener('click',()=>{
+			quantityNum.textContent = crrentNum + 1
+		})
+		minusBtn.addEventListener('click',()=>{
+			quantityNum.textContent = crrentNum - 1
+		})
+		deleteBtn.addEventListener('click', ()=>{
+			const key = localStorage.key(product_id)
+			localStorage.removeItem(key)
+			productItem.remove()
+		})
+
+
 
 
 	}else if(orders.length === 0 ){ //장바구니 비었을 때
-
+		allDeleteBtn.classList.add('display__none')
+		cartEmpty.classList.remove('display__none')
+		cartHaveProduct.classList.add('display__none')
 	}
 
 })
