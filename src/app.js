@@ -11,7 +11,7 @@ import {
    productRouter,
   // orderRouter,
 } from "./routers/index.js";
-//import { errorHandler } from "./middlewares/index.js";
+import { errorHandler } from "./middlewares/error-handler.js";
 import mongoose from "mongoose";
 
 const __filename = fileURLToPath(import.meta.url); // 현재 파일 경로
@@ -41,13 +41,14 @@ db.once("open", function () {
 
 // API 라우팅
 app.use(userRouter);
-app.use("/api/auth", authRouter);
+app.use(authRouter);
+//app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);
 app.use("/api/product", productRouter);
 // app.use("/api/order", orderRouter);
 
 // 에러 핸들러
-//app.use(errorHandler);
+app.use(errorHandler);
 
 export { app };

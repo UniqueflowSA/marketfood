@@ -1,6 +1,6 @@
 import { authService } from "../services/auth-service.js";
 
-const login = async (req, res) => {
+export const handlelogin = async (req, res) => {
   const { userId, password } = req.body;
   try {
     const token = await authService.login(userId, password);
@@ -11,7 +11,7 @@ const login = async (req, res) => {
   }
 };
 
-const logout = async (req, res) => {
+export const handlelogout = async (req, res) => {
   try {
     await authService.logout(req.user.id);
     res.status(204).send();
@@ -20,5 +20,3 @@ const logout = async (req, res) => {
     res.status(500).json({ error: "로그아웃에 실패했습니다." });
   }
 };
-
-export { login, logout };
