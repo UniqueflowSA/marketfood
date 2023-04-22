@@ -40,7 +40,7 @@ db.once("open", function () {
 //app.use("/", viewsRouter);
 
 // API 라우팅
-app.use("/api/user", userRouter);
+app.use(userRouter);
 app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);

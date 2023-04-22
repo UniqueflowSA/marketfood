@@ -7,8 +7,8 @@ import { createUser, getUser, updateUser, deleteUser } from "../controllers/user
 const userRouter = Router();
 
 userRouter.post("/signup", createUser);
-userRouter.get("/:userId", getUser);
-userRouter.patch("/:userId", updateUser);
-userRouter.delete("/:userId", deleteUser);
+userRouter.get("/mypage/:userId", getUser);
+userRouter.patch("/mypage/:userId", updateUser);
+userRouter.delete("/mypage/:userId", deleteUser);
 
 export default userRouter
