@@ -49,4 +49,5 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
+
 export { createUser, getUser, updateUser, deleteUser };

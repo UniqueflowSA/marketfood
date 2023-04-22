@@ -1,5 +1,5 @@
 import { Auth } from "../db/models/auth-model.js";
-
+import { model } from 'mongoose';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -17,7 +17,7 @@ export const authService = {
       throw new Error("없는 아이디입니다.");
     }
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password.hash);
     if (!match) {
       throw new Error("비밀번호가 일치하지 않습니다.");
     }
