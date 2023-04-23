@@ -13,10 +13,17 @@ export const handlelogin = async (req, res) => {
 
 export const handlelogout = async (req, res) => {
   try {
-    await authService.logout(req.user.id);
-    res.status(204).send();
+    if (req.user) {
+      await authService.logout(req.user.id);
+    }
+    req.logout((err) => {
+      if (err) throw err;
+      res.status(200).send("로그아웃 되었습니다.");
+    }); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "로그아웃에 실패했습니다." });
   }
 };
+
+

@@ -2,6 +2,9 @@ import cors from "cors";
 import express from "express";
 import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
+import passport from "passport";
+import session from "express-session";
+
 import {
   userRouter,
   authRouter,
@@ -23,6 +26,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
+
+app.use(session({
+  secret: "mySecret",
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // MongoDB 연결
 mongoose.connect("mongodb://localhost/marketDB", {
