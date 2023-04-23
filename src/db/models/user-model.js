@@ -1,4 +1,5 @@
 import { model } from 'mongoose';
+import mongoose from 'mongoose';
 import { UserSchema } from '../schemas/user-schema.js';
 import bcrypt from 'bcrypt';
 
@@ -10,10 +11,11 @@ export default class UserModel {
     return user;
   }
 
-  async findById(id) {
-    const user = await User.findById(id);
-    return user;
+  async findOne(userId) {
+    const user = await User.findOne({ userId });
+    return user
   }
+  
 
   async create(userInfo) {
     const { password, ...rest } = userInfo;
@@ -28,17 +30,19 @@ export default class UserModel {
   await newUser.save();
   return newUser;
   }
-
-  async update(id, update) {
-    const filter = { _id: id };
-    const option = { new: true };
-    const updatedUser = await User.findOneAndUpdate(filter, update, option);
-    return updatedUser;
-  }
-  
-
-  async delete(id) {
-    const deletedUser = await User.findByIdAndDelete(id);
-    return deletedUser;
-  }
-}
+  async findUserById(userId) {
+    const user = await User.findById(userId);
+    return user;
+    }
+    async update(userId, update) {
+      const filter = { _id: userId };
+      const option = { new: true };
+      const updatedUser = await User.findOneAndUpdate(filter, update, option);
+      return updatedUser;
+      }
+      
+      async delete(userId) {
+      const deletedUser = await User.findByIdAndDelete(userId);
+      return deletedUser;
+      }
+      }

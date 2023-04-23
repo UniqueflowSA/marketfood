@@ -42,7 +42,5 @@ export const authService = {
       throw new Error("유효하지 않은 토큰입니다.");
     }
   },
-  setStrategy(strategy) {
-    this.strategy = strategy;
-  }
+ 
 };

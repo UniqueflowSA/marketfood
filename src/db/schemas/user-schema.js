@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
- 
+  
   userId: {
     type: String,
     required: true,
@@ -39,9 +39,7 @@ const UserSchema = new Schema({
         address1: String,//주소
         address2: String,//상세주소
       },
-      {
-        _id: false,
-      }
+      
     ),
     required: true,
   },

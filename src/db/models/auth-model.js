@@ -1,6 +1,6 @@
 import { Auth } from "../schemas/auth-schema.js";
 import passport from "passport";
-import { Strategy as LocalStrategy } from "passport-local";
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
   });
