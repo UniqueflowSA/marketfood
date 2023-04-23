@@ -35,9 +35,9 @@ const UserSchema = new Schema({
   address: {
     type: new Schema(
       {
-        postalCode: String,//우편번호
-        address1: String,//주소
-        address2: String,//상세주소
+        postalCode: String, //우편번호
+        address1: String, //주소
+        address2: String, //상세주소
       },
       
     ),

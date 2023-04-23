@@ -29,8 +29,7 @@ export default {
   async updateUser(req, res, next) {
     try {
       const userId = req.params.userId;
-      const updatedInfo = await userService.updateUser(userId, req.body);
-      const updatedUser = await userService.updateUser(userId, updatedInfo);
+      const updatedUser = await userService.updateUser(userId, req.body);
       res.status(200).json(updatedUser);
     } catch (error) {
       next(error);

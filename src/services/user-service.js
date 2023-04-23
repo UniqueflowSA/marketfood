@@ -1,5 +1,6 @@
 import UserModel from "../db/models/user-model.js";
 import bcrypt from 'bcrypt';
+import mongoose from 'mongoose'
 
 const createUser = async (userInfo) => {
 const userModel = new UserModel();
@@ -25,11 +26,9 @@ return updatedUser;
 };
 
 const deleteUser = async (userId) => {
-const userModel = new UserModel();
-const deletedUser = await userModel.delete(userId);
-if (!deletedUser) {
-throw new Error("회원 탈퇴에 실패했습니다.");
-}
+  const userModel = new UserModel();
+  const deletedUser = await userModel.deleteOne({ userId });
+  return deletedUser
 };
 
 export const userService = {
