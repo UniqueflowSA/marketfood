@@ -30,11 +30,12 @@ export default class UserModel {
   }
 
   async update(id, update) {
-    const updatedUser = await User.findByIdAndUpdate(id, update, {
-      new: true,
-    });
+    const filter = { _id: id };
+    const option = { new: true };
+    const updatedUser = await User.findOneAndUpdate(filter, update, option);
     return updatedUser;
   }
+  
 
   async delete(id) {
     const deletedUser = await User.findByIdAndDelete(id);

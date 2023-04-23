@@ -10,6 +10,7 @@ const createUser = async (userInfo) => {
 const getUser = async (userId) => {
   const userModel = new UserModel();
   const foundUser = await userModel.findById(userId);
+  
   return foundUser;
 };
 
