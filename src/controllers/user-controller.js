@@ -4,11 +4,14 @@ export default {
   async createUser(req, res, next) {
     try {
       const { userId, name, email, password, phone, address } = req.body;
-      const userInfo = { userId, name, email, password,phone,address: {
-        postalCode: req.body.postalCode,
-        address1: req.body.address1,
-        address2: req.body.address2,
-      },};
+      const { postalCode, address1, address2 } = address;
+      const userInfo = {userId, name, email, password, phone,
+        address: {
+          postalCode,
+          address1,
+          address2,
+        },
+      };
       const createdUser = await userService.createUser(userInfo);
       res.status(201).json(createdUser);
     } catch (error) {
