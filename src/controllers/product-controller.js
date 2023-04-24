@@ -1,9 +1,9 @@
 import { productService } from "../services/product-service.js";
 
-const createProdect = async (req, res, next) => {
+const createProduct = async (req, res, next) => {
   try {
     const product = req.body;
-    const createdProduct = await productService.createProdect(product);
+    const createdProduct = await productService.createProduct(product);
 
     res.status(201).json(createdProduct);
   } catch (error) {
@@ -11,10 +11,10 @@ const createProdect = async (req, res, next) => {
   }
 };
 
-const getProdect = async (req, res, next) => {
+const getProduct = async (req, res, next) => {
   try {
     const productId = req.params.productId;
-    const foundProduct = await productService.getProdect(productId);
+    const foundProduct = await productService.getProduct(productId);
 
     res.status(200).json(foundProduct);
   } catch (error) {
@@ -22,19 +22,19 @@ const getProdect = async (req, res, next) => {
   }
 };
 
-const updateProdect = async (req, res, next) => {
+const updateProduct = async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const updatedInfo = req.body;
-    const updatedProduct = await productService.updateProdect(productId, updatedInfo);
+    const updatedProduct = await productService.updateProduct(productId, updatedInfo);
 
-    res.status(200).json(updateProdect);
+    res.status(200).json(updateProduct);
   } catch (error) {
     next(error);
   }
 };
 
-const deleteProdect = async (req, res, next) => {
+const deleteProduct = async (req, res, next) => {
   try {
     const productId = req.params.productId;
     await productService.deleteProduct(productId);
@@ -45,4 +45,4 @@ const deleteProdect = async (req, res, next) => {
   }
 };
 
-export { createProdect, getProdect, updateProdect, deleteProdect };
+export { createProduct, getProduct, updateProduct, deleteProduct };

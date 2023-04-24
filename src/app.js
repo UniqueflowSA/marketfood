@@ -61,7 +61,7 @@ app.use(authRouter);
 //app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);
-app.use("/api/product", productRouter);
+app.use("/product",productRouter);
 // app.use("/api/order", orderRouter);
 
 // 에러 핸들러
