@@ -13,11 +13,13 @@ import {
   // categoryRouter,
   // nationRouter,
   // viewsRouter,
-   productRouter,
+  productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
+
 import mongoose from "mongoose";
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url); // 현재 파일 경로
 const __dirname = path.dirname(__filename); // 현재 파일이 위치한 디렉토리 경로
@@ -29,13 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-app.use(session({
-  secret: "mySecret",
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//   secret: "mySecret",
+//   resave: false,
+//   saveUninitialized: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // MongoDB 연결
