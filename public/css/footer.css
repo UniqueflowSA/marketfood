@@ -4,7 +4,7 @@
     align-items: center;
  }
 
- .footer-container {
+ .footer .footer-container {
     width: 100%;
     background-color: #ebcf9b;
 
@@ -12,9 +12,8 @@
     color: white;
     font-weight: 400;
     font-size: 14px;
-    padding: 12px 0;
  }
 
  .footer p {
-    padding: 5px
+    margin: 15px
  }
