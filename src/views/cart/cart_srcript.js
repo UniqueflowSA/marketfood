@@ -1,8 +1,5 @@
 const shoppingBtn = document.querySelector(".shopping__page__btn")
 
-
-
-
 // // 제품 상세페이지에서 장바구니 버튼 눌렀을 때, 보완필요
 // //필요 정보를 객체 형태로
 // const product ={
@@ -26,6 +23,7 @@ window.addEventListener('load',()=>{
 	const cartEmpty = document.querySelector('#cart__empty')
 	const cartHaveProduct = document.querySelector('#cart__have__product')
 	const cartProductList = document.querySelector('.cart__product__list')
+	const orderpageBtn = document.querySelector('.order__page__btn') 
 
 	if(orders.length > 0){ //장바구니 상품이 있을 때
 		allDeleteBtn.classList.remove('display__none')
@@ -67,7 +65,7 @@ window.addEventListener('load',()=>{
 		const productPrice = document.querySelector(`#product__price__num__${product_id}`)
 		const deleteBtn = document.querySelector(`#select__delete__${product_id}`)
 		const productItem = document.querySelector(`#productItem__${product_id}`)
-		const orderPrice = document.querySelector('order__price__num')
+		const orderPrice = document.querySelector('#order__price__num')
 		const totalPrice = document.querySelector('#total__price__num')
 
 
@@ -86,8 +84,20 @@ window.addEventListener('load',()=>{
 			productItem.remove()
 		})
 		const orderPriceFunc= ()=>{
-			
+			let orderPriceNum = 0;
+			orders.forEach(product =>{
+				const{product_id, price, quantity} = product
+				const productPriceNum = price*quantity
+				orderPriceNum += productPriceNum
+			})
+			orderPrice.textContent = orderPriceNum
+			totalPrice.textContent = (orderPriceNum*1)+2500  
 		}
+		orderPriceFunc()
+
+		orderpageBtn.addEventListener('click',()=>{
+			window.location.href = '../order/index.html'
+		})
 
 
 
@@ -102,8 +112,6 @@ window.addEventListener('load',()=>{
 })
 
 	
-
-
 
 
 

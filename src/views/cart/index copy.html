@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="cart_style.css">
-  <script defer src="cart_srcript.js"></script>
+  <!-- <script defer src="cart_srcript.js"></script> -->
   <title>Document</title>
 </head>
 <body>
@@ -14,11 +14,11 @@
   
   <main>
     <header class="cart__header">
-      <h2 class="cart__title">MY CART</h2>
-      <button class="btn__default all_del" id="all__delete"> All Delete</button>
+      <div class="cart__title">MY CART</div>
+      <button class="all__del btn__default " id="all__delete"> All Delete</button>
     </header>
     <!-- 카트가 비어있을 때(기본값) -->
-    <section class="cart__detail__empty" id="cart__empty">
+    <section class="cart__detail__empty display__none" id="cart__empty">
       <div class="cart__body__empty">
          장바구니가 비었습니다!
       </div>
@@ -33,12 +33,12 @@
         <div class="cart__product__list">
           <!-- 삽입되어야하는 부분 -->
           <div class="list__img__block">
-            <a href="#none"><img id="product__img" src="" alt="sss"></a>
+            <a href="#none"><img id="product__img" src="./image/art-4919768.gif" alt="sss"></a>
           </div>
           <div class="list__name__block">
             <!-- 상품정보 파트 -->
-            <span id="product__name">product name</span>
-            <button class="btn__defalut" id="select__delete"> Delete</button>
+            <span class="product__name__text" id="product__name">product name</span>
+            <button class="btn__default sel__del" id="select__delete"> Delete</button>
           </div>
           <div class="list__info__block">
             <!-- 수량 및 가격 -->
