@@ -4,9 +4,13 @@ import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
 import passport from "passport";
 import session from "express-session";
+<<<<<<< HEAD
 import dotenv from "dotenv";
 
 dotenv.config();
+=======
+
+>>>>>>> 991aadc (파일 병합)
 import {
   userRouter,
   authRouter,
