@@ -26,13 +26,13 @@ const ProductSchema = new Schema(
     },
     sellerId: {
       // 판매자 아이디
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "user",
       required: true,
     },
     categoryId: {
       // 카테고리
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "categorys",
       required: true,
     },
