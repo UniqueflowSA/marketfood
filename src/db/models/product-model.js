@@ -10,8 +10,8 @@ class ProductModel {
     return product;
   }
 
-  async findById(productId) {
-    const product = await Product.findOne({ _id: productId });
+  async findById(getProductId) {
+    const product = await Product.find({ productId : getProductId });
     return product;
   }
 

@@ -4,6 +4,7 @@ import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
 import passport from "passport";
 import session from "express-session";
+import dotenv from 'dotenv';
 
 import {
   userRouter,
@@ -11,11 +12,13 @@ import {
   // categoryRouter,
   // nationRouter,
   // viewsRouter,
-   productRouter,
+  productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
+
 import mongoose from "mongoose";
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url); // 현재 파일 경로
 const __dirname = path.dirname(__filename); // 현재 파일이 위치한 디렉토리 경로
@@ -27,13 +30,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-app.use(session({
-  secret: "mySecret",
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//   secret: "mySecret",
+//   resave: false,
+//   saveUninitialized: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // MongoDB 연결
@@ -41,10 +44,10 @@ app.use(passport.session());
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
-mongoose.connect("mongodb+srv://market:market1234@cluster0.nvy1cxv.mongodb.net/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+mongoose.connect(process.env.MONGODB_URL)
+  .then(console.log('connected to mongodb'))
+  .catch(console.error());
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
