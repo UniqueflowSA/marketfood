@@ -314,6 +314,17 @@
     width: 100%;
     margin-top: 50px;
 }
+.main-item-container-non {
+    display: block;
+}
+.no-items {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+}
 
 .item-grid {
     margin: 5px;
@@ -335,19 +346,19 @@
 }
   
 @media (max-width: 1000px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(33%, auto));
     }
 }
 
 @media (max-width: 900px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(50%, auto));
     }
 }
 
 @media (max-width: 600px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(100%, auto));
     }
  }
