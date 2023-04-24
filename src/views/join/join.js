@@ -2,7 +2,7 @@
 function joinTextCheck() {
     var userId = document.getElementById("user-id");
     var userPw = document.getElementById("user-pw");
-    var userPwCfm = document.getElementById("user-pw-cfm");
+    // var userPwCfm = document.getElementById("user-pw-cfm");
     var userName = document.getElementById("user-name");
     var userPhone = document.getElementById("user-phone");
 
@@ -10,7 +10,7 @@ function joinTextCheck() {
     if(userId.value == "") {
         userId.placeholder = "아이디를 입력하세요";
         userId.focus();
-        return;
+        return false;
     }
     // // 아이디를 4~12자 이내로 안헀을 때
     // if(userId.value.length < 4 || userId.value.length > 12) {
@@ -32,7 +32,7 @@ function joinTextCheck() {
     if (userPw.value == "") {
         userPw.placeholder = "비밀번호를 입력하세요";
         userPw.focus();//포커스를 Password박스로 이동.
-        return;
+        return false;
     }
     // //비밀번호를 8~20자 이내의 영문+숫자+특수문자 조합으로 안했을 때
     // var pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
@@ -52,7 +52,7 @@ function joinTextCheck() {
     if (userName.value == "") {
         userName.placeholder = "이름을 입력하세요";
         userName.focus();//포커스를 Password박스로 이동.
-        return;
+        return false;
     }
     // //이름을 한글로 작성하지 않았을 때
     // var nameCheck = /^[가-힣]{2,15}$/;
@@ -66,7 +66,7 @@ function joinTextCheck() {
     if (userPhone.value == "") {
         userPhone.placeholder = "핸드폰 번호를 입력하세요";
         userPhone.focus();//포커스를 Password박스로 이동.
-        return;
+        return false;
     }
     // //핸드폰 번호를 잘못 입력했을 때
     // var phoneCheck = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
