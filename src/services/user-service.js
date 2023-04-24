@@ -1,6 +1,5 @@
 import UserModel from "../db/models/user-model.js";
-import bcrypt from 'bcrypt';
-import mongoose from 'mongoose'
+
 
 const createUser = async (userInfo) => {
 const userModel = new UserModel();
