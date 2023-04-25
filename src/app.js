@@ -40,14 +40,7 @@ app.use(passport.session());
 
 
 // MongoDB 연결
-// mongoose.connect("mongodb://localhost/marketDB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// mongoose.connect("mongodb+srv://market:market1234@cluster0.nvy1cxv.mongodb.net/test", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
