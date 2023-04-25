@@ -1,8 +1,7 @@
 import { model } from 'mongoose';
 import { ProductSchema } from "../schemas/product-schema.js";
 
-
-const Product = model('Products', ProductSchema);
+const Product = model('Product', ProductSchema);
 
 class ProductModel {
   async findByTitle(title) {
@@ -10,8 +9,8 @@ class ProductModel {
     return product;
   }
 
-  async findById(productId) {
-    const product = await Product.findOne({ _id: productId });
+  async findById(pId) {
+    const product = await Product.findOne({productId: pId });
     return product;
   }
 
