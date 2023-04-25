@@ -4,15 +4,11 @@
 }
 
 .join-wrapper {
-    position:absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:350px;
-    height:1180px;
-    top:20%;
-    left:50%;
-    margin: -175px 0px 0px -190px;
+    height:100%;
+    margin: 0px 0px 70px 0px;
 }
 
 .join-form{
