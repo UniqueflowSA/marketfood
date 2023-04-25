@@ -33,6 +33,18 @@ class ProductController {
       next(error);
     }
   };
+  async getProductList(req, res, next){
+    try {
+      const productArr = req.params.productId;
+      const foundProduct = await productService.getProductList(productArr);
+  
+      res.status(200).json(foundProduct);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+
   async updateProduct(req, res, next){
     try {
       const productId = req.params.productId;
@@ -57,7 +69,6 @@ class ProductController {
 
 };
 const productController = new ProductController();
-
 export { productController };
 
 
