@@ -22,10 +22,10 @@ itemgrid.forEach( item => {
 const createItems = (item) => {
     return `<div class="item-grid">
     <a href="/product/${item._id}" class="item-link">
-        <img src="${item.img-url}" alt="" class="item-img">
+        <img src="${item.imgUrl}" alt="" class="item-img">
         <div class="item-text">
             <div class="item-title">${item.product}</div>
-            <div class="item-price">${item.price}</div>
+            <div class="item-price">₩${addCommas(item.price)}</div>
             <div class="item-category"><img src="public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
         </div>
     </a>
@@ -46,8 +46,6 @@ const createNation = (item) => {
 const carousel = document.querySelector(".carousel");
 const carouselImgs = carousel.querySelector(".carousel-imgs");
 const carouselimg = carouselImgs.querySelectorAll(".carousel-img");
-    // 전역변수를 이렇게 사용했을시 생기는 문제
-    // 클로저? 이름이 비슷해서 헷갈린다? currentImg는 네임이 충돌할 가능성이 높아보인다
 
 let currentImg = 0;
 

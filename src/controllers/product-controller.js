@@ -1,48 +1,110 @@
 import { productService } from "../services/product-service.js";
 
-const createProdect = async (req, res, next) => {
-  try {
-    const product = req.body;
-    const createdProduct = await productService.createProdect(product);
+class ProductController {
+  async  createProduct(req, res, next) {
+    try {
+      const product = req.body;
+      const createdProduct = await productService.createProduct(product);
+  
+      res.status(201).json(createdProduct);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+  async getProductList(req, res, next){
+    try {
+      const productArr = req.params.productId;
+      const foundProduct = await productService.getProductList(productArr);
+  
+      res.status(200).json(foundProduct);
+    } catch (error) {
+      next(error);
+    }
+  };
 
-    res.status(201).json(createdProduct);
-  } catch (error) {
-    next(error);
-  }
+  async getProduct(req, res, next){
+    try {
+      const productId = req.params.productId;
+      const foundProduct = await productService.getProduct(productId);
+  
+      res.status(200).json(foundProduct);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+
+  async updateProduct(req, res, next){
+    try {
+      const productId = req.params.productId;
+      const updatedInfo = req.body;
+      const updatedProduct = await productService.updateProduct(productId, updatedInfo);
+  
+      res.status(200).json(updateProduct);
+    } catch (error) {
+      next(error);
+    }
+  };
+  async deleteProduct (req, res, next){
+    try {
+      const productId = req.params.productId;
+      await productService.deleteProduct(productId);
+  
+      res.status(204).end();
+    } catch (error) {
+      next(error);
+    }
+  };
+
 };
+const productController = new ProductController();
+export { productController };
 
-const getProdect = async (req, res, next) => {
-  try {
-    const productId = req.params.productId;
-    const foundProduct = await productService.getProdect(productId);
 
-    res.status(200).json(foundProduct);
-  } catch (error) {
-    next(error);
-  }
-};
+// const createProduct = async (req, res, next) => {
+//   try {
+//     const product = req.body;
+//     const createdProduct = await productService.createProduct(product);
 
-const updateProdect = async (req, res, next) => {
-  try {
-    const productId = req.params.productId;
-    const updatedInfo = req.body;
-    const updatedProduct = await productService.updateProdect(productId, updatedInfo);
+//     res.status(201).json(createdProduct);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
-    res.status(200).json(updateProdect);
-  } catch (error) {
-    next(error);
-  }
-};
+// const getProduct = async (req, res, next) => {
+//   try {
+//     const productId = req.params.productId;
+//     const foundProduct = await productService.getProductById(productId);
 
-const deleteProdect = async (req, res, next) => {
-  try {
-    const productId = req.params.productId;
-    await productService.deleteProduct(productId);
+//     res.status(200).json(foundProduct);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
-    res.status(204).end();
-  } catch (error) {
-    next(error);
-  }
-};
+// const updateProduct = async (req, res, next) => {
+//   try {
+//     const productId = req.params.productId;
+//     const updatedInfo = req.body;
+//     const updatedProduct = await productService.updateProduct(productId, updatedInfo);
 
-export { createProdect, getProdect, updateProdect, deleteProdect };
+//     res.status(200).json(updateProduct);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+// const deleteProduct = async (req, res, next) => {
+//   try {
+//     const productId = req.params.productId;
+//     await productService.deleteProduct(productId);
+
+//     res.status(204).end();
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+// export { createProduct, getProduct, updateProduct, deleteProduct };
