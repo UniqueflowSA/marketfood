@@ -1,5 +1,4 @@
-import { main } from "/public/js/main.js";
-main();
+
 
 // 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
