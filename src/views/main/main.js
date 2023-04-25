@@ -8,12 +8,12 @@ const nations = document.querySelector("#nations");
 // 제품리스트 생성 함수
 const createItems = (item) => {
     return `<div class="item-grid">
-    <a href="해당 아이템 주소 /main/${item.product-id}" class="item-link">
+    <a href="/main/${item._id}" class="item-link">
         <img src="${item.img-url}" alt="" class="item-img">
         <div class="item-text">
             <div class="item-title">${item.product}</div>
             <div class="item-price">${item.price}</div>
-            <div class="item-category"><img src="${item.nationimg-url}" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
+            <div class="item-category"><img src="public/img/${item.nation}-icon" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
         </div>
     </a>
 </div>`
@@ -26,7 +26,7 @@ const createCategory = (item) => {
 
 // 국가 생성 함수
 const createNation = (item) => {
-    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked"><img src="${item.nationimg-url}" alt="" class="country-img">${item.nation}</p></li>`
+    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked"><img src="public/img/${item.nation}-icon" alt="" class="country-img">${item.nation}</p></li>`
 }
 
 // 캐러셀 슬라이드
@@ -150,7 +150,7 @@ categoryMenuList.forEach((category) => {
 )
 
 // 카테고리리스트 생성 fetch
-fetch("/api/category")
+fetch("/category")
     .then(res => res.json())
     .then((categorylist) => {
         categorylist.forEach((category)=>{
@@ -164,7 +164,7 @@ fetch("/api/category")
 
 
 // 국가리스트 생성 fetch
-fetch("/api/nation")
+fetch("/nation")
 .then(res => res.json())
 .then((nationlist) => {
     nationlist.forEach((nation)=>{
@@ -178,7 +178,7 @@ fetch("/api/nation")
 
 
 // 제품 리스트 생성 fetch
-fetch("/api/product")
+fetch("/product")
     .then(res => res.json())
     .then((productlist) =>{ //첫 화면에 전체 값 보여주기
         productlist.forEach((product)=>{
