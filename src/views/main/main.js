@@ -21,12 +21,12 @@ itemgrid.forEach( item => {
 // 제품리스트 생성 함수
 const createItems = (item) => {
     return `<div class="item-grid">
-    <a href="/main/${item._id}" class="item-link">
+    <a href="/product/${item._id}" class="item-link">
         <img src="${item.img-url}" alt="" class="item-img">
         <div class="item-text">
             <div class="item-title">${item.product}</div>
             <div class="item-price">${item.price}</div>
-            <div class="item-category"><img src="public/img/${item.nation}-icon" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
+            <div class="item-category"><img src="public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
         </div>
     </a>
 </div>`
@@ -39,7 +39,7 @@ const createCategory = (item) => {
 
 // 국가 생성 함수
 const createNation = (item) => {
-    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked"><img src="public/img/${item.nation}-icon" alt="" class="country-img">${item.nation}</p></li>`
+    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked"><img src="public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}</p></li>`
 }
 
 // 캐러셀 슬라이드
@@ -243,13 +243,6 @@ fetch("/product")
     .catch((e)=> {
         alert(`에러 : ${e}`);
     });
-
-// 제품 디테일 페이지 클릭시 *필요
-// 해당 제품 정보를 디테일 페이지에 넘기기..?
-
-
-
-
 
 
 // 캐러셀 네비 - 시간 남으면 구현
