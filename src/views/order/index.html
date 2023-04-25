@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./order_style.css">
   <script defer src="./order_script.js"></script>
   <title>order page</title>
@@ -18,7 +21,9 @@
       <div>주문정보</div>
     </div>
   </header>
+
   <section class="cart__detail" id="cart__have__product">
+    <!-- 붙여넣는 파트 -->
     <div class="cart__product__list" id='productItem__${product_id}'>
       <div class="list__img__block">
         <a href="#none"><img id="product__img__${product_id}" src="./image/art-4919768.gif" alt="상품이미지파일"></a>
@@ -31,22 +36,20 @@
         <!-- 수량 및 가격 -->
         <div class="product__quan">
           <span>수량:</span>
-          <button class="btn__default" id="minus__btn__${product_id}">-</button>
+          <button class="btn__default minusbtn" id="minus__btn__${product_id}">-</button>
           <span id="quan__num__${product_id}">${quantity}</span>
-          <button class="btn__default" id="plus__btn__${product_id}">+</button>
+          <button class="btn__default plusbtn" id="plus__btn__${product_id}">+</button>
         </div>
         <div class="product__price">
-          <span>가격</span>
+          <span>가격:</span>
           <span id="product__price__num__${product_id}">${price}</span>
         </div>
       </div>
     </div>
           <!-- 요까지 -->
 
-        
-          <div class="list__total">
-      
             <div class="total__price__block">
+              <div class="blank"></div>
               <div class="order__price">
                 <span>가격:</span>
                 <span id="order__price__num">1111</span>  
@@ -57,16 +60,12 @@
                 <span id="deli__price__num"> 2,500</span>
               </div>
               
-              <div class="total__price__line"></div>
-              <div class="total__price__text">
+              <div class="total__price">
                 <span>총합:</span>
                 <span id="total__price__num"></span>
               </div>
-              <div class="total__price__line"></div>
             </div>
 
-          </div>
-  
         <section class="order-info-container">
           <div class="order-info-box">
   

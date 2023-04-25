@@ -1,3 +1,6 @@
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
 a{
   text-decoration: none;
   color: #000;
@@ -71,32 +74,28 @@ footer{
 }
 .list__info__block{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 35%;
-  margin-top: 5px;
-
 }
 .product__quan{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .minusbtn , .plusbtn{
   font-size: 15pt;
 }
-
-.list__total{
+.total__price__block{
+  font-weight: 600;
   border-top: solid 2px #000;
   display: flex;
   flex-direction: row;
-}
-.total__price__block{
-  display: flex;
-  flex-direction: column;
   padding-top: 15px;
 }
-.order__price{
-  margin-bottom: 10px;
+.blank{
+  width: 55%;
 }
-.total__price__text{
+.total__price__block >*{
+ margin-right: 20px;
+}
+.total__price{
   font-size: 15pt;
-  margin: 10px 0;
 }
