@@ -1,18 +1,18 @@
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
 
  .footer .footer-container {
     width: 100%;
     background-color: #ebcf9b;
 
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    font-size: 14px;
- }
+   text-align: center;
+   color: white;
+   font-weight: 400;
+   font-size: 14px;
+}
 
  .footer p {
     margin: 15px
