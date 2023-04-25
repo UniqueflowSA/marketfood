@@ -33,15 +33,13 @@ class ProductController {
       next(error);
     }
   };
-
-
   async updateProduct(req, res, next){
     try {
       const productId = req.params.productId;
       const updatedInfo = req.body;
       const updatedProduct = await productService.updateProduct(productId, updatedInfo);
   
-      res.status(200).json(updatedProduct);
+      res.status(200).json(updateProduct);
     } catch (error) {
       next(error);
     }
@@ -59,6 +57,7 @@ class ProductController {
 
 };
 const productController = new ProductController();
+
 export { productController };
 
 
