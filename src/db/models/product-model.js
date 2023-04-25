@@ -51,8 +51,8 @@ class ProductModel {
     return newProduct;
   }
 
-  async update(productId, update) {
-    const filter = { _id: productId };
+  async update(pId, update) {
+    const filter = { productId: pId };
     const option = { returnOriginal: false };
     const updatedProduct = await Product.findOneAndUpdate(filter, update, option);
     return updatedProduct;
