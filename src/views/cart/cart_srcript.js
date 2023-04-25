@@ -22,7 +22,7 @@ window.addEventListener('load',()=>{
 	const allDeleteBtn = document.querySelector('#all__delete')
 	const cartEmpty = document.querySelector('#cart__empty')
 	const cartHaveProduct = document.querySelector('#cart__have__product')
-	const cartProductList = document.querySelector('.cart__product__list')
+	const cartProductList = document.querySelector('.cart__detail')
 	const orderpageBtn = document.querySelector('.order__page__btn') 
 
 	if(orders.length > 0){ //장바구니 상품이 있을 때
@@ -67,6 +67,7 @@ window.addEventListener('load',()=>{
 		const productItem = document.querySelector(`#productItem__${_id}`)
 		const orderPrice = document.querySelector('#order__price__num')
 		const totalPrice = document.querySelector('#total__price__num')
+	
 
 
 		let crrentNum = parseInt(quantityNum.textContent)
@@ -83,6 +84,9 @@ window.addEventListener('load',()=>{
 			localStorage.removeItem(key)
 			productItem.remove()
 		})
+		allDeleteBtn.addEventListener('click',()=> {
+			window.localStorage.clear();
+		})
 		const orderPriceFunc= ()=>{
 			let orderPriceNum = 0;
 			orders.forEach(product =>{
@@ -98,8 +102,6 @@ window.addEventListener('load',()=>{
 		orderpageBtn.addEventListener('click',()=>{
 			window.location.href = '../order/index.html'
 		})
-
-
 
 
 	}else if(orders.length === 0 ){ //장바구니 비었을 때
