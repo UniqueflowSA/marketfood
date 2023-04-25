@@ -1,19 +1,50 @@
 import { model } from 'mongoose';
-import { ProductSchema } from '../schemas/product-schema';
+import { ProductSchema } from "../schemas/product-schema.js";
 
-const Product = model('Products', ProductSchema);
+const Product = model('Product', ProductSchema);
 
 class ProductModel {
-
   async findByTitle(title) {
-  const Product = await Product.findOne({ title });
-  return Product;
+    const product = await Product.findOne({ title });
+    return product;
   }
 
-  async findById(productId) {
-    const Product = await Product.findOne({ _id:productId });
-    return Product;
+  async findById(pId) {
+    const product = await Product.findOne({ productId: pId });
+    return product;
+  }
+  async findByIds(pidArr){
+    try {
+      const productList = new Array();
+
+      for (const pid of pidArr) {
+        const product = await Product.findOne({ _id: pid }).populate(
+          "category"
+        );
+        if (product) {
+          productList.push(product);
+        }
+      }
+      return productList;
+    } catch (err) {
+      const error = new Error("ID기반 상품 리스트 검색에 실패하였습니다.");
+      error.statusCode = 400;
+      throw error;
     }
+
+  }
+  
+  async findAll() {
+    try {
+      const productList = await Product.find({});
+      return productList;
+    } catch (err) {
+      const error = new Error("상품 수정에 실패하였습니다.");
+      error.statusCode = 400;
+      throw error;
+    }
+  }
+
 
   async create(product) {
     const newProduct = await Product.create(product);
@@ -23,12 +54,7 @@ class ProductModel {
   async update(productId, update) {
     const filter = { _id: productId };
     const option = { returnOriginal: false };
-
-    const updatedProduct = await Product.findOneAndUpdate(
-      filter,
-      update,
-      option
-    );
+    const updatedProduct = await Product.findOneAndUpdate(filter, update, option);
     return updatedProduct;
   }
 
@@ -38,5 +64,5 @@ class ProductModel {
   }
 }
 
-const ProductModel = new ProductModel();
-export { ProductModel };
+const productModel = new ProductModel();
+export { productModel };
