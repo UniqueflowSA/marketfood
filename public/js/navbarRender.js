@@ -19,7 +19,7 @@ function navbarRender(loggedInUser) {
           <div class="navbar-logo-container">
               <a href="/main"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
-          <ul calss="navbar-nav">
+          <ul class="navbar-nav">
               <li class="navbar-content">
                   <img src="/public/img/WMlogin.png" alt="login-icon" class="navbar-icon">
                   <a href="/src/views/login/login.html" class="navbar-text">로그인</a>
