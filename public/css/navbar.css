@@ -50,3 +50,7 @@
     padding-left: 5px;
     margin-right: 20px;
 }
+
+.navbar-text:hover {
+    color: #e94e33;
+}

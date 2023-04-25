@@ -228,18 +228,22 @@
     color: #ebcf9b;
     background-color: white;
 }
+.main-header-button-unclicked:hover {
+    color: #e94e33;
+    border: 2px solid #e94e33;
+}
 
 .main-header-button-clicked {
     cursor: pointer;
     padding: 10px;
     margin-right: 10px;
-    border: 2px solid #ebcf9b;
+    border: 2px solid #e94e33;
     border-radius: 15%;
 
     font-weight: 600;
     font-size: 15px;
     color: white;
-    background-color: #ebcf9b;
+    background-color: #e94e33;
 }
 
 /* 메인컨텐츠-네비 */
@@ -284,6 +288,9 @@
     font-size: 18px;
     font-weight: 700;
     color: #777777;
+}
+.main-nav-content-unclicked:hover {
+    color: #ebcf9b;
 }
 
 .main-nav-content-clicked {

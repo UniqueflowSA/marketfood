@@ -1,9 +1,22 @@
 import { main } from "/public/js/main.js";
 main();
 
-const items = document.querySelector(".main-item-container")
+const items = document.querySelector(".main-item-container");
 const categorys = document.querySelector("#categorys");
 const nations = document.querySelector("#nations");
+
+// 제품 선택 투명도 UI
+const itemgrid = document.querySelectorAll(".item-grid");
+itemgrid.forEach( item => {
+    item.addEventListener("mouseenter", (e) => {
+        const overdimg = e.target.querySelector(".item-img");
+        overdimg.style.opacity = "0.6";
+    })
+    item.addEventListener("mouseleave", (e) => {
+        const overdimg = e.target.querySelector(".item-img");
+        overdimg.style.opacity = "1";
+    })
+})
 
 // 제품리스트 생성 함수
 const createItems = (item) => {
@@ -54,6 +67,8 @@ setInterval(function() {
     if (currentImg === (carouselimg.length -1)) {
         currentImg = 0;
     }
+    let marginLeft = parseInt(window.getComputedStyle(carouselImgs).marginLeft)
+    if (marginLeft > 5865){currentImg = 0}
 }, 6000)
 
 
@@ -94,6 +109,8 @@ carouselRight.onclick = () => {
         fill: "both"
     });
     currentImg++;
+    let marginLeft = parseInt(window.getComputedStyle(carouselImgs).marginLeft)
+    if (marginLeft > 5865){currentImg = 0}
 }
 
 
@@ -227,6 +244,8 @@ fetch("/api/product")
         alert(`에러 : ${e}`);
     });
 
+// 제품 디테일 페이지 클릭시 *필요
+// 해당 제품 정보를 디테일 페이지에 넘기기..?
 
 
 
