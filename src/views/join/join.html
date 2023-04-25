@@ -5,17 +5,12 @@
 <title>회원가입</title>
 <!-- https://ko.javascript.info/script-async-defer -->
 <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<<<<<<< HEAD
 <script defer src="join.js" type="module"></script>
-=======
-<script defer src="join.js"></script>
->>>>>>> dev-FE
 <link type="text/css" rel="stylesheet" href="join.css">
 </head>
 <body>
 <div class="join-wrapper">
     <form class="join-form" method="post">
-<<<<<<< HEAD
         <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="로고 이미지"></a>
         <div class="join-name">아이디</div>
         <input id="user-id" name="user-id" class="join-text" type="text">
@@ -32,20 +27,6 @@
         <div class="join-name">생년월일</div>
         <div class="join-birth">
             <input id="user-yy" name="user-yy" class="join-birth-input" type="number" placeholder="년(4자)">
-=======
-        <img src="/public/img/WMlogo.png" alt="로고 이미지">
-        <div class="join-name">아이디</div>
-        <input id="user-id" name="user-id" class="join-text" type="text" placeholder="4~12자 이내의 영문 혹은 영문과 숫자를 조합">
-        <div class="join-name">비밀번호</div>
-        <input id="user-pw" name="user-pw" class="join-text"type="password" placeholder="8~20자 이내의 영문+숫자+특수문자 조합">
-        <div class="join-name">비밀번호 확인</div>
-        <input id="user-pw-cfm" name="user-pw-cfm" class="join-text"type="password">
-        <div class="join-name">이름</div>
-        <input id="user-name" name="user-name" class="join-text"type="text">
-        <div class="join-name">생년월일</div>
-        <div class="join-birth">
-            <input id="user-yy" name="user-yy" class="join-birth-input" type="number" placeholder="년(4자)" maxlength="4">
->>>>>>> dev-FE
             <select id="user-mm" name="user-mm" class="join-birth-input">
                 <option value="">월</option>
                 <option value="1">1</option>
@@ -61,15 +42,10 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
             </select>
-<<<<<<< HEAD
             <input id="user-dd" name="user-dd" class="join-birth-input" type="number" placeholder="일">
         </div>
         <div id="year-error" name="year-error" class="year-error"></div>
         <div id="day-error" name="day-error" class="day-error"></div>
-=======
-            <input id="user-dd" name="user-dd" class="join-birth-input" type="number" placeholder="일" maxlength="2">
-        </div>
->>>>>>> dev-FE
         <div class="join-name">주소</div>
         <div class="join-post">
             <input id="user_post" name="user_post" class="join-post-input" type="text" placeholder="우편번호" readonly>
@@ -78,7 +54,6 @@
         <div class="join-addr">
             <input id="user_addr" name="user_addr" class="join-addr-input" type="text" placeholder="기본 주소" readonly>
             <input id="user_detail-addr" name="user_detail-addr" class="join-addr-input" type="text" placeholder="상세 주소">
-<<<<<<< HEAD
             <div id="addr-error" name="addr-error" class="addr-error"></div>
         </div>
         <div class="join-name">휴대전화</div>
@@ -88,13 +63,5 @@
     </form>
 </div>
 <footer></footer>
-=======
-        </div>
-        <div class="join-name">휴대전화</div>
-        <input id="user-phone" name="user-phone" class="join-text" type="text" placeholder="숫자만 입력해주세요">
-        <button id="submit-btn" class="join-btn"type="button" onclick="joinTextCheck()">회원가입</button>
-    </form>
-</div>
->>>>>>> dev-FE
 </body>
 </html>
