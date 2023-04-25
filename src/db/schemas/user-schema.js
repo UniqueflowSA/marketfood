@@ -3,11 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-<<<<<<< HEAD
  
-=======
-  
->>>>>>> dev-BE-jonguk
   userId: {
     type: String,
     required: true,

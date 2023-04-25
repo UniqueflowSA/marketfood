@@ -26,20 +26,6 @@ return updatedUser;
 
 const deleteUser = async (userId) => {
   const userModel = new UserModel();
-<<<<<<< HEAD
-  const deletedUser = await userModel.delete(userId);
-  if (!deletedUser) {
-    throw new Error("Failed to delete user.");
-  }
-};
-
-export const userService = {
-  createUser,
-  getUser,
-  updateUser,
-  deleteUser,
-};
-=======
   const deletedUser = await userModel.deleteOne({ userId });
   return deletedUser
 };
@@ -50,4 +36,3 @@ getUser,
 updateUser,
 deleteUser,
 };
->>>>>>> dev-BE-jonguk
