@@ -7,6 +7,9 @@
 *{/* 폰트 프리텐다드적용(임의) */
   font-family: 'Pretendard-Regular';
 }
+@import "./reset.css";
+@import "./navbar.css";
+@import "./footer.css";
 a{
   text-decoration: none;
   color: #000;
