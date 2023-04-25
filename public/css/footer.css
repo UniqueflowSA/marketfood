@@ -6,7 +6,6 @@
 
  .footer .footer-container {
     width: 100%;
-    height: 50px;
     background-color: #ebcf9b;
 
     text-align: center;
@@ -16,5 +15,5 @@
  }
 
  .footer p {
-    padding: 5px
+    margin: 15px
  }

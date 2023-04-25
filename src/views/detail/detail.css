@@ -23,7 +23,7 @@
   }
   
   .deliveryfee-info {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 10px;
     font-size: 14px;
   }
@@ -42,7 +42,7 @@
   }
   
   .sub-container {
-    width: 80%;
+    width: 70%;
     height: 100%;
     display: flex;
     margin-top: 40px;
@@ -58,7 +58,7 @@
   }
 
   .product-main-container {
-    width: 50%;
+    width: 40%;
     height: 60%;
     display: flex;
     flex-direction: column;
@@ -80,19 +80,35 @@
   }
 
   .product-name {
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
   .product-desc {
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: 17px;
   }
   
   .product-price {
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
+  }
+
+  .product-price-sum {
+    color: #777777;
+    font-size: 16px;
+    width: 100%;
+    text-align: right;
+  }
+  .product-price-sum p {
+    display: inline;
+  }
+  .ordered-price {
+    font-size: 40px;
+    font-weight: 900;
+    color: #e94e33;
+    margin-left: 20px;
   }
 
   .buttons-container {
@@ -142,6 +158,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 50px;
   }
   
   .button-sub-container {
@@ -152,15 +169,42 @@
     align-items: center;
     flex-direction: column;
   }
+
+  .order-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+
   .button-cart {
     width: 100%;
-    height: 100%;
+    height: 50px;
     margin-bottom: 10px;
+    text-decoration: none;
+    border: #777777 solid 1px;
+    border-radius: 0.3cm;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777777;
+    font-weight: 600;
   }
   .button-purchase {
     width: 100%;
-    height: 100%;
+    height: 50px;
     margin-bottom: 10px;
+    text-decoration: none;
+    border: #d6b474 solid 1px;
+    border-radius: 0.3cm;
+    background-color: #e94e33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
   }
   
   /*footer*/
