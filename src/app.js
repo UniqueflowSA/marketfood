@@ -39,14 +39,7 @@ app.use(passport.session());
 
 
 // MongoDB 연결
-// mongoose.connect("mongodb://localhost/marketDB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// mongoose.connect("mongodb+srv://market:market1234@cluster0.nvy1cxv.mongodb.net/test", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -66,7 +59,7 @@ db.once("open", function () {
 // API 라우팅
 app.use(userRouter);
 app.use(authRouter);
-app.use(productRouter);
+app.use("/product",productRouter);
 //app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);

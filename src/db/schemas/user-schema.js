@@ -3,11 +3,7 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-<<<<<<< HEAD
  
-=======
-  
->>>>>>> dev-BE-jonguk
   userId: {
     type: String,
     required: true,
@@ -24,9 +20,6 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
-    // minlength: 8,
-    // maxlength: 20,
-    //match: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,20}$/,
   },
   name: {
     type: String,
