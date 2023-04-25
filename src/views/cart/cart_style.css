@@ -7,10 +7,6 @@
 *{/* 폰트 프리텐다드적용(임의) */
   font-family: 'Pretendard-Regular';
 }
-ul{ /* 리스트 태그 불릿제거 */
-   list-style:none;
-   padding-left:0px;
-}
 a{
   text-decoration: none;
   color: #000;
@@ -42,7 +38,7 @@ main{
   margin: 0 5%;
 }
 footer{
-  height: 200px;
+  height: 100%;
   background-color: lightgrey;
 }
 .cart__header{
@@ -51,6 +47,9 @@ footer{
   font-size: 30pt;
   text-align: center;
   border-bottom: solid 2px #000;
+}
+.cart__title{
+  margin-bottom: 30px;
 }
 
 
@@ -82,7 +81,7 @@ footer{
 .all__del{
   display: block;
   width: 200px;
-  margin: 30px 0 5px 0;
+  margin: 0 0 5px 0;
   text-align: left;
   padding-left: 0;
   font-size: 11pt;
@@ -122,30 +121,55 @@ footer{
 }
 .list__info__block{
   width: 25%;
-  padding-top: 40px;
-  
+  margin-top: 5px;
 
 }
 .product__quan{
-
+  margin-bottom: 30px;
 }
+.minusbtn , .plusbtn{
+  font-size: 15pt;
+}
+
+
 .cart__order__list{
   border-top: solid 2px #000;
   height: 150px;
   display: flex;
   flex-direction: row;
-  background-color: aqua;
+  
 }
 .blank{
   height: 100%;
   width: 75%;
 }
+.list__total{
+  width: 25%;
+}
 .total__price__block{
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
 }
-
+.order__price{
+  margin-bottom: 10px;
+}
+.total__price__line{
+  margin: 8px 0;
+  border: solid 1px #000 ;
+}
+.total__price__text{
+  font-size: 20pt;
+  margin: 10px 0;
+}
 .cart__footer{
+  height: 100%;
   display: flex;
   flex-direction: column;
+}
+.order__page__btn, .shopping__page__btn{
+  margin: 5px 0;
+  font-size: 12pt;
+  background-color: #E94E33;
+  color: #fff;
 }
