@@ -1,0 +1,425 @@
+@import "/public/css/main.css";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.all-wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+/* 상단바 공용에서 만들어서 씀 */
+    /* .navbar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 1280px;
+        height: 170px;
+    }
+
+    .navbar-logo-container {
+        width: 170px;
+        height: auto;
+    }
+
+    .navbar-logo {
+        width: 100%;
+        height: auto;
+    }
+
+    .navbar ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar-content {
+        list-style: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-icon {
+        display: inline-block;
+        width: 30px;
+        margin-left: 20px;
+    }
+
+    .navbar-text {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        color: #e94e33;
+        padding-left: 5px;
+    } */
+
+
+/* 캐러셀 */
+.carousel-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    position: relative;
+
+    width: 100%;
+}
+
+.carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel-imgs {
+    display: block;
+    width: 9775px;
+    height: 100%;
+}
+
+.carousel-img {
+    float: left;
+    list-style: none;
+    height: 400px;
+}
+
+.carousel-img img{
+    height: 400px;
+    width: 1955px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 70px;
+}
+
+.carousel-button {
+    cursor: pointer;
+    border: 5px solid #CCCCCC;
+    border-radius: 100%;
+    margin-left: 5px;
+    box-sizing: border-box;
+}
+
+.carousel-button-clicked {
+    cursor: pointer;
+    border: 5px solid white;
+    border-radius: 100%;
+    margin-left: 5px;
+    box-sizing: border-box;
+}
+
+.carousel-prev {
+    position: absolute;
+    left: 150px;
+    background: none;
+    border: none;
+}
+
+.carousel-next {
+    position: absolute;
+    right: 150px;
+    background: none;
+    border: none;
+}
+
+.prev-button {
+    cursor: pointer;
+    width: 50px;
+    opacity: 35%;
+}
+
+.next-button {
+    cursor: pointer;
+    width: 50px;
+    opacity: 35%;
+}
+
+.prev-button:hover {
+    opacity: 100%;
+}
+.next-button:hover {
+    opacity: 100%;
+}
+
+/* 메인컨텐츠-헤더 */
+.main-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.main-box {
+    display: flex;
+    width: 1280px;
+    flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+    .main-box {
+      width: 1000px;
+    }
+}
+@media (max-width: 1000px) {
+    .main-box {
+      width: 700px;
+    }
+}
+@media (max-width: 720px) {
+    .main-box {
+      width: 500px;
+    }
+}
+@media (max-width: 510px) {
+    .main-box {
+      width: 300px;
+    }
+}
+
+.main-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    margin-top: 10px;
+    height: 100px;
+}
+
+.main-header-title {
+    flex-direction: column;
+    text-align: center;
+}
+
+.main-header-title h3 {
+    font-weight: 600;
+    font-size: 27px;
+}
+
+.main-header-title h6 {
+    padding-top: 10px;
+    font-size: 14px;
+    color: #777777;
+}
+
+.main-header-category {
+    position: absolute;
+    left: 0;
+}
+
+.main-header-button-unclicked {
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #ebcf9b;
+    border-radius: 15%;
+
+    font-weight: 600;
+    font-size: 15px;
+    color: #ebcf9b;
+    background-color: white;
+}
+.main-header-button-unclicked:hover {
+    color: #e94e33;
+    border: 2px solid #e94e33;
+}
+
+.main-header-button-clicked {
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #e94e33;
+    border-radius: 15%;
+
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    background-color: #e94e33;
+}
+
+/* 메인컨텐츠-네비 */
+.main-nav-clicked {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 100px;
+    margin-top: 25px;
+}
+
+.main-nav-unclicked {
+    display: none;
+}
+
+.main-nav-cetegory-clicked {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-nav-cetegory-unclicked {
+    display: none;
+}
+
+.main-nav-line {
+    width: 1px;
+    height: 30px;
+    background-color: #ebcf9b;
+}
+
+.main-nav-content-unclicked {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 45px;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: #777777;
+}
+.main-nav-content-unclicked:hover {
+    color: #ebcf9b;
+}
+
+.main-nav-content-clicked {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 45px;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: #e94e33;
+}
+
+.country-img{
+    width: 30px;
+    height: auto;
+    padding-right: 10px;
+}
+
+/* 메인컨텐츠-제품목록 */
+.main-item-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+    place-items: center;
+    text-decoration: none;
+    width: 100%;
+    margin-top: 50px;
+}
+.main-item-container-non {
+    display: block;
+}
+.no-items {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+}
+
+.item-grid {
+    margin: 5px;
+    margin-bottom: 60px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer
+}
+
+.item-link {
+    color: black;
+    text-decoration: none;
+}
+
+@media (max-width: 1300px) {
+    .main-item-container {
+      grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+    }
+}
+  
+@media (max-width: 1000px) {
+    .main-item-container {
+    grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+    }
+}
+
+@media (max-width: 900px) {
+    .main-item-container {
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+    }
+}
+
+@media (max-width: 600px) {
+    .main-item-container {
+    grid-template-columns: repeat(auto-fill, minmax(100%, auto));
+    }
+ }
+
+.item-img {
+    width: 100%;
+}
+
+.item-text {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+ }
+
+ .item-title {
+    padding: 10px 0;
+    font-size: 17px;
+    font-weight: 600;
+ }
+
+ .item-price {
+    padding: 5px 0;
+    font-size: 20px;
+    font-weight: 700;
+ }
+
+ .item-category {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 400;
+    color: #555555;
+ }
+
+ /* 하단바 공용에서 만들어서 씀*/
+    /* .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-container {
+        width: 100%;
+        background-color: #ebcf9b;
+
+        text-align: center;
+        color: white;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 12px 0;
+    }
+
+    .footer p {
+        padding: 5px
+    } */
