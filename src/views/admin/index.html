@@ -13,13 +13,19 @@
 	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 	<!-- My CSS -->
 	<link rel="stylesheet" href="admin.css">
-	
-	
+
+
+
+	<!-- bulma css 관련 -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+
+
 	<title>AdminPage</title>
 </head>
 <body>
-
-
 	<!-- 사이드바 -->
 	<section id="sidebar">
 		<a href="#" class="brand">
@@ -63,12 +69,6 @@
 					<span class="text">회원 관리</span>
 				</a>
 			</li>
-			<li>
-				<a href="#" onclick="changeMain('inquiry-manage')">
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">문의 사항 관리 (보류)</span>
-				</a>
-			</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -90,13 +90,6 @@
 			<i class='bx bx-menu'></i>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="/public/img/sandy.png">
-			</a>
 		</nav>
 		<!-- 내비게이션바 -->
 
@@ -139,79 +132,6 @@
 					<div class="order">
 						<div class="head">
 							<h3>최근 주문 현황</h3>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
-						</div>
-						<table>
-							<thead>
-								<tr>
-									<th>주문자</th>
-									<th>주문일자</th>
-									<th>상태</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status completed">발송 완료</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status pending">배송 준비중</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status process">배송중</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status cancel">주문 취소</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status completed">발송 완료</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<!-- 홈 -->
-
-
-			<!-- 주문 내역 -->
-			<div id="order" class="page" style="display: none;">
-				<div class="head-title">
-					<div class="left">
-						<h1>주문 내역</h1>
-					</div>
-				</div>
-				<div class="table-data">
-					<div class="order">
-						<div class="head">
-							<h6>                                                     </h6>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
 						</div>
 						<table>
 							<thead>
@@ -240,7 +160,7 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status cancel">주문 취소</span></td>
+									<td><span class="status pending">배송 준비중</span></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -258,7 +178,7 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><span class="status cancel">주문 취소</span></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -269,6 +189,34 @@
 									<td>31,800원</td>
 									<td><span class="status completed">발송 완료</span></td>
 								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- 홈 -->
+
+
+			<!-- 주문 내역 -->
+			<div id="order" class="page" style="display: none;">
+				<div class="head-title">
+					<div class="left">
+						<h1>주문 내역</h1>
+					</div>
+				</div>
+				<div class="table-data">
+					<div class="order">
+						<table>
+							<thead>
+								<tr>
+									<th>주문일자</th>
+									<th>주문자</th>
+									<th>주문 상품</th>
+									<th>주문 총액</th>
+									<th>주문 상태</th>
+								</tr>
+							</thead>
+							<tbody>
 								<tr>
 									<td>2023-04-18</td>
 									<td>
@@ -276,7 +224,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status cancel">주문 취소</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -285,7 +238,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -294,7 +252,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -303,7 +266,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -312,7 +280,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -321,7 +294,12 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
@@ -330,7 +308,83 @@
 									</td>
 									<td>사프란 1g</td>
 									<td>31,800원</td>
-									<td><span class="status pending">배송 준비중</span></td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>
+										<p>홍길동</p>
+									</td>
+									<td>사프란 1g</td>
+									<td>31,800원</td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>
+										<p>홍길동</p>
+									</td>
+									<td>사프란 1g</td>
+									<td>31,800원</td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>
+										<p>홍길동</p>
+									</td>
+									<td>사프란 1g</td>
+									<td>31,800원</td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>
+										<p>홍길동</p>
+									</td>
+									<td>사프란 1g</td>
+									<td>31,800원</td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>
+										<p>홍길동</p>
+									</td>
+									<td>사프란 1g</td>
+									<td>31,800원</td>
+									<td><select id="status-select" class="status pending">
+										<option value="pending">배송 준비중</option>
+										<option value="process">배송중</option>
+										<option value="completed">배송 완료</option>
+										<option value="cancel">주문 취소</option>
+										</select></td>
 								</tr>
 							</tbody>
 						</table>
@@ -351,8 +405,146 @@
 						<div class="head">
 							<h6>                                                     </h6>
 							<button type="button" class="add" id="add-product-btn">상품 추가</button>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
+
+
+
+							<!-- 상품 추가 모달(Modal) -->
+							<div class="modal" id="addProductModal">
+								<div class="modal-background-product"></div>
+								<div class="modal-content">
+								<!-- 상품 추가 폼(Form) -->
+								<section class="section">
+									<div class="container">
+									<div class="register-product-form-container">
+										<form class="box register-product-form-box" id="registerProductForm">
+										<p class="title is-5 has-text-primary">상품을 등록하세요.</p>
+										<div class="field">
+											<label class="label" for="titleInput">상품 이름</label>
+											<div class="control">
+											<input
+												class="input"
+												id="titleInput"
+												type="text"
+												placeholder="사프란"
+												autocomplete="on"
+											/>
+											</div>
+										</div>
+							
+										<div class="field">
+											<label class="label" for="categorySelectBox">국가별 카테고리</label>
+											<div class="control">
+											<div class="select is-fullwidth">
+												<select id="categorySelectBox">
+												<option value="">국가를 선택해 주세요.</option>
+												</select>
+											</div>
+											</div>
+										</div>
+							
+										<div class="field">
+											<label class="label" for="categorySelectBox">종류별 카테고리</label>
+											<div class="control">
+											<div class="select is-fullwidth">
+												<select id="categorySelectBox">
+												<option value="">종류를 선택해 주세요.</option>
+												</select>
+											</div>
+											</div>
+										</div>
+							
+										<div class="field">
+											<label class="label" for="detailDescriptionInput"
+											>상세 설명</label
+											>
+											<div class="control">
+											<textarea
+												class="textarea"
+												id="detailDescriptionInput"
+												rows="8"
+												placeholder="상품에 대한 상세 설명을 적어 주세요."
+												autocomplete="on"
+											></textarea>
+											</div>
+										</div>
+							
+										<div class="field is-fullwidth">
+											<label class="label" for="imageInput">제품 사진</label>
+											<div class="file has-name is-fullwidth">
+											<label class="file-label">
+												<input
+												class="file-input"
+												id="imageInput"
+												type="file"
+												name="image-file"
+												accept=".png, .jpeg, .jpg"
+												/>
+												<span class="file-cta">
+												<span class="file-icon">
+													<i class="fas fa-upload"></i>
+												</span>
+												<span class="file-label"> 사진 업로드 </span>
+												</span>
+												<span class="file-name" id="fileNameSpan">
+												사진파일 (png, jpg, jpeg)
+												</span>
+											</label>
+											</div>
+										</div>
+							
+										<div class="field">
+											<label class="label" for="inventoryInput">재고 수</label>
+											<div class="control">
+											<input
+												class="input"
+												id="inventoryInput"
+												type="number"
+												placeholder="10"
+												autocomplete="on"
+											/>
+											</div>
+										</div>
+							
+										<div class="field">
+											<label class="label" for="priceInput">가격</label>
+											<div class="field">
+											<div class="control has-icons-right">
+												<input
+												class="input"
+												id="priceInput"
+												type="number"
+												placeholder="10000"
+												autocomplete="on"
+												/>
+												<span class="icon is-small is-right"> 원 </span>
+											</div>
+											</div>
+										</div>
+							
+							
+										<div
+											class="field is-grouped is-grouped-multiline mt-3"
+											id="keywordContainer"
+										></div>
+							
+										<div class="mt-5">
+											<button class="button is-primary is-fullwidth" id="submitButton">
+											상품 등록하기
+											</button>
+										</div>
+										</form>
+									</div>
+									</div>
+								</section>
+								</div>
+								<button class="modal-close is-large" aria-label="close"></button>
+							</div>
+							<!-- 상품 추가 모달(Modal) -->
+
+
+
+
+
 						</div>
 						<table>
 							<thead>
@@ -507,9 +699,49 @@
 					<div class="order">
 						<div class="head">
 							<h6>                                                     </h6>
-							<button type="button" class="add">국가 추가</button>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
+							<button type="button" class="add" id="add-country-btn">국가 추가</button>
+
+
+							<!-- 카테고리 추가 모달(Modal) -->
+							<div class="modal" id="addCountryModal">
+								<div class="modal-background"></div>
+								<div class="modal-content">
+								<!-- 카테고리 추가 폼(Form) -->
+								<section class="section">
+									<div class="container">
+									<div class="register-category-form-container">
+										<form class="box register-category-form-box" id="registerCategoryForm">
+										<p class="title is-5 has-text-primary">국가 카테고리를 추가하세요.</p>
+										<div class="field">
+											<label class="label" for="titleInput">국가명</label>
+											<div class="control">
+											<input class="input" id="titleInput" type="text" placeholder="멕시코" autocomplete="on" />
+											</div>
+										</div>
+										<div class="field is-fullwidth mb-5">
+											<label class="label" for="imageInput">국기 사진</label>
+											<div class="file has-name is-fullwidth">
+											<label class="file-label">
+												<input class="file-input" id="imageInput" type="file" name="image-file" accept=".png, .jpeg, .jpg" />
+												<span class="file-cta">
+												<span class="file-icon"><i class="fas fa-upload"></i></span>
+												<span class="file-label"> 사진 업로드 </span>
+												</span>
+												<span class="file-name" id="fileNameSpan">사진파일 (png, jpg, jpeg)</span>
+											</label>
+											</div>
+										</div>
+										<button class="button is-primary is-fullwidth" id="addCategoryButton">카테고리 추가하기</button>
+										</form>
+									</div>
+									</div>
+								</section>
+								</div>
+								<button class="modal-close is-large" aria-label="close"></button>
+							</div>
+							<!-- 카테고리 추가 모달(Modal) -->
+
+
 						</div>
 						<table>
 							<thead>
@@ -589,9 +821,47 @@
 					<div class="order">
 						<div class="head">
 							<h6>                                                     </h6>
-							<button type="button" class="add">종류 추가</button>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
+							<button type="button" class="add" id="add-category-btn">종류 추가</button>
+
+
+							<!-- 카테고리 추가 모달(Modal) -->
+							<div class="modal" id="addCategoryModal">
+								<div class="modal-background-category"></div>
+								<div class="modal-content">
+								<!-- 카테고리 추가 폼(Form) -->
+								<section class="section">
+									<div class="container">
+										<div class="block account-header">
+									</div>
+									<div class="register-category-form-container">
+										<form
+											class="box register-category-form-box"
+											id="registerCategoryForm"
+										>
+										<p class="title is-5 has-text-primary">종류 카테고리를 추가하세요.</p>
+										<div class="field">
+											<label class="label" for="titleInput">카테고리명</label>
+											<div class="control">
+												<input
+												class="input"
+												id="titleInput"
+												type="text"
+												placeholder="시즈닝"
+												autocomplete="on"
+												/>
+											</div>
+										</div>
+										<button class="button is-primary is-fullwidth" id="addCategoryButton">카테고리 추가하기</button>
+										</form>
+									</div>
+									</div>
+								</section>
+								</div>
+								<button class="modal-close is-large" aria-label="close"></button>
+							</div>
+							<!-- 카테고리 추가 모달(Modal) -->
+
+
 						</div>
 						<table>
 							<thead>
@@ -607,14 +877,14 @@
 								<tr>
 									<td>2023-04-18</td>
 									<td>2023-04-20</td>
-									<td>향신료/시즈닝</td>
+									<td>시즈닝</td>
 									<td><button type="button" class="modify">수정하기</button></td>
 									<td><button type="button" class="delete">삭제하기</button></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
 									<td>2023-04-20</td>
-									<td>잼</td>
+									<td>허브</td>
 									<td><button type="button" class="modify">수정하기</button></td>
 									<td><button type="button" class="delete">삭제하기</button></td>
 								</tr>
@@ -628,14 +898,21 @@
 								<tr>
 									<td>2023-04-18</td>
 									<td>2023-04-20</td>
-									<td>오일/식초/시럽/즙</td>
+									<td>스파이스</td>
 									<td><button type="button" class="modify">수정하기</button></td>
 									<td><button type="button" class="delete">삭제하기</button></td>
 								</tr>
 								<tr>
 									<td>2023-04-18</td>
 									<td>2023-04-20</td>
-									<td>곡류/분말</td>
+									<td>오일</td>
+									<td><button type="button" class="modify">수정하기</button></td>
+									<td><button type="button" class="delete">삭제하기</button></td>
+								</tr>
+								<tr>
+									<td>2023-04-18</td>
+									<td>2023-04-20</td>
+									<td>솔트</td>
 									<td><button type="button" class="modify">수정하기</button></td>
 									<td><button type="button" class="delete">삭제하기</button></td>
 								</tr>
@@ -655,11 +932,6 @@
 				</div>
 				<div class="table-data">
 					<div class="order">
-						<div class="head">
-							<h6>                                                     </h6>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
-						</div>
 						<table>
 							<thead>
 								<tr>
@@ -831,77 +1103,6 @@
 				</div>
 			</div>
 			<!-- 회원 관리 -->
-
-			<!-- 문의 사항 관리 -->
-			<div id="inquiry-manage" class="page" style="display: none;">
-				<div class="head-title">
-					<div class="left">
-						<h1>문의 사항 관리</h1>
-					</div>
-				</div>
-				<div class="table-data">
-					<div class="order">
-						<div class="head">
-							<h3>문의 사항 관리</h3>
-							<i class='bx bx-search' ></i>
-							<i class='bx bx-filter' ></i>
-						</div>
-						<table>
-							<thead>
-								<tr>
-									<th>주문자</th>
-									<th>주문일자</th>
-									<th>상태</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status completed">발송 완료</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status pending">배송 준비중</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status process">배송중</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status pending">배송 준비중</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="/public/img/spongebob-rainbow.jpg">
-										<p>홍길동</p>
-									</td>
-									<td>2023-04-18</td>
-									<td><span class="status completed">발송 완료</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<!-- 문의 사항 관리 -->
-
 		</main>
 		<!-- 메인 -->
 	</section>
@@ -910,5 +1111,7 @@
 
 	<!-- My JS -->
 	<script src="admin.js"></script>
+	<script src="order.js"></script>
+	<script src="category.js"></script>
 </body>
 </html>
