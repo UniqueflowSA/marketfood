@@ -99,3 +99,15 @@ footer{
 .total__price{
   font-size: 15pt;
 }
+
+
+
+
+.order-info-box{
+  display: flex;
+  flex-direction: column;
+}
+.order-info-box>*{
+ margin-bottom: 10px;
+
+}
