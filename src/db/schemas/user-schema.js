@@ -25,9 +25,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  phone:{
-    type:String,
-    required:true,
+  phone: {
+    type: String,
+    required: true,
   },
   address: {
     type: new Schema(
@@ -36,16 +36,20 @@ const UserSchema = new Schema({
         address1: String, //주소
         address2: String, //상세주소
       },
-      
+      { _id: false }
     ),
     required: true,
   },
   birthdate: {
-    type:String,
-    required: true
-  }
-
-  
-});
+    type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+}, { timestamps: true });
 
 export { UserSchema };
+
+

@@ -1,4 +1,4 @@
-import { main } from "/public/js/main.js";
+import { main, addCommas } from "/public/js/main.js";
 main();
 
 const items = document.querySelector(".main-item-container");
@@ -22,11 +22,11 @@ itemgrid.forEach( item => {
 const createItems = (item) => {
     return `<div class="item-grid">
     <a href="/product/${item._id}" class="item-link">
-        <img src="${item.img-url}" alt="" class="item-img">
+        <img src="${item.imgUrl}" alt="" class="item-img">
         <div class="item-text">
             <div class="item-title">${item.product}</div>
-            <div class="item-price">${item.price}</div>
-            <div class="item-category"><img src="public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
+            <div class="item-price">₩${addCommas(item.price)}</div>
+            <div class="item-category"><img src="/public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
         </div>
     </a>
 </div>`
@@ -169,7 +169,7 @@ categoryMenuList.forEach((category) => {
 // 카테고리리스트 생성 fetch
 fetch("/category")
     .then(res => res.json())
-    .then((categorylist) => {
+    .then(categorylist => {
         categorylist.forEach((category)=>{
             const createdCategory = createCategory(category);
             categorys.innerHTML += createdCategory;
@@ -183,7 +183,7 @@ fetch("/category")
 // 국가리스트 생성 fetch
 fetch("/nation")
 .then(res => res.json())
-.then((nationlist) => {
+.then(nationlist => {
     nationlist.forEach((nation)=>{
         const createdNation = createNation(nation);
         nations.innerHTML += createdNation;
@@ -195,15 +195,15 @@ fetch("/nation")
 
 
 // 제품 리스트 생성 fetch
-fetch("/product")
+fetch("http://localhost:4000/product")
     .then(res => res.json())
-    .then((productlist) =>{ //첫 화면에 전체 값 보여주기
+    .then(productlist =>{ //첫 화면에 전체 값 보여주기
         productlist.forEach((product)=>{
             const newproduct = createItems(product);
             items.innerHTML += newproduct;
         }) 
     })
-    .then((productlist) => { //카테고리 메뉴 전환시 전체 값 보여주기
+    .then(productlist => { //카테고리 메뉴 전환시 전체 값 보여주기
         categoryButton.addEventListener("click", (e) => {
             productlist.forEach((product)=>{
                 const allproduct = createItems(product);
