@@ -10,10 +10,10 @@ dotenv.config();
 import {
   userRouter,
   authRouter,
-  // categoryRouter,
+  categoryRouter,
+  productRouter,
   // nationRouter,
   // viewsRouter,
-   productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -68,7 +68,7 @@ db.once("open", function () {
 app.use(userRouter);
 app.use(authRouter);
 //app.use("/api/auth", authRouter);
-// app.use("/api/category", categoryRouter);
+app.use(categoryRouter);
 // app.use("/api/nation", nationRouter);
 app.use(productRouter);
 // app.use("/api/order", orderRouter);
