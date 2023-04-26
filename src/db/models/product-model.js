@@ -53,7 +53,7 @@ class ProductModel {
 
   async update(pId, update) {// _id로 변경
     const filter = { productId: pId };
-    const option = { returnOriginal: false };
+    const option = { returnOriginal: true };
     const updatedProduct = await Product.findOneAndUpdate(filter, update, option);
     return updatedProduct;
   }

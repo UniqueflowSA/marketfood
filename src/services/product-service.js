@@ -22,7 +22,7 @@ class ProductService {
   }
 
   async updateProduct(productId, toUpdate) {
-    const updatedProduct = await productModel.update({productId, update : toUpdate});
+    const updatedProduct = await productModel.update(productId, toUpdate);
     return updatedProduct;
   }
 
