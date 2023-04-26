@@ -58,8 +58,8 @@ db.once("open", function () {
 //app.use("/", viewsRouter);
 
 // API 라우팅
-app.use(userRouter);
-app.use(authRouter);
+app.use("/user",userRouter);
+app.use("/auth",authRouter);
 app.use(productRouter);
 //app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
