@@ -5,11 +5,6 @@ import bcrypt from 'bcrypt';
 const User = model('User', UserSchema);
 
 export default class UserModel {
-  async findByEmail(email) {
-    const user = await User.findOne({ email });
-    return user;
-  }
-
   async findOne(userId) {
     const user = await User.findOne({ userId });
     return user

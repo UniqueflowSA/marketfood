@@ -15,7 +15,7 @@ export const userService = {
 
   async updateUser(userId, updatedInfo) {
     const userModel = new UserModel();
-    const allowedUpdates = ['email','password', 'address', 'phone'];
+    const allowedUpdates = ['password', 'address', 'phone'];
     const updates = {};
 
     for (const key in updatedInfo) {
