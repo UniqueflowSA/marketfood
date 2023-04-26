@@ -24,18 +24,12 @@ export const authService = {
       );
     }
 
-    const tokenPayload = { id: user.id };
-    const isAdmin = user.isAdmin || false;
-    console.log(`isAdmin: ${isAdmin}`);
-    if (isAdmin) {
-      tokenPayload.isAdmin = true;
-    }else {
-      tokenPayload.isAdmin = false;
-    }
-    
+    const tokenPayload = { userId: user.id, isAdmin: user.isAdmin };
+
+        
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: "1h" });
 
-    return { token, isAdmin };
+    return { token, userId:user.id, isAdmin:user.isAdmin };
   },
 
   async logout(token) {
@@ -47,12 +41,4 @@ export const authService = {
     }
   },
 
-  async generateAdminToken(userId) {
-    const token = await jwt.sign(
-      { id: userId, isAdmin: true },
-      secretKey,
-      { expiresIn: "1h" }
-    );
-    return token;
-  },
 };
