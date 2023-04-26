@@ -44,7 +44,7 @@ class CategoryContoller {
 
   async updateCategory(req, res, next) {
     try {
-      const categoryId = req.params;
+      const categoryId = req.params.categoryId;
       const updateCategory = req.body;
       const updatedCategory = await categoryService.updateCategory(categoryId, updateCategory);
 

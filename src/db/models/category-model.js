@@ -48,7 +48,7 @@ class CategoryModel {
 
   async update(cid, categoryInfo) {
     const filter = { _id: cid };
-    const option = { returnOriginal: false };
+    const option = { returnOriginal: true };
     try {
       const updatedCategory = await Category.findOneAndUpdate(
         filter,
