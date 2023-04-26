@@ -2,6 +2,7 @@ import { Auth } from "../db/models/auth-model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
 
 export const authService = {
   async login(userId, password) {
@@ -28,19 +29,28 @@ export const authService = {
       );
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user.id, role: user.role }, secretKey, {
       expiresIn: "1h",
     });
-    return token;
+
+    return { token, isAdmin: user.role === "admin" };
   },
 
   async logout(token) {
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, secretKey);
       const userId = decoded.id;
     } catch (err) {
       throw new Error("유효하지 않은 토큰입니다.");
     }
   },
- 
+
+  async generateAdminToken(userId) {
+    const token = await jwt.sign(
+      { id: userId, role: "admin" },
+      secretKey,
+      { expiresIn: "1h" }
+    );
+    return token;
+  },
 };

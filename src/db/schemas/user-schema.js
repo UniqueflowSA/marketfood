@@ -20,9 +20,6 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
-    // minlength: 8,
-    // maxlength: 20,
-    //match: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,20}$/,
   },
   name: {
     type: String,
@@ -43,7 +40,10 @@ const UserSchema = new Schema({
     ),
     required: true,
   },
-
+  birthdate: {
+    type:String,
+    required: true
+  }
   
 });
 
