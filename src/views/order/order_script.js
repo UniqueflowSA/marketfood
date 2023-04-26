@@ -1,6 +1,5 @@
 
 
-//장바구니 페이지가 로드될 때 로컬정보에 데이터 유무를 판단합니다.
 function insertProductsfromOde (){
 
 	const localLength = localStorage.length;
@@ -19,7 +18,7 @@ function insertProductsfromOde (){
 			`
 			<div class="cart__product__list" id='productItem__${_id}'>
       <div class="list__img__block">
-        <a href="#none"><img id="product__img__${_id}" src="./image/art-4919768.gif" alt="상품이미지파일"></a>
+        <a href="#none"><img id="product__img__${_id}" src="${image}" alt="상품이미지파일"></a>
       </div>
       <div class="list__name__block">
         <!-- 상품정보 파트 -->
@@ -48,6 +47,7 @@ function insertProductsfromOde (){
 		const productItem = document.querySelector(`#productItem__${_id}`)
 		const orderPrice = document.querySelector('#order__price__num')
 		const totalPrice = document.querySelector('#total__price__num')
+		const orderBtn = document.querySelector("#order__btn")
 	
 
 
@@ -72,8 +72,8 @@ function insertProductsfromOde (){
 		}
 		orderPriceFunc()
 
-		orderpageBtn.addEventListener('click',()=>{
-			window.location.href = '../order/index.html'
+		orderBtn.addEventListener('click',()=>{ // 주문자페이지로 데이터보내기
+			
 		})
 }
 	
