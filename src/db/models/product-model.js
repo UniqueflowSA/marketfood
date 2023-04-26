@@ -10,7 +10,7 @@ class ProductModel {
   }
 
   async findById(pId) {
-    const product = await Product.findOne({ productId: pId });
+    const product = await Product.findOne({ productId: pId });//_id로 변경
     return product;
   }
   async findByIds(pidArr){
@@ -51,7 +51,7 @@ class ProductModel {
     return newProduct;
   }
 
-  async update(pId, update) {
+  async update(pId, update) {// _id로 변경
     const filter = { productId: pId };
     const option = { returnOriginal: false };
     const updatedProduct = await Product.findOneAndUpdate(filter, update, option);
