@@ -27,8 +27,29 @@ function loadMainData() {
             product: '사프란 1g',
             price: '31,800원',
             status: 'completed'
+            },
+            {
+                date: '2023-04-18',
+                user: '홍길동',
+                product: '사프란 1g',
+                price: '31,800원',
+                status: 'cancel'
+            },
+            {
+                date: '2023-04-18',
+                user: '홍길동',
+                product: '사프란 1g',
+                price: '31,800원',
+                status: 'pending'
+            },
+            {
+                date: '2023-04-18',
+                user: '홍길동',
+                product: '사프란 1g',
+                price: '31,800원',
+                status: 'process'
             }
-        ]
+        ],
     };
 
     // 데이터 적용
@@ -72,9 +93,13 @@ function applyMainData(data) {
 function getStatusText(status) {
     switch (status) {
         case 'completed':
-            return '발송 완료';
-        case 'canceled':
-            return '취소';
+            return '배송 완료';
+        case 'cancel':
+            return '주문 취소';
+        case 'pending':
+            return '배송 준비중';
+        case 'process':
+            return '배송중';
         default:
             return '';
     }
