@@ -21,10 +21,10 @@ class CategoryContoller {
   }
 
   async getCategoryById(req, res, next) {
-    const cid = req.params;
-
     try {
-      const Category = await categoryService.getCategoryById(cid);
+      const categoryId = req.params.categoryId;
+      const Category = await categoryService.getCategoryById(categoryId);
+
       return res.status(200).json(Category);
     } catch (e) {
       next(e);
@@ -43,17 +43,10 @@ class CategoryContoller {
   }
 
   async updateCategory(req, res, next) {
-    const { cid } = req.params;
-    const { name } = req.body;
-
-    if (!name) {
-      return res.status(400).json("입력 데이터 부족");
-    }
-
     try {
-      const updatedCategory = await categoryService.updateCategory(cid, {
-        name,
-      });
+      const categoryId = req.params;
+      const updateCategory = req.body;
+      const updatedCategory = await categoryService.updateCategory(categoryId, updateCategory);
 
       return res.status(200).json(updatedCategory);
     } catch (e) {
@@ -62,11 +55,11 @@ class CategoryContoller {
   }
 
   async deleteCategory(req, res, next) {
-    const { cid } = req.params;
-
     try {
-      await categoryService.deleteCategory(cid);
-      res.status(200).json(`카테고리 삭제 완료(ID : ${cid})`);
+      const categoryId = req.params.categoryId;
+      await categoryService.deleteCategory(categoryId);
+
+      res.status(200).json(`카테고리 삭제 완료(ID : ${categoryId})`);
     } catch (e) {
       next(e);
     }
