@@ -17,18 +17,18 @@ class CategoryModel {
     }
   }
 
-  async findByName(name) {
-    try {
-      const category = await Category.findOne({ name });
-      return category;
-    } catch (err) {
-      const error = new Error(
-        "이름 기반으로 카테고리 정보를 불러들이는데 실패하였습니다."
-      );
-      error.statusCode = 400;
-      throw error;
-    }
-  }
+  // async findByName(name) {
+  //   try {
+  //     const category = await Category.findOne({ name });
+  //     return category;
+  //   } catch (err) {
+  //     const error = new Error(
+  //       "이름 기반으로 카테고리 정보를 불러들이는데 실패하였습니다."
+  //     );
+  //     error.statusCode = 400;
+  //     throw error;
+  //   }
+  // }
 
   async findAll() {
     try {
