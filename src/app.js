@@ -14,6 +14,7 @@ import {
   productRouter,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   nationRouter,
 =======
   // nationRouter,
@@ -21,6 +22,9 @@ import {
 =======
   nationRouter,
 >>>>>>> 27030e5 (nation API cnrk)
+=======
+  nationRouter,
+>>>>>>> dev-BE-jonguk
   // viewsRouter,
   // orderRouter,
 } from "./routers/index.js";
@@ -69,6 +73,10 @@ db.once("open", function () {
 // API 라우팅
 app.use(userRouter);
 app.use(authRouter);
+<<<<<<< HEAD
+=======
+//app.use("/api/auth", authRouter);
+>>>>>>> dev-BE-jonguk
 app.use(categoryRouter);
 app.use(nationRouter);
 app.use(productRouter);
