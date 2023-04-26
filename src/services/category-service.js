@@ -2,7 +2,6 @@ import { categoryModel } from "../db/models/category-model.js";
 
 class CategoryService {
   async createCategory(categoryInfo) {
-    const name = categoryInfo; 
     const createdNewCategory = await categoryModel.create(categoryInfo);
     return createdNewCategory;
   }
