@@ -13,7 +13,7 @@ import {
   // categoryRouter,
   // nationRouter,
   // viewsRouter,
-   productRouter,
+  productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
