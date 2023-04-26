@@ -40,6 +40,10 @@ const UserSchema = new Schema({
     ),
     required: true,
   },
+  birthdate: {
+    type:String,
+    required: true
+  }
 
   
 });

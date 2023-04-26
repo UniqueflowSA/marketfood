@@ -1,12 +1,12 @@
-import { productModel } from "../db/models/product-model.js";
+import { productModel }  from "../db/models/product-model.js";
 
 class ProductService {
-  async addProduct(productInfo) {
+  async createProduct(productInfo) {
     const createdNewProduct = await productModel.create(productInfo);
     return createdNewProduct;
   }
 
-  async getProductById(productId) {
+  async getProduct(productId) {
     const product = await productModel.findById(productId);
     return product;
   }
@@ -22,7 +22,7 @@ class ProductService {
   }
 
   async updateProduct(productId, toUpdate) {
-    const updatedProduct = await productModel.update({productId, update : toUpdate});
+    const updatedProduct = await productModel.update(productId, toUpdate);
     return updatedProduct;
   }
 
