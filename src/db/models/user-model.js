@@ -14,8 +14,10 @@ export default class UserModel {
     const user = await User.findOne({ userId });
     return user
   }
-  
-
+  async find() {
+    const users = await User.find();
+    return users;
+  }
   async create(userInfo) {
     const { password, ...rest } = userInfo;
 
