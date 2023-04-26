@@ -13,10 +13,14 @@ import {
   categoryRouter,
   productRouter,
 <<<<<<< HEAD
+<<<<<<< HEAD
   nationRouter,
 =======
   // nationRouter,
 >>>>>>> 84603f2 (카테고리 등록, 전체 불러오기 기능 구현)
+=======
+  nationRouter,
+>>>>>>> 27030e5 (nation API cnrk)
   // viewsRouter,
   // orderRouter,
 } from "./routers/index.js";
