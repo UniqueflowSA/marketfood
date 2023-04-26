@@ -5,6 +5,11 @@
     padding: 0;
 }
 
+.all-wrap {
+    min-height: 100%;
+    position: relative;
+}
+
 /* 상단바 공용에서 만들어서 씀 */
     /* .navbar-container {
         display: flex;
@@ -169,6 +174,16 @@
       width: 700px;
     }
 }
+@media (max-width: 720px) {
+    .main-box {
+      width: 500px;
+    }
+}
+@media (max-width: 510px) {
+    .main-box {
+      width: 300px;
+    }
+}
 
 .main-header-container {
     display: flex;
@@ -213,18 +228,22 @@
     color: #ebcf9b;
     background-color: white;
 }
+.main-header-button-unclicked:hover {
+    color: #e94e33;
+    border: 2px solid #e94e33;
+}
 
 .main-header-button-clicked {
     cursor: pointer;
     padding: 10px;
     margin-right: 10px;
-    border: 2px solid #ebcf9b;
+    border: 2px solid #e94e33;
     border-radius: 15%;
 
     font-weight: 600;
     font-size: 15px;
     color: white;
-    background-color: #ebcf9b;
+    background-color: #e94e33;
 }
 
 /* 메인컨텐츠-네비 */
@@ -266,9 +285,12 @@
     text-decoration: none;
     margin: 0 45px;
 
-    font-size: 17px;
-    font-weight: 400;
-    color: #555555;
+    font-size: 18px;
+    font-weight: 700;
+    color: #777777;
+}
+.main-nav-content-unclicked:hover {
+    color: #ebcf9b;
 }
 
 .main-nav-content-clicked {
@@ -279,7 +301,7 @@
     text-decoration: none;
     margin: 0 45px;
 
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     color: #e94e33;
 }
@@ -298,6 +320,17 @@
     text-decoration: none;
     width: 100%;
     margin-top: 50px;
+}
+.main-item-container-non {
+    display: block;
+}
+.no-items {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
 }
 
 .item-grid {
@@ -320,19 +353,19 @@
 }
   
 @media (max-width: 1000px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(33%, auto));
     }
 }
 
 @media (max-width: 900px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(50%, auto));
     }
 }
 
 @media (max-width: 600px) {
-.main-item-container {
+    .main-item-container {
     grid-template-columns: repeat(auto-fill, minmax(100%, auto));
     }
  }
