@@ -4,17 +4,14 @@ import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
 import passport from "passport";
 import session from "express-session";
-<<<<<<< HEAD
 import dotenv from "dotenv";
-=======
-import dotenv from 'dotenv';
->>>>>>> 9182611 (db 세팅)
 
 dotenv.config();
 import {
   userRouter,
   authRouter,
-  // categoryRouter,
+  categoryRouter,
+  productRouter,
   // nationRouter,
   // viewsRouter,
   productRouter,
@@ -67,7 +64,7 @@ app.use(userRouter);
 app.use(authRouter);
 app.use("/product",productRouter);
 //app.use("/api/auth", authRouter);
-// app.use("/api/category", categoryRouter);
+app.use(categoryRouter);
 // app.use("/api/nation", nationRouter);
 app.use(productRouter);
 // app.use("/api/order", orderRouter);
