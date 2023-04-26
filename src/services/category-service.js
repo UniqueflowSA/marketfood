@@ -7,8 +7,8 @@ class CategoryService {
     return createdNewCategory;
   }
 
-  async getCategoryById(cid) {
-    const category = await categoryModel.findById(cid);
+  async getCategoryById(categoryId) {
+    const category = await categoryModel.findById(categoryId);
     return category;
   }
 
