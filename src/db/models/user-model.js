@@ -21,7 +21,7 @@ export default class UserModel {
 
   const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,20}$/;
   if (!passwordRegex.test(password)) {
-    throw new Error('비밀번호는 8자 이상, 20자 이내의 영문, 숫자, 특수문자가 최소 1개 이상 들어가야 합니다.');
+    throw new Error('Password should be 8-20 characters long and include at least one digit, one special character, and one alphabet character.');
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);

@@ -38,6 +38,11 @@ const ProductSchema = new Schema(
       ref: "categorys",
       required: true,
     },
+    nation:{
+      type:String,
+      required:true,
+      ref:"nations",
+    },
     manufacturer: {
       // 제조사
       type: String,
@@ -65,6 +70,7 @@ const ProductSchema = new Schema(
       default: 10,
       required: true,
     },
+    
   },
   {
     collection: "product",

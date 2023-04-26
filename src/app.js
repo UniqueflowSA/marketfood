@@ -13,7 +13,7 @@ import {
   // categoryRouter,
   // nationRouter,
   // viewsRouter,
-  productRouter,
+   productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -65,6 +65,7 @@ app.use("/product",productRouter);
 //app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);
 // app.use("/api/nation", nationRouter);
+app.use(productRouter);
 // app.use("/api/order", orderRouter);
 
 // 에러 핸들러
