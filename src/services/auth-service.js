@@ -1,6 +1,5 @@
-import { Auth } from "../db/models/auth-model.js";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { Auth } from "../db/models/auth-model.js";
 
 const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
 
@@ -17,11 +16,7 @@ export const authService = {
       throw new Error("없는 아이디입니다.");
     }
 
-    const correctPasswordHash = user.password;
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      correctPasswordHash
-    );
+    const isPasswordCorrect = await user.comparePassword(password);
 
     if (!isPasswordCorrect) {
       throw new Error(
@@ -29,11 +24,18 @@ export const authService = {
       );
     }
 
-    const token = jwt.sign({ id: user.id, role: user.role }, secretKey, {
-      expiresIn: "1h",
-    });
+    const tokenPayload = { id: user.id };
+    const isAdmin = user.isAdmin || false;
+    console.log(`isAdmin: ${isAdmin}`);
+    if (isAdmin) {
+      tokenPayload.isAdmin = true;
+    }else {
+      tokenPayload.isAdmin = false;
+    }
+    
+    const token = jwt.sign(tokenPayload, secretKey, { expiresIn: "1h" });
 
-    return { token, isAdmin: user.role === "admin" };
+    return { token, isAdmin };
   },
 
   async logout(token) {
@@ -47,7 +49,7 @@ export const authService = {
 
   async generateAdminToken(userId) {
     const token = await jwt.sign(
-      { id: userId, role: "admin" },
+      { id: userId, isAdmin: true },
       secretKey,
       { expiresIn: "1h" }
     );
