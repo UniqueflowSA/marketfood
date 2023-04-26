@@ -10,10 +10,10 @@ dotenv.config();
 import {
   userRouter,
   authRouter,
-  // categoryRouter,
+  categoryRouter,
+  productRouter,
   // nationRouter,
   // viewsRouter,
-  productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -31,15 +31,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-// app.use(session({
-//   secret: "mySecret",
-//   resave: false,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
 // MongoDB 연결
 
 mongoose.connect(process.env.MONGODB_URL, {
@@ -56,14 +47,14 @@ db.once("open", function () {
 });
 
 // HTML, CSS, JS 라우팅
-//app.use("/", viewsRouter);
+// app.use("/", viewsRouter);
 
 // API 라우팅
 app.use("/user",userRouter);
 app.use("/auth",authRouter);
 app.use(productRouter);
 //app.use("/api/auth", authRouter);
-// app.use("/api/category", categoryRouter);
+app.use(categoryRouter);
 // app.use("/api/nation", nationRouter);
 // app.use(productRouter);
 // app.use("/api/order", orderRouter);

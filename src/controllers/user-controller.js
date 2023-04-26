@@ -3,12 +3,11 @@ import { userService } from '../services/user-service.js';
 export default {
   async createUser(req, res, next) {
     try {
-      const { userId, name, email, password, phone, birthdate, address } = req.body;
+      const { userId, name, password, phone, birthdate, address } = req.body;
       const { postalCode, address1, address2 } = address;
       const userInfo = {
         userId,
         name,
-        email,
         password,
         phone,
         birthdate,

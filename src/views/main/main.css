@@ -373,6 +373,9 @@
 .item-img {
     width: 100%;
 }
+.item-img:hover {
+    opacity: 70%;
+}
 
 .item-text {
     height: 80px;

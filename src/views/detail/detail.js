@@ -1,5 +1,5 @@
 import { main } from "/public/js/main.js";
-main();
+const {loggedInUser} = await main();
 
 // css 마무리 *필요
 // 미디어쿼리 *필요
@@ -13,7 +13,7 @@ main();
 
 // 주소 토대로 자르고, 지워서 아이디 구하기
 const html = window.location.href;
-const sp = html.split("product/");
+const sp = html.split("?");
 const itemid = sp[1].replace("/", "");
 
 
@@ -51,7 +51,7 @@ fetch(`http://localhost:4000/product/${itemid}`)
     productName.textContent = product.product;
     productDesc.textContent = product.detailDescription;
     productPrice.textContent = `₩${product.price}`;
-    orderedPrice.textContent = `₩${product.price}`;
+    orderedPrice.textContent = `₩${product.price}`; 
     productImg.innerHTML += `<img src="${product.imgUrl}" class="product-img" />`
   })
   .then((product)=>{ // 로컬 저장소의 장바구니 조회 후 현재 제품 장바구니 추가

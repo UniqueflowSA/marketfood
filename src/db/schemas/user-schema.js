@@ -12,11 +12,6 @@ const UserSchema = new Schema({
     maxlength: 12,
     validate: /^[a-z0-9_]+$/i,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   password: {
     type: String,
     required: true,
