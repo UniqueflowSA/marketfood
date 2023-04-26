@@ -4,6 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 170px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 10px 0px;
 }
 
 .navbar {
@@ -44,9 +47,13 @@
 .navbar-text {
     display: inline-block;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    color: #777777;
+    color: #444444;
     padding-left: 5px;
     margin-right: 20px;
+}
+
+.navbar-text:hover {
+    color: #e94e33;
 }
