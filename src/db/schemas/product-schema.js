@@ -31,7 +31,7 @@ const ProductSchema = new Schema(
       ref: "user",
       required: true,
     },
-    categoryId: {
+    category: {
       // 카테고리
       // type: Schema.Types.ObjectId,
       type:String,
@@ -53,7 +53,7 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
-    imageKey: {
+    imgUrl: {
       // 이미지
       type: String,
       required: true,
