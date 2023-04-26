@@ -8,32 +8,47 @@ const shoppingBtn = document.querySelector(".shopping__page__btn")
 //     quantity:document.getElementById('product-quantity').value
 // }
 
+
 // //LocalStorage에 저장
 // localStorage.setItem('product', JSON.stringify(product))
 
-//장바구니 페이지가 로드될 때 로컬정보에 데이터 유무를 판단합니다.
-window.addEventListener('load',()=>{ 
+// detail 페이지 데이터요청
+// const productInfo = {
+// 	_id : itemid,
+// 	product : product.product,
+// 	price : product.price,
+// 	amount : productAmount.innerText,
+// 	imgUrl : product.imgUrl,
+// };
+// const productInfoJson = JSON.stringify(productInfo);
+
+// window.localStorage.setItem(nextCartNum, productInfoJson)
+
+
+function insertProductsfromCart(){
 	const localLength = localStorage.length;
 	const orders = []
-	for(let i=1;i<localLength+1;i++){
+
+	for(let i=0;i<localLength;i++){
 		if(localStorage.getItem(String(i))){ //LocalStorage에서 정보가져오기
 			orders.push(JSON.parse(localStorage.getItem(String(i))))
 		}
 	}
-	const allDeleteBtn = document.querySelector('#all__delete')
+
+	
 	const cartEmpty = document.querySelector('#cart__empty')
 	const cartHaveProduct = document.querySelector('#cart__have__product')
-	const cartProductList = document.querySelector('.cart__detail')
-	const orderpageBtn = document.querySelector('.order__page__btn') 
-
-	if(orders.length > 0){ //장바구니 상품이 있을 때
+	const allDeleteBtn = document.querySelector('#all__delete')
+	
+	if(localLength > 0){//장바구니 상품이 있을 때
 		allDeleteBtn.classList.remove('display__none')
 		cartEmpty.classList.add('display__none')
 		cartHaveProduct.classList.remove('display__none')
 
 		orders.forEach((product) =>{
 			const{ _id, productName, price, quantity,image} = product
-			cartProductList.insertAdjacentHTML('beforeend',
+			 
+			cartHaveProduct.insertAdjacentHTML('beforeend',
 			`
 				<div class="cart__product__list" id='productItem__${_id}'>
 					<div class="list__img__block">
@@ -59,51 +74,53 @@ window.addEventListener('load',()=>{
 					</div>
 				</div>
 				`)
-		})
-		const plusBtn = document.querySelector(`#plus__btn__${_id}`)
-		const minusBtn = document.querySelector(`#minus__btn__${_id}`)
-		const quantityNum= document.querySelector(`#quan__num__${_id}`)
-		const productPrice = document.querySelector(`#product__price__num__${_id}`)
-		const deleteBtn = document.querySelector(`#select__delete__${_id}`)
-		const productItem = document.querySelector(`#productItem__${_id}`)
-		const orderPrice = document.querySelector('#order__price__num')
-		const totalPrice = document.querySelector('#total__price__num')
-	
+		
+			const plusBtn = document.querySelector(`#plus__btn__${_id}`)
+			const minusBtn = document.querySelector(`#minus__btn__${_id}`)
+			const quantityNum= document.querySelector(`#quan__num__${_id}`)
+			const productPrice = document.querySelector(`#product__price__num__${_id}`)
+			const deleteBtn = document.querySelector(`#select__delete__${_id}`)
+			const productItem = document.querySelector(`#productItem__${_id}`)
+			const orderPrice = document.querySelector('#order__price__num')
+			const totalPrice = document.querySelector('#total__price__num')
+			const orderpageBtn = document.querySelector('.order__page__btn') 
+			
 
 
-		let crrentNum = parseInt(quantityNum.textContent)
-		plusBtn.addEventListener('click',()=>{
-			quantityNum.textContent = crrentNum + 1
-			productPrice.textContent = (price * Number(quantityNum))
-		})
-		minusBtn.addEventListener('click',()=>{
-			quantityNum.textContent = crrentNum - 1
-			productPrice.textContent = (price * Number(quantityNum))
-		})
-		deleteBtn.addEventListener('click', ()=>{
-			const key = localStorage.key(_id)
-			localStorage.removeItem(key)
-			productItem.remove()
-		})
-		allDeleteBtn.addEventListener('click',()=> {
-			window.localStorage.clear();
-		})
-		const orderPriceFunc= ()=>{
-			let orderPriceNum = 0;
-			orders.forEach(product =>{
-				const{_id, price, quantity} = product
-				const productPriceNum = price*quantity
-				orderPriceNum += productPriceNum
+			let currentNum = parseInt(quantityNum.textContent)
+
+			plusBtn.addEventListener('click',()=>{
+				quantityNum.textContent = currentNum + 1
+				productPrice.textContent = (price * Number(quantityNum))
 			})
-			orderPrice.textContent = orderPriceNum
-			totalPrice.textContent = (orderPriceNum*1)+2500  
-		}
-		orderPriceFunc()
-
-		orderpageBtn.addEventListener('click',()=>{
-			window.location.href = '../order/index.html'
+			minusBtn.addEventListener('click',()=>{
+				quantityNum.textContent = currentNum - 1
+				productPrice.textContent = (price * Number(quantityNum))
+			})
+			deleteBtn.addEventListener('click', ()=>{
+				const key = localStorage.key(_id)
+				localStorage.removeItem(key)
+				productItem.remove()
+			})
+			allDeleteBtn.addEventListener('click',()=> {
+				window.localStorage.clear();
+			})
+			const orderPriceFunc= ()=>{
+				let orderPriceNum = 0;
+				orders.forEach(product =>{
+					const{_id, price, quantity} = product
+					const productPriceNum = price*quantity
+					orderPriceNum += productPriceNum
+				})
+				orderPrice.textContent = orderPriceNum
+				totalPrice.textContent = (orderPriceNum*1)+2500  
+			}
+			orderPriceFunc()
+			
+			orderpageBtn.addEventListener('click',()=>{
+				window.location.href = '../order/index.html'
+			})
 		})
-
 
 	}else if(orders.length === 0 ){ //장바구니 비었을 때
 
@@ -111,10 +128,10 @@ window.addEventListener('load',()=>{
 		cartEmpty.classList.remove('display__none')
 		cartHaveProduct.classList.add('display__none')
 	}
-
-})
-
-
+}
 shoppingBtn.addEventListener("click",()=>{
-    window.location.href = '../main/main.html'
+	window.location.href = '../main/main.html'
 })
+
+insertProductsfromCart()
+

@@ -2,7 +2,7 @@ const btn = document.querySelector('.btn')
 
 
 let productObj ={
-  _id : 1001010, 
+  _id : "1001010", 
   productName: 'chill', 
   price: 40000, 
   quantity: 2,
