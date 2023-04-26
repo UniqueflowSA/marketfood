@@ -45,5 +45,13 @@ export default class UserModel {
        
         return deletedUser;
       }
+  async setAdmin(userId) {
+    const filter = { userId: userId };
+    const update = { role: "admin" };
+    const option = { new: true };
+    const updatedUser = await User.findOneAndUpdate(filter, update, option);
+    return updatedUser;
+  }
       
-      }
+}
+

@@ -1,6 +1,3 @@
-
-
-// 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
 const postSearchBtn = document.getElementById("post-search-btn");
 const userId = document.getElementById("user-id");
@@ -34,6 +31,7 @@ const currentYear = new Date().getFullYear();
 const minYear = currentYear - 100;
 const maxYear = currentYear;
 
+//유효성 검사
 submitBtn.onclick = () => {
     // 아이디를 입력 안했을 때
     if(userId.value == "") {
@@ -42,22 +40,41 @@ submitBtn.onclick = () => {
         return false;
     }
     //비밀번호를 입력 안했을 때
-    if (userPw.value == "") {
+    else if (userPw.value == "") {
         userPw.placeholder = "비밀번호를 입력하세요";
         userPw.focus();//포커스를 Password박스로 이동.
         return false;
     }
     //이름을 입력 안했을 때
-    if (userName.value == "") {
+    else if (userName.value == "") {
         userName.placeholder = "이름을 입력하세요";
         userName.focus();//포커스를 Password박스로 이동.
         return false;
     }
     //핸드폰 번호를 입력 안했을 때
-    if (userPhone.value == "") {
+    else if (userPhone.value == "") {
         userPhone.placeholder = "핸드폰 번호를 입력하세요";
         userPhone.focus();//포커스를 Password박스로 이동.
         return false;
+    }
+    //데이터 보내기
+    else {
+        const req = {
+            userId: userId.value,
+            password: userPw.value,
+            name: userName.value,
+            phone: userPhone.value,
+    
+        };
+        fetch("http://localhost:4000/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(req),
+        })
+        .then((res) => res.json())
+        .then((res) => console.log(res));
     }
 }
 //onchange_id

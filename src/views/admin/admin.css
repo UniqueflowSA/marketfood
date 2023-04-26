@@ -591,3 +591,11 @@ body {
 }
 
 
+
+.register-product-form-box .input:focus,
+.register-product-form-box .textarea:focus,
+.register-product-form-box select:focus {
+	border-color: #00d1b2;
+	box-shadow: 0 0 0 0.125em rgba(0, 209, 178, 0.25);
+}
+/* 상품 등록 팝업 */

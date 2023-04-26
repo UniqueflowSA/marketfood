@@ -6,7 +6,7 @@ main();
 
 // 상품명, 상품설명, 가격, 사진주소 api 패치 *완
 // 장바구니 누르면 장바구니 데이터 만들기 *완
-// 바로구매 누를시 회원이면 주문하기로, 비회원이면 로그인으로 *주문하기 경로 확인필요 *로컬 저장소에 카트로 담고/페이지이동만 주문하기로 가면 끝?
+// 바로구매 누를시 회원이면 주문하기로, 비회원이면 로그인으로 *완
 // 수량 버튼 누를시 수량 늘리기 *완
 // 주문금액 합산 계산 *완
 
@@ -19,19 +19,22 @@ const itemid = sp[1].replace("/", "");
 
 // 로그인, 비로그인 유저별 주문버튼 생성 *로그인 상태 구분 방법 확인 후 마무리
 const buttonContainer = document.querySelector(".order-container")
+const PurchaseBtn = document.querySelector(".button-purchase")
+const cartBtn = document.querySelector(".button-cart")
 
-// if (loggedInUser) {
-//     buttonContainer.innerHTML += `<div class="button-sub-container">
-//     <a class="button-cart"><p>장바구니</p></a>
-//     <a href="/orders/create?pid=${id}&count=1" class="button-purchase"><p>바로구매</p></a>
-//   </div>`;
-// } else {
-//     buttonContainer.innerHTML += `<div class="button-sub-container">
-//     <a class="button-cart"><p>장바구니</p></a>
-//     <a href="/src/views/login.html" class="button-purchase"><p>바로구매</p></a>
-//   </div>`
-//     button-purchase.addEventListener("click", ()=>{alert("로그인 후 이용가능합니다")});
-// }
+if (loggedInUser) {
+    buttonContainer.innerHTML += `<div class="button-sub-container">
+    <a class="button-cart"><p>장바구니</p></a>
+    <a href="/src/views/order" class="button-purchase"><p>바로구매</p></a>
+  </div>`
+  PurchaseBtn.classList.add(".button-cart");
+} else {
+    buttonContainer.innerHTML += `<div class="button-sub-container">
+    <a class="button-cart"><p>장바구니</p></a>
+    <a href="/src/views/login.html" class="button-purchase"><p>바로구매</p></a>
+  </div>`
+  PurchaseBtn.addEventListener("click", ()=>{alert("로그인 후 이용가능합니다")});
+}
 
 
 // 프로덕트 정보 렌더링
@@ -40,10 +43,9 @@ const productDesc = document.querySelector(".product-desc")
 const productPrice = document.querySelector(".product-price")
 const orderedPrice = document.querySelector(".ordered-price")
 const productImg = document.querySelector(".product-img-container")
-const cartBtn = document.querySelector(".button-cart")
 const productAmount = document.querySelector(".product-amount")
 
-fetch(`/product/${itemid}`)
+fetch(`http://localhost:4000/product/${itemid}`)
   .then(res => res.json())
   .then((product)=>{
     productName.textContent = product.product;

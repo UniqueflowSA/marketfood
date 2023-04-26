@@ -25,9 +25,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  phone:{
-    type:String,
-    required:true,
+  phone: {
+    type: String,
+    required: true,
   },
   address: {
     type: new Schema(
@@ -41,11 +41,15 @@ const UserSchema = new Schema({
     required: true,
   },
   birthdate: {
-    type:String,
-    required: true
-  }
-
-  
-});
+    type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+}, { timestamps: true });
 
 export { UserSchema };
+
+

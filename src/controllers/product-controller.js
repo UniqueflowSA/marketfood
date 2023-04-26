@@ -41,7 +41,7 @@ class ProductController {
       const updatedInfo = req.body;
       const updatedProduct = await productService.updateProduct(productId, updatedInfo);
   
-      res.status(200).json(updateProduct);
+      res.status(200).json(updatedProduct);
     } catch (error) {
       next(error);
     }

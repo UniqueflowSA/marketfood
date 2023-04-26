@@ -17,6 +17,7 @@ import {
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
+
 import mongoose from "mongoose";
 dotenv.config();
 
@@ -30,13 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-app.use(session({
-  secret: "mySecret",
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//   secret: "mySecret",
+//   resave: false,
+//   saveUninitialized: true
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // MongoDB 연결
@@ -58,8 +59,8 @@ db.once("open", function () {
 //app.use("/", viewsRouter);
 
 // API 라우팅
-app.use(userRouter);
-app.use(authRouter);
+app.use("/user",userRouter);
+app.use("/auth",authRouter);
 app.use(productRouter);
 //app.use("/api/auth", authRouter);
 // app.use("/api/category", categoryRouter);

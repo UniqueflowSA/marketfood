@@ -26,7 +26,7 @@ const createItems = (item) => {
         <div class="item-text">
             <div class="item-title">${item.product}</div>
             <div class="item-price">₩${addCommas(item.price)}</div>
-            <div class="item-category"><img src="/public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
+            <div class="item-category"><img src="/public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation} | ${item.category}</div>
         </div>
     </a>
 </div>`
@@ -165,7 +165,7 @@ categoryMenuList.forEach((category) => {
 )
 
 // 카테고리리스트 생성 fetch
-fetch("/category")
+fetch("http://localhost:4000/category")
     .then(res => res.json())
     .then(categorylist => {
         categorylist.forEach((category)=>{
@@ -179,7 +179,7 @@ fetch("/category")
 
 
 // 국가리스트 생성 fetch
-fetch("/nation")
+fetch("http://localhost:4000/nation")
 .then(res => res.json())
 .then(nationlist => {
     nationlist.forEach((nation)=>{
