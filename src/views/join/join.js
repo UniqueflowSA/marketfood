@@ -1,6 +1,3 @@
-
-
-// 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
 const postSearchBtn = document.getElementById("post-search-btn");
 const userId = document.getElementById("user-id");
@@ -34,6 +31,10 @@ const currentYear = new Date().getFullYear();
 const minYear = currentYear - 100;
 const maxYear = currentYear;
 
+//데이터 전달
+
+
+//유효성 검사
 submitBtn.onclick = () => {
     // 아이디를 입력 안했을 때
     if(userId.value == "") {
