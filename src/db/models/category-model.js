@@ -4,17 +4,9 @@ import { CategorySchema } from "../schemas/category-schema.js";
 const Category = model("Category", CategorySchema);
 
 class CategoryModel {
-  async findById(cid) {
-    try {
-      const category = await Category.findOne({ _id: cid });
+  async findById(categoryId) {
+      const category = await Category.findOne({ _id: categoryId });
       return category;
-    } catch (err) {
-      const error = new Error(
-        "ID 기반으로 Catgory에 대한 정보를 불러오지 못하였습니다."
-      );
-      error.statusCode = 400;
-      throw error;
-    }
   }
 
   // async findByName(name) {
