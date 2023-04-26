@@ -45,13 +45,28 @@ export default class UserModel {
        
         return deletedUser;
       }
-  async setAdmin(userId) {
-    const filter = { userId: userId };
-    const update = { role: "admin" };
-    const option = { new: true };
-    const updatedUser = await User.findOneAndUpdate(filter, update, option);
-    return updatedUser;
+async setAdmin(userId) {
+    try {
+      const filter = { userId: userId };
+      const update = { role: "admin" };
+      const option = { new: true };
+      const updatedUser = await User.findOneAndUpdate(filter, update, option);
+      return updatedUser;
+    } catch (error) {
+      throw new Error(`Failed to set admin role for user ${userId}: ${error}`);
+    }
   }
-      
+  async setUser(userId) {
+    try {
+      const filter = { userId: userId };
+      const update = { role: "user" };
+      const option = { new: true };
+      const updatedUser = await User.findOneAndUpdate(filter, update, option);
+      return updatedUser;
+    } catch (error) {
+      throw new Error(`Failed to set user role for user ${userId}: ${error}`);
+    }
+  }
+  
 }
 

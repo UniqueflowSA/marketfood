@@ -31,15 +31,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-// app.use(session({
-//   secret: "mySecret",
-//   resave: false,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
 // MongoDB 연결
 
 mongoose.connect(process.env.MONGODB_URL, {
@@ -56,7 +47,7 @@ db.once("open", function () {
 });
 
 // HTML, CSS, JS 라우팅
-//app.use("/", viewsRouter);
+// app.use("/", viewsRouter);
 
 // API 라우팅
 app.use(userRouter);
