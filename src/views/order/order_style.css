@@ -1,3 +1,6 @@
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
 a{
   text-decoration: none;
   color: #000;
@@ -19,8 +22,6 @@ html, body{
   height: 100%;
   box-sizing: border-box;
 }
-/* 상품이 없을때(empty)있을 때를 구분 */
-/* 공통 */
 body> header{
   height: 100px;
   background-color: bisque;
@@ -44,10 +45,11 @@ footer{
 
 
 .cart__detail{
+  margin: 0 10%;
   height: 100%;
 }
 .cart__product__list{
-  height:150px; 
+  height:100px; 
   display: flex;
   flex-direction: row;
   margin-top: 20px;
@@ -58,60 +60,54 @@ footer{
 }
 .list__img__block > a> img{
   margin-left: 10px;
-  width: 130px;
+  width: 80px;
   object-fit: scale-down;
 }
 .list__name__block{
-  width: 55%;
+  width: 45%;
   display: flex;
   flex-direction: column;
 }
 .product__name__text{
-  font-size: 20pt;
+  font-size: 15pt;
   margin-bottom: 60px;
 }
-.sel__del{
-  width: 50px;
-  align-items: flex-start;
-  
-  margin-left: 0;
-}
 .list__info__block{
-  width: 25%;
-  margin-top: 5px;
-
+  display: flex;
+  flex-direction: column;
+  width: 35%;
 }
 .product__quan{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .minusbtn , .plusbtn{
   font-size: 15pt;
 }
-
-
-.cart__order__list{
+.total__price__block{
+  font-weight: 600;
   border-top: solid 2px #000;
-  height: 150px;
   display: flex;
   flex-direction: row;
-  
-}
-.blank{
-  height: 100%;
-  width: 75%;
-}
-.list__total{
-  width: 25%;
-}
-.total__price__block{
-  display: flex;
-  flex-direction: column;
   padding-top: 15px;
 }
-.order__price{
-  margin-bottom: 10px;
+.blank{
+  width: 55%;
 }
-.total__price__text{
+.total__price__block >*{
+ margin-right: 20px;
+}
+.total__price{
   font-size: 15pt;
-  margin: 10px 0;
+}
+
+
+
+
+.order-info-box{
+  display: flex;
+  flex-direction: column;
+}
+.order-info-box>*{
+ margin-bottom: 10px;
+
 }
