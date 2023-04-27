@@ -11,7 +11,8 @@
 </head>
 <body>
   <!-- 공통 -->
-  <header></header>
+  <header><button class="btn">버튼
+  </button></header>
 
   <main>
     <header class="cart__header">
@@ -29,8 +30,9 @@
     </section>
 
     <!-- 카트 안에 물건이 있을 때 -->
-    <section class="cart__detail" id="cart__have__product">
-    <!-- 삽입되어야하는 부분 -->
+    <section class="cart__detail">
+      <div id="cart__have__product">
+        <!-- 삽입되어야하는 부분 -->
         <!-- <div class="cart__product__list"> -->
           <!-- <div class="list__img__block"> -->
             <!-- <a href="#none"><img id="product__img" src="" alt="sss"></a> -->
@@ -55,6 +57,7 @@
           <!-- </div> -->
         <!-- </div> -->
         <!-- 요까지 -->
+      </div>
         
         <div class="cart__order__list">
           <div class="blank"></div>
@@ -64,7 +67,7 @@
             <div class="total__price__block">
               <div class="order__price">
                 <span>가격:</span>
-                <span id="order__price__num">1111</span>  
+                <span id="order__price__num"></span>  
               </div>
                 
               <div id="deli__price">
@@ -72,8 +75,12 @@
                 <span id="deli__price__num"> 2,500</span>
               </div>
             
+              <div class="total__price__line"></div>
+              <div class="total__price__text">
                 <span>총합:</span>
                 <span id="total__price__num"></span>
+              </div>
+              <div class="total__price__line"></div>
             </div>
 
             <div class="cart__footer">
