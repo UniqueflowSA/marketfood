@@ -9,11 +9,14 @@ export default class OrderModel {
   await newOrder.save();
   return newOrder;
   }
-  async getOrderById(orderId) {
+  async findAllByUserId(userId) {
+    const orders = await Order.find({ userId });
+    return orders;
+  }
+  async findById(orderId) {
     const order = await Order.findById(orderId);
     return order;
   }
-
   async updateOrder(orderId, update) {
     const filter = { _id: orderId };
     const option = { new: true };
@@ -25,9 +28,10 @@ export default class OrderModel {
     const deletedOrder = await Order.deleteOne({ _id: orderId });
     return deletedOrder;
   }
-
-  async findAllByUserId(userId) {
-    const orders = await Order.find({ userId });
+  async findAllOrders() {
+    const orders = await Order.find();
     return orders;
   }
+  
+  
 }
