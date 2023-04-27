@@ -12,7 +12,7 @@ import {
   authRouter,
   categoryRouter,
   productRouter,
-  // nationRouter,
+  nationRouter,
   // viewsRouter,
   orderRouter,
 } from "./routers/index.js";
@@ -53,10 +53,10 @@ db.once("open", function () {
 app.use(userRouter);
 app.use(authRouter);
 app.use(productRouter);
-//app.use("/api/auth", authRouter);
 app.use(categoryRouter);
-// app.use("/api/nation", nationRouter);
+app.use(nationRouter);
 app.use(orderRouter);
+//app.use("/api/auth", authRouter);
 
 // 에러 핸들러
 app.use(errorHandler);

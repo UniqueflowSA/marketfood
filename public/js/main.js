@@ -12,7 +12,7 @@ async function main() {
     navbarRender( loggedInUser );
     footerRander();
 
-    return { loggedInUser };
+    return { loggedInUser }; 
 }
 
 export { main };
