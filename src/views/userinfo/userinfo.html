@@ -2,16 +2,16 @@
 <html lang="kor">
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원 정보 수정</title>
 <!-- https://ko.javascript.info/script-async-defer -->
 <script defer src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer src="join.js" type="module"></script>
-<link type="text/css" rel="stylesheet" href="join.css">
+<script defer src="userinfo.js" type="module"></script>
+<link type="text/css" rel="stylesheet" href="userinfo.css">
 </head>
 <body>
+<!-- 상단바 공용에서 만들어서 씀-->
 <div class="join-wrapper">
     <form class="join-form" method="post">
-        <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="로고 이미지"></a>
         <div class="join-name">아이디</div>
         <input id="user-id" name="user-id" class="join-text" type="text">
         <div id="id-error" name="id-error" class="id-error">4~12자 이내의 영문 혹은 영문과 숫자를 조합</div>
@@ -24,28 +24,6 @@
         <div class="join-name">이름</div>
         <input id="user-name" name="user-name" class="join-text" type="text">
         <div id="name-error" name="name-error" class="name-error"></div>
-        <div class="join-name">생년월일</div>
-        <div class="join-birth">
-            <input id="user-yy" name="user-yy" class="join-birth-input" type="number" placeholder="년(4자)">
-            <select id="user-mm" name="user-mm" class="join-birth-input">
-                <option value="">월</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-            <input id="user-dd" name="user-dd" class="join-birth-input" type="number" placeholder="일">
-        </div>
-        <div id="year-error" name="year-error" class="year-error"></div>
-        <div id="day-error" name="day-error" class="day-error"></div>
         <div class="join-name">주소</div>
         <div class="join-post">
             <input id="user-post" name="user-post" class="join-post-input" type="text" placeholder="우편번호" readonly>
@@ -59,9 +37,10 @@
         <div class="join-name">휴대전화</div>
         <input id="user-phone" name="user-phone" class="join-text" type="text" placeholder="숫자만 입력해주세요">
         <div id="phone-error" name="phone-error" class="phone-error"></div>
-        <button id="submit-btn" class="join-btn"type="button">회원가입</button>
+        <button id="submit-btn" class="join-btn"type="button">수정</button>
     </form>
 </div>
+<!-- 하단바 공용에서 만들어서 씀-->
 <footer></footer>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // API 데이터 받아오기
 function getMembers() {
-  fetch("/admin/members")
+  fetch("http://localhost:4000/user/admin/members")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -102,7 +102,7 @@ function renderMembers(members) {
 
 // 권한 수정
 function patchMember(email, edit) {
-  fetch("/admin/members", {
+  fetch("http://localhost:4000/user/admin/members/:userId", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

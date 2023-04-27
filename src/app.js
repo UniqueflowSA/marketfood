@@ -14,7 +14,7 @@ import {
   productRouter,
   nationRouter,
   // viewsRouter,
-  // orderRouter,
+  orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
 
@@ -55,7 +55,8 @@ app.use(authRouter);
 app.use(productRouter);
 app.use(categoryRouter);
 app.use(nationRouter);
-// app.use("/api/order", orderRouter);
+app.use(orderRouter);
+//app.use("/api/auth", authRouter);
 
 // 에러 핸들러
 app.use(errorHandler);

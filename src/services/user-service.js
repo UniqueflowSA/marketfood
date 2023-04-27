@@ -8,6 +8,10 @@ export const userService = {
   },
 
   async getUser(userId) {
+    const loggedInUserId = req.user.id;
+    if (userId !== loggedInUserId) {
+      throw new Error('인증된 사용자 정보만 조회할 수 있습니다.');
+    }
     const userModel = new UserModel();
     const foundUser = await userModel.findOne(userId);
     return foundUser;
