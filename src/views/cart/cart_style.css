@@ -1,6 +1,7 @@
+@import "/public/css/main.css";
 
-*{/* 폰트 프리텐다드적용(임의) */
-  font-family: 'Nanum Gothic', sans-serif;
+*{/* 폰트적용 */
+  font-family: 'Nanum Square', sans-serif;
 }
 a{
   text-decoration: none;
