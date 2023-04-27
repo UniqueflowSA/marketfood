@@ -12,7 +12,7 @@ import {
   authRouter,
   categoryRouter,
   productRouter,
-  // nationRouter,
+  nationRouter,
   // viewsRouter,
   // orderRouter,
 } from "./routers/index.js";
@@ -50,13 +50,11 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
-app.use("/user",userRouter);
-app.use("/auth",authRouter);
+app.use(userRouter);
+app.use(authRouter);
 app.use(productRouter);
-//app.use("/api/auth", authRouter);
 app.use(categoryRouter);
-// app.use("/api/nation", nationRouter);
-// app.use(productRouter);
+app.use(nationRouter);
 // app.use("/api/order", orderRouter);
 
 // 에러 핸들러
