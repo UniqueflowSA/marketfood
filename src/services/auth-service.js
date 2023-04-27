@@ -4,13 +4,7 @@ import { Auth } from "../db/models/auth-model.js";
 const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
 
 export const authService = {
-  async login(userId, password) {
-    if (!userId) {
-      throw new Error("아이디를 입력해주세요.");
-    }
-    if (!password) {
-      throw new Error("비밀번호를 입력해주세요.");
-    }
+  async login(userId, password) {  
     const user = await Auth.findOne({ userId: userId });
     if (!user) {
       throw new Error("없는 아이디입니다.");
@@ -24,18 +18,12 @@ export const authService = {
       );
     }
 
-    const tokenPayload = { id: user.id };
-    const isAdmin = user.isAdmin || false;
-    console.log(`isAdmin: ${isAdmin}`);
-    if (isAdmin) {
-      tokenPayload.isAdmin = true;
-    }else {
-      tokenPayload.isAdmin = false;
-    }
-    
+    const tokenPayload = { userId: user.id, isAdmin: user.isAdmin };
+
+        
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: "1h" });
 
-    return { token, isAdmin };
+    return { token, userId:user.id, isAdmin:user.isAdmin };
   },
 
   async logout(token) {
@@ -47,12 +35,4 @@ export const authService = {
     }
   },
 
-  async generateAdminToken(userId) {
-    const token = await jwt.sign(
-      { id: userId, isAdmin: true },
-      secretKey,
-      { expiresIn: "1h" }
-    );
-    return token;
-  },
 };
