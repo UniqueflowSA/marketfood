@@ -12,7 +12,7 @@ router.use("/user", userRouter);
 router.use("/auth", authRouter);
 // router.use("/category", categoryRouter);
 // router.use("/nation", nationRouter);
-router.use("/product", productRouter);
-router.use("/order", orderRouter);
+ router.use(productRouter);
+// router.use("/order", orderRouter);
 
 export { router, userRouter, authRouter, productRouter, orderRouter };

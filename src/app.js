@@ -66,6 +66,7 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
+<<<<<<< HEAD
 app.use(userRouter);
 app.use(authRouter);
 <<<<<<< HEAD
@@ -76,6 +77,16 @@ app.use(categoryRouter);
 app.use(nationRouter);
 app.use(productRouter);
 app.use(orderRouter);
+=======
+app.use("/user",userRouter);
+app.use("/auth",authRouter);
+app.use(productRouter);
+//app.use("/api/auth", authRouter);
+// app.use("/api/category", categoryRouter);
+// app.use("/api/nation", nationRouter);
+// app.use(productRouter);
+// app.use("/api/order", orderRouter);
+>>>>>>> dev-FE
 
 // 에러 핸들러
 app.use(errorHandler);

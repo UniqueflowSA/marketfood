@@ -11,7 +11,8 @@ const shoppingBtn = document.querySelector(".shopping__page__btn")
 // //LocalStorage에 저장
 // localStorage.setItem('product', JSON.stringify(product))
 
-window.addEventListener('load',()=>{
+//장바구니 페이지가 로드될 때 로컬정보에 데이터 유무를 판단합니다.
+window.addEventListener('load',()=>{ 
 	const localLength = localStorage.length;
 	const orders = []
 	for(let i=1;i<localLength+1;i++){
@@ -112,8 +113,6 @@ window.addEventListener('load',()=>{
 	}
 
 })
-
-	
 
 
 shoppingBtn.addEventListener("click",()=>{

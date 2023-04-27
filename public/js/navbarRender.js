@@ -26,7 +26,7 @@ function navbarRender(loggedInUser) {
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
-                  <a href="/src/views/cart/cart_main.html" class="navbar-text">장바구니</a>
+                  <a href="/src/views/cart" class="navbar-text">장바구니</a>
               </li>
           </ul>
       </nav>
