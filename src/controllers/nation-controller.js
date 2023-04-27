@@ -31,7 +31,7 @@ class NationController{
   }
   async updateNation(req, res, next) {
     try {
-      const nationId = req.params;
+      const nationId = req.params.nationId;
       const updateNation = req.body;
       const updatedNation = await nationService.updateNation(nationId, updateNation);
 
