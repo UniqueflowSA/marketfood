@@ -14,7 +14,6 @@ import {
   productRouter,
   // nationRouter,
   // viewsRouter,
-  productRouter,
   orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -51,8 +50,8 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
-app.use("/user",userRouter);
-app.use("/auth",authRouter);
+app.use(userRouter);
+app.use(authRouter);
 app.use(productRouter);
 //app.use("/api/auth", authRouter);
 app.use(categoryRouter);

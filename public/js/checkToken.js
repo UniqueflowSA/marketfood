@@ -16,5 +16,12 @@
 //     }
 // }
 
+// setItem("token", JSON.stringify(받아온토큰))
+
+function checkToken() {
+    if(window.localStorage.getItem("token")){
+        const loggedInUser = JSON.parse(window.localStorage.getItem("token"));
+    }
+}
 
 export { checkToken } ;
