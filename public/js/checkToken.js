@@ -21,6 +21,9 @@
 function checkToken() {
     if(window.localStorage.getItem("token")){
         const loggedInUser = JSON.parse(window.localStorage.getItem("token"));
+        return {loggedInUser}
+    } else {
+        return false;
     }
 }
 
