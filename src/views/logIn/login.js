@@ -21,5 +21,3 @@ function login() {
     .then((res) => res.json())
     .then((res) => console.log(res));
 }
-
-//승환님 보이시나여..?ㅠㅠ
