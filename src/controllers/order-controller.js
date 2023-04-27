@@ -1,21 +1,6 @@
 import { orderService } from "../services/order-service.js";
 
 export default {
-  async createOrder(req, res, next) {
-    // req 에서 데이터 가져오기
-    const { summaryTitle, totalPrice, address, request } = req.body;
-    const userId = req.userId;
-    // 위 데이터를 제품 db에 추가하기
-    const newOrder = await orderService.createOrder({
-      userId,
-      summaryTitle,
-      totalPrice,
-      address,
-      request,
-    });
-
-    res.status(201).json({_id:newOrder});
-  },
 
   async getOrderAll(req, res, next) {
     const userId = req.userId;
