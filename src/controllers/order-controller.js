@@ -1,56 +1,22 @@
 import { orderService } from "../services/order-service.js";
 
 export default {
-  // async createOrder(req, res, next) {
-  //   // req 에서 데이터 가져오기
-  //   const { summaryTitle, totalPrice, address, request } = req.body;
-  //   const userId = req.userId;
-  //   // 위 데이터를 제품 db에 추가하기
-  //   const newOrder = await orderService.createOrder({
-  //     userId,
-  //     summaryTitle,
-  //     totalPrice,
-  //     address,
-  //     request,
-  //   });
-
-  //   res.status(201).json({_id:newOrder});
-  // },
-  async createOrder(req, res) {
+  async createOrder(req, res, next) {
     // req 에서 데이터 가져오기
-    const { userId, products, address, request } = req.body;
-   // products 배열의 요소들을 이용하여 상품 정보 조회
-   const productDetails = await Promise.all(
-    products.map(async (product) => {
-      const { productId, quantity } = product;
-      const productDetail = await product.findById(productId);
-      return { product: productDetail, quantity };
-    })
-  );
+    const { summaryTitle, totalPrice, address, request } = req.body;
+    const userId = req.userId;
+    // 위 데이터를 제품 db에 추가하기
+    const newOrder = await orderService.createOrder({
+      userId,
+      summaryTitle,
+      totalPrice,
+      address,
+      request,
+    });
 
-  // 상품 정보와 주문 정보를 이용하여 새로운 주문 생성
-  const totalPrice = productDetails.reduce(
-    (acc, product) => acc + product.product.price * product.quantity,
-    0
-  );
-  const summaryTitle = `${productDetails.length}개의 상품`;
-  const order = new Order({
-    userId,
-    products: productDetails,
-    summaryTitle,
-    totalPrice,
-    address,
-    request,
-    status: "ordered",
-  });
-  const savedOrder = await order.save();
+    res.status(201).json({_id:newOrder});
+  },
 
-  res.json(savedOrder);
-}, catch (err) {
-  console.error(err);
-  res.status(500).json({ error: "서버 오류" });
-},
-  
   async getOrderAll(req, res, next) {
     const userId = req.userId;
     try {
@@ -66,7 +32,7 @@ export default {
   async getOrderOne(req, res, next) {
     try {
       const orderId = req.params.orderId;
-      const orderData = await orderService.getOrderById(orderId);
+      const orderData = await orderService.getOrderOne(orderId);
 
       res.status(200).json(orderData);
     } catch (error) {
@@ -88,7 +54,7 @@ export default {
       if (status) toUpdate.status = status;
 
       // 제품 정보를 업데이트함.
-      const updatedOrder = await orderService.setOrder(orderId, toUpdate);
+      const updatedOrder = await orderService.updateOrder(orderId, toUpdate);
 
       res.status(200).json(updatedOrder);
     } catch (error) {
