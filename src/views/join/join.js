@@ -5,9 +5,13 @@ const userPw = document.getElementById("user-pw");
 const userPwCfm = document.getElementById("user-pw-cfm");
 const userName = document.getElementById("user-name");
 const userPhone = document.getElementById("user-phone");
-const userAddr = document.getElementById("user_detail-addr");
 const userYear = document.getElementById("user-yy");
+const userMonth = document.getElementById("user-mm");
 const userDay = document.getElementById("user-dd");
+const userPost = document.getElementById("user-post");
+const userAddr = document.getElementById("user-addr");
+const userDetailAddr = document.getElementById("user-detail-addr");
+
 
 const idError = document.getElementById("id-error");
 const pwError = document.getElementById("pw-error");
@@ -64,6 +68,15 @@ submitBtn.onclick = () => {
             password: userPw.value,
             name: userName.value,
             phone: userPhone.value,
+<<<<<<< HEAD
+=======
+            address: {
+                postalCode: userPost.value,
+                address1: userAddr.value,
+                address2: userDetailAddr.value,
+              },
+            birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
+>>>>>>> 1dcc39c52907584d5daebc8c9cc3de53739d8d8c
     
         };
         fetch("http://localhost:4000/signup", {
@@ -137,7 +150,7 @@ userName.onchange = () => {
 
 //onchange_address
 userAddr.onchange = () => {
-    const userAddrInput = userAddr.value;
+    const userAddrInput = userDetailAddr.value;
     if (!validAddr.test(userAddrInput)) {
         addrError.style.display = "block";
         addrError.style.color = "red";
@@ -199,12 +212,12 @@ postSearchBtn.onclick = () => {
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('user_post').value = data.zonecode;
+            document.getElementById('user-post').value = data.zonecode;
             if(roadAddr !== ''){
-                document.getElementById("user_addr").value = roadAddr;
+                document.getElementById("user-addr").value = roadAddr;
             } 
             else if(jibunAddr !== ''){
-                document.getElementById("user_addr").value = jibunAddr;
+                document.getElementById("user-addr").value = jibunAddr;
             }
         }
     }).open();

@@ -12,9 +12,9 @@ import {
   authRouter,
   categoryRouter,
   productRouter,
-  // nationRouter,
+  nationRouter,
   // viewsRouter,
-  // orderRouter,
+  orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
 
@@ -50,14 +50,13 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
-app.use("/user",userRouter);
-app.use("/auth",authRouter);
+app.use(userRouter);
+app.use(authRouter);
 app.use(productRouter);
-//app.use("/api/auth", authRouter);
 app.use(categoryRouter);
-// app.use("/api/nation", nationRouter);
-// app.use(productRouter);
-// app.use("/api/order", orderRouter);
+app.use(nationRouter);
+app.use(orderRouter);
+//app.use("/api/auth", authRouter);
 
 // 에러 핸들러
 app.use(errorHandler);

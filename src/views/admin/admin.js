@@ -115,6 +115,26 @@ modalButton3.addEventListener('click', () => {
 	modal3.style.display = 'block';
 });
 
+/*
+// 상품 수정 모달창
+const modalButton4 = document.querySelector('#modify-product-btn');
+const modal4 = document.querySelector('#modifyProductModal');
+
+modalButton4.addEventListener('click', () => {
+	modal4.style.display = 'block';
+});*/
+
+
+// 상품 수정 모달창
+const modalButtons = document.querySelectorAll('#modify-product-btn');
+const modal4 = document.querySelector('#modifyProductModal');
+
+modalButtons.forEach((button) => {
+	button.addEventListener('click', () => {
+    modal4.style.display = 'block';
+});
+});
+
 
 
 // 국가 추가 모달창
@@ -123,6 +143,17 @@ const modal = document.querySelector('#addCountryModal');
 
 modalButton.addEventListener('click', () => {
 	modal.style.display = 'block';
+});
+
+
+// 국가 수정 모달창
+const modalButtons2 = document.querySelectorAll('#modify-country-btn');
+const modal5 = document.querySelector('#modifyCountryModal');
+
+modalButtons2.forEach((button) => {
+	button.addEventListener('click', () => {
+    modal5.style.display = 'block';
+});
 });
 
 
@@ -135,6 +166,16 @@ modalButton2.addEventListener('click', () => {
 	modal2.style.display = 'block';
 });
 
+
+// 종류 수정 모달창
+const modalButtons3 = document.querySelectorAll('#modify-category-btn');
+const modal6 = document.querySelector('#modifyCategoryModal');
+
+modalButtons3.forEach((button) => {
+	button.addEventListener('click', () => {
+    modal6.style.display = 'block';
+});
+});
 
 
 // 모달창 외부를 누르면 모달창 닫힘

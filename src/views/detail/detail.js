@@ -17,26 +17,6 @@ const sp = html.split("?");
 const itemid = sp[1].replace("/", "");
 
 
-// 로그인, 비로그인 유저별 주문버튼 생성 *로그인 상태 구분 방법 확인 후 마무리
-const buttonContainer = document.querySelector(".order-container")
-const PurchaseBtn = document.querySelector(".button-purchase")
-const cartBtn = document.querySelector(".button-cart")
-
-if (loggedInUser) {
-    buttonContainer.innerHTML += `<div class="button-sub-container">
-    <a class="button-cart"><p>장바구니</p></a>
-    <a href="/src/views/order" class="button-purchase"><p>바로구매</p></a>
-  </div>`
-  PurchaseBtn.classList.add(".button-cart");
-} else {
-    buttonContainer.innerHTML += `<div class="button-sub-container">
-    <a class="button-cart"><p>장바구니</p></a>
-    <a href="/src/views/login.html" class="button-purchase"><p>바로구매</p></a>
-  </div>`
-  PurchaseBtn.addEventListener("click", ()=>{alert("로그인 후 이용가능합니다")});
-}
-
-
 // 프로덕트 정보 렌더링
 const productName = document.querySelector(".product-name")
 const productDesc = document.querySelector(".product-desc")
@@ -44,6 +24,7 @@ const productPrice = document.querySelector(".product-price")
 const orderedPrice = document.querySelector(".ordered-price")
 const productImg = document.querySelector(".product-img-container")
 const productAmount = document.querySelector(".product-amount")
+const buttonContainer = document.querySelector(".order-container")
 
 fetch(`http://localhost:4000/product/${itemid}`)
   .then(res => res.json())
@@ -53,19 +34,30 @@ fetch(`http://localhost:4000/product/${itemid}`)
     productPrice.textContent = `₩${product.price}`;
     orderedPrice.textContent = `₩${product.price}`; 
     productImg.innerHTML += `<img src="${product.imgUrl}" class="product-img" />`
+
+    // 로그인, 비로그인 유저별 주문버튼 생성
+    if (loggedInUser) {
+      buttonContainer.innerHTML += `<div class="button-sub-container">
+      <a class="button-cart"><p>장바구니</p></a>
+      <a href="/src/views/order" class="button-purchase"><p>바로구매</p></a>
+    </div>`
+    const PurchaseBtn = document.querySelector(".button-purchase")
+    PurchaseBtn.classList.add(".button-cart");
+    } else {
+      buttonContainer.innerHTML += `<div class="button-sub-container">
+      <a class="button-cart"><p>장바구니</p></a>
+      <a href="/src/views/login/login.html" class="button-purchase"><p>바로구매</p></a>
+    </div>`
+    const PurchaseBtn = document.querySelector(".button-purchase")
+    PurchaseBtn.addEventListener("click", ()=>{alert("로그인 후 이용가능합니다")});
+    }
   })
   .then((product)=>{ // 로컬 저장소의 장바구니 조회 후 현재 제품 장바구니 추가
+    const cartBtn = document.querySelector(".button-cart")
     cartBtn.addEventListener("click", ()=>{
+
       // 카트 현상황 갯수 조회
       let nowcart = [];
-      for(let i = 0; i < window.localStorage.length; i++){
-         if(window.localStorage.key(i).includes("cart")){
-          nowcart.push(window.localStorage.key(i))
-         }
-      }
-      const nextCartNum = `cart${nowcart.length+1}`
-
-      // 로컬저장소에 제이슨문자열로 현재상품 정보 전달
       const productInfo = {
         _id : itemid,
         product : product.product,
@@ -75,9 +67,22 @@ fetch(`http://localhost:4000/product/${itemid}`)
       };
       const productInfoJson = JSON.stringify(productInfo);
 
-      window.localStorage.setItem(nextCartNum, productInfoJson)
+      // 로컬저장소에 제이슨문자열로 현재상품 정보 전달
+      for(let i = 0; i < window.localStorage.length; i++){
+         if(window.localStorage.key(i).includes("cart")){
+          nowcart.push(window.localStorage.key(i))
+         }
+      }
+      
+      const nextCartNum = `cart${nowcart.length+1}`
+      if (nowcart.length !== 0){
+        window.localStorage.setItem(nextCartNum, productInfoJson)
+      } else {
+        window.localStorage.setItem("cart1", productInfoJson)}
+
+      alert("장바구니에 저장했습니다")
     })
-  })
+  });
 
 
 // 수량 증감
@@ -103,4 +108,6 @@ amountMinus.addEventListener("click", ()=>{
 })
 
 
+
+// 로그인, 비로그인 유저별 주문버튼 생성
 
