@@ -59,15 +59,10 @@ export default {
   },
   async getAdminAllOrders(req, res, next) {
     try {
-      // 관리자 권한을 가진 사용자만 주문 내역 전체를 조회할 수 있도록 제한
-      if (!req.isAdmin) {
-        res.status(403).json({ message: "관리자만 접근 가능합니다." });
-        return;
-      }
+      
   
       // 모든 주문 내역을 조회하여 반환
       const orders = await orderService.getAdminAllOrders();
-  
       res.status(200).json(orders);
     } catch (error) {
       next(error);
