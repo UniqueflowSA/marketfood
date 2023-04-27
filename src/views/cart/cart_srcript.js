@@ -46,7 +46,7 @@ const shoppingBtn = document.querySelector(".shopping__page__btn")
           nowcart.push(data)
          }
 				
-      }
+				}
       
 console.log(nowcart);
 if(dataCount > 0){//장바구니 상품이 있을 때
