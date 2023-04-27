@@ -18,7 +18,7 @@ export const authService = {
       );
     }
 
-    const tokenPayload = { userId: user.id, isAdmin: user.isAdmin };
+    const tokenPayload = { userId: user.userId, isAdmin: user.isAdmin };
 
         
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: "1h" });
