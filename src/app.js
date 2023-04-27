@@ -15,6 +15,7 @@ import {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   nationRouter,
 =======
   // nationRouter,
@@ -27,6 +28,9 @@ import {
 >>>>>>> dev-BE-jonguk
   // viewsRouter,
   // orderRouter,
+=======
+  orderRouter,
+>>>>>>> dev-BE-seunghwan
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
 
@@ -42,15 +46,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
-
-// app.use(session({
-//   secret: "mySecret",
-//   resave: false,
-//   saveUninitialized: true
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 
 // MongoDB 연결
 
@@ -68,7 +63,7 @@ db.once("open", function () {
 });
 
 // HTML, CSS, JS 라우팅
-//app.use("/", viewsRouter);
+// app.use("/", viewsRouter);
 
 // API 라우팅
 app.use(userRouter);
@@ -80,7 +75,7 @@ app.use(authRouter);
 app.use(categoryRouter);
 app.use(nationRouter);
 app.use(productRouter);
-// app.use("/api/order", orderRouter);
+app.use(orderRouter);
 
 // 에러 핸들러
 app.use(errorHandler);
