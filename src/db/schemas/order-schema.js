@@ -3,14 +3,14 @@ import { Schema } from "mongoose";
 const OrderSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
     required: true,
   },
   products: [
     {
       product: {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "product",
         required: true,
       },
       quantity: {
@@ -23,7 +23,7 @@ const OrderSchema = new Schema({
   summaryTitle: {
     type: String,
     required: true,
-  },
+  },//브랜드, 색상 등 주문요약정보
   totalPrice: {
     type: Number,
     required: true,
@@ -44,10 +44,6 @@ const OrderSchema = new Schema({
     enum: ["ordered", "shipped", "delivered"],
     default: "ordered",
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
+}, { timestamps: true });
 
 export {OrderSchema}

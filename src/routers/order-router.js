@@ -6,7 +6,7 @@ const orderRouter = Router();
 
 //사용자
 orderRouter.post("/orders", loginRequired, orderController.createOrder);
-orderRouter.get("/orders/", loginRequired, orderController.getOrderAll);
+orderRouter.get("/orders", loginRequired, orderController.getOrderAll);
 orderRouter.get("/orders/:productId", loginRequired, orderController.getOrderOne);
 orderRouter.patch("/orders/:productId", loginRequired, orderController.updateOrder);
 orderRouter.delete("/orders/:productId", loginRequired, orderController.deleteOrder);
