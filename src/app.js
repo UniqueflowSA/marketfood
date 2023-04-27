@@ -10,10 +10,22 @@ dotenv.config();
 import {
   userRouter,
   authRouter,
-  // categoryRouter,
+  categoryRouter,
+  productRouter,
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  nationRouter,
+=======
   // nationRouter,
+>>>>>>> 84603f2 (카테고리 등록, 전체 불러오기 기능 구현)
+=======
+  nationRouter,
+>>>>>>> 27030e5 (nation API cnrk)
+=======
+  nationRouter,
+>>>>>>> dev-BE-jonguk
   // viewsRouter,
-   productRouter,
   // orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -61,10 +73,12 @@ db.once("open", function () {
 // API 라우팅
 app.use(userRouter);
 app.use(authRouter);
-app.use("/product",productRouter);
+<<<<<<< HEAD
+=======
 //app.use("/api/auth", authRouter);
-// app.use("/api/category", categoryRouter);
-// app.use("/api/nation", nationRouter);
+>>>>>>> dev-BE-jonguk
+app.use(categoryRouter);
+app.use(nationRouter);
 app.use(productRouter);
 // app.use("/api/order", orderRouter);
 
