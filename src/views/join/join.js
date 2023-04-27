@@ -7,6 +7,7 @@ const userName = document.getElementById("user-name");
 const userPhone = document.getElementById("user-phone");
 const userAddr = document.getElementById("user_detail-addr");
 const userYear = document.getElementById("user-yy");
+const userMonth = document.getElementById("user-mm");
 const userDay = document.getElementById("user-dd");
 
 const idError = document.getElementById("id-error");
@@ -64,6 +65,12 @@ submitBtn.onclick = () => {
             password: userPw.value,
             name: userName.value,
             phone: userPhone.value,
+            address: {
+                postalCode: '우편번호',
+                address1: '주소',
+                address2: '상세주소',
+              },
+            birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
     
         };
         fetch("http://localhost:4000/signup", {
