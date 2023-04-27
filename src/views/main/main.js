@@ -1,32 +1,32 @@
-import { main } from "/public/js/main.js";
-main();
+import { main, addCommas } from "/public/js/main.js";
+const { loggedInUser } = await main();
 
 const items = document.querySelector(".main-item-container");
 const categorys = document.querySelector("#categorys");
 const nations = document.querySelector("#nations");
 
-// 제품 선택 투명도 UI
-const itemgrid = document.querySelectorAll(".item-grid");
-itemgrid.forEach( item => {
-    item.addEventListener("mouseenter", (e) => {
-        const overdimg = e.target.querySelector(".item-img");
-        overdimg.style.opacity = "0.6";
-    })
-    item.addEventListener("mouseleave", (e) => {
-        const overdimg = e.target.querySelector(".item-img");
-        overdimg.style.opacity = "1";
-    })
-})
+// 제품 선택 투명도 UI *작동안함이슈 CSS 호버로 임시대체
+// const itemgrid = document.querySelectorAll(".item-grid");
+// itemgrid.forEach( item => {
+//     item.addEventListener("mouseenter", (e) => {
+//         const overdimg = e.target.querySelector(".item-img");
+//         overdimg.style.opacity = "0.6";
+//     })
+//     item.addEventListener("mouseleave", (e) => {
+//         const overdimg = e.target.querySelector(".item-img");
+//         overdimg.style.opacity = "1";
+//     })
+// })
 
 // 제품리스트 생성 함수
 const createItems = (item) => {
     return `<div class="item-grid">
-    <a href="/product/${item._id}" class="item-link">
-        <img src="${item.img-url}" alt="" class="item-img">
+    <a href="/src/views/detail/detail.html?${item._id}" class="item-link">
+        <img src="${item.imgUrl}" alt="" class="item-img">
         <div class="item-text">
             <div class="item-title">${item.product}</div>
-            <div class="item-price">${item.price}</div>
-            <div class="item-category"><img src="public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation}" | "${item.category}}</div>
+            <div class="item-price">₩${addCommas(item.price)}</div>
+            <div class="item-category"><img src="/public/img/${item.nation}-icon.jpg" alt="" class="country-img">${item.nation} | ${item.category}</div>
         </div>
     </a>
 </div>`
@@ -34,7 +34,7 @@ const createItems = (item) => {
 
 // 카테고리 생성 함수
 const createCategory = (item) => {
-    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked">${item.category}</p></li>`
+    return `<li class="main-nav-list"><p  class="main-nav-content-unclicked">${item.name}</p></li>`
 }
 
 // 국가 생성 함수
@@ -46,8 +46,6 @@ const createNation = (item) => {
 const carousel = document.querySelector(".carousel");
 const carouselImgs = carousel.querySelector(".carousel-imgs");
 const carouselimg = carouselImgs.querySelectorAll(".carousel-img");
-    // 전역변수를 이렇게 사용했을시 생기는 문제
-    // 클로저? 이름이 비슷해서 헷갈린다? currentImg는 네임이 충돌할 가능성이 높아보인다
 
 let currentImg = 0;
 
@@ -128,8 +126,6 @@ for (let i = 0; i < categoryButton.length; i++) {
             category.classList.remove("main-nav-content-clicked");
           })
 
-        // 전체 메뉴 데이터 가져오는 패치 추가 *필요
-
         // 버튼, 메뉴 UI 켜기
         if (categoryButton[i].classList.contains("main-header-button-unclicked") == true) {
             
@@ -150,6 +146,14 @@ for (let i = 0; i < categoryButton.length; i++) {
             let unclickedMainNav = document.querySelector(".main-nav-clicked")
             unclickedMainNav.classList.replace("main-nav-clicked", "main-nav-unclicked")
             categoryMenu[i].classList.replace("main-nav-cetegory-clicked", "main-nav-cetegory-unclicked")
+            items.innerHTML = ""
+            fetch("http://localhost:4000/product")
+            .then(res => res.json())
+            .then(productlist =>{ //첫 화면에 전체 값 보여주기
+                productlist.forEach((product)=>{
+                    const newproduct = createItems(product);
+                    items.innerHTML += newproduct;
+                })});
         }
     }
 }
@@ -167,9 +171,9 @@ categoryMenuList.forEach((category) => {
 )
 
 // 카테고리리스트 생성 fetch
-fetch("/category")
+fetch("http://localhost:4000/category")
     .then(res => res.json())
-    .then((categorylist) => {
+    .then(categorylist => {
         categorylist.forEach((category)=>{
             const createdCategory = createCategory(category);
             categorys.innerHTML += createdCategory;
@@ -181,9 +185,9 @@ fetch("/category")
 
 
 // 국가리스트 생성 fetch
-fetch("/nation")
+fetch("http://localhost:4000/nation")
 .then(res => res.json())
-.then((nationlist) => {
+.then(nationlist => {
     nationlist.forEach((nation)=>{
         const createdNation = createNation(nation);
         nations.innerHTML += createdNation;
@@ -195,21 +199,21 @@ fetch("/nation")
 
 
 // 제품 리스트 생성 fetch
-fetch("/product")
+fetch("http://localhost:4000/product")
     .then(res => res.json())
-    .then((productlist) =>{ //첫 화면에 전체 값 보여주기
+    .then(productlist =>{ //첫 화면에 전체 값 보여주기
         productlist.forEach((product)=>{
             const newproduct = createItems(product);
             items.innerHTML += newproduct;
-        }) 
+        });
     })
-    .then((productlist) => { //카테고리 메뉴 전환시 전체 값 보여주기
-        categoryButton.addEventListener("click", (e) => {
-            productlist.forEach((product)=>{
-                const allproduct = createItems(product);
-                items.innerHTML += allproduct;
-            })
-        }) 
+    .then(productlist => { //카테고리 메뉴 전환시 전체 값 보여주기 *다른 파트에서 해결
+        // categoryButton.addEventListener("click", (e) => {
+        //     productlist.forEach((product)=>{
+        //         const allproduct = createItems(product);
+        //         items.innerHTML += allproduct;
+        //     })
+        // }) 
         categoryMenuList.forEach((categoryMenu) => {
             categoryMenu.addEventListener("click", (e) =>{
                 const categoryitems = [];
@@ -217,12 +221,14 @@ fetch("/product")
 
                 if(clickedcategory.contains(categoryMenuimg)){
                     //카테고리메뉴가 국가별 분류일 경우
+                    items.innerHTML = ""
                     if(product.nation.includes(clickedcategory.textContent)){
                         categoryitems.push(product)
                     }
                 } else {
                 productlist.forEach((product)=>{
                     //카테고리메뉴가 종류별메뉴일 경우
+                    items.innerHTML = ""
                     if(product.category.includes(clickedcategory.textContent)){
                         categoryitems.push(product)
                     }

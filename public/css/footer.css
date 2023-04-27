@@ -4,16 +4,18 @@
    align-items: center;
 }
 
- .footer .footer-container {
-    width: 100%;
-    background-color: #ebcf9b;
-
+.footer .footer-container {
+   width: 100%;
+   margin-top: 50px;
+   padding: 10px 0;
+   background-color: #ebcf9b;
    text-align: center;
    color: white;
    font-weight: 400;
    font-size: 14px;
 }
 
- .footer p {
-    margin: 15px
- }
+.footer p {
+   margin: 10px
+}
+

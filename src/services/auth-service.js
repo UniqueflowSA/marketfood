@@ -1,7 +1,7 @@
-import { Auth } from "../db/models/auth-model.js";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { Auth } from "../db/models/auth-model.js";
 
+const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
 
 export const authService = {
   async login(userId, password) {
@@ -16,11 +16,7 @@ export const authService = {
       throw new Error("없는 아이디입니다.");
     }
 
-    const correctPasswordHash = user.password;
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      correctPasswordHash
-    );
+    const isPasswordCorrect = await user.comparePassword(password);
 
     if (!isPasswordCorrect) {
       throw new Error(
@@ -28,19 +24,35 @@ export const authService = {
       );
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    return token;
+    const tokenPayload = { id: user.id };
+    const isAdmin = user.isAdmin || false;
+    console.log(`isAdmin: ${isAdmin}`);
+    if (isAdmin) {
+      tokenPayload.isAdmin = true;
+    }else {
+      tokenPayload.isAdmin = false;
+    }
+    
+    const token = jwt.sign(tokenPayload, secretKey, { expiresIn: "1h" });
+
+    return { token, isAdmin };
   },
 
   async logout(token) {
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, secretKey);
       const userId = decoded.id;
     } catch (err) {
       throw new Error("유효하지 않은 토큰입니다.");
     }
   },
- 
+
+  async generateAdminToken(userId) {
+    const token = await jwt.sign(
+      { id: userId, isAdmin: true },
+      secretKey,
+      { expiresIn: "1h" }
+    );
+    return token;
+  },
 };

@@ -26,15 +26,22 @@ const ProductSchema = new Schema(
     },
     sellerId: {
       // 판매자 아이디
-      type: Schema.Types.ObjectId,
+      // type: Schema.Types.ObjectId,
+      type:String,
       ref: "user",
       required: true,
     },
-    categoryId: {
+    category: {
       // 카테고리
-      type: Schema.Types.ObjectId,
+      // type: Schema.Types.ObjectId,
+      type:String,
       ref: "categorys",
       required: true,
+    },
+    nation:{
+      type:String,
+      required:true,
+      ref:"nations",
     },
     manufacturer: {
       // 제조사
@@ -51,7 +58,7 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
-    imageKey: {
+    imgUrl: {
       // 이미지
       type: String,
       required: true,
@@ -63,6 +70,7 @@ const ProductSchema = new Schema(
       default: 10,
       required: true,
     },
+    
   },
   {
     collection: "product",

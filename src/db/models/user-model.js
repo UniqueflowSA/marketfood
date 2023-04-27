@@ -5,11 +5,6 @@ import bcrypt from 'bcrypt';
 const User = model('User', UserSchema);
 
 export default class UserModel {
-  async findByEmail(email) {
-    const user = await User.findOne({ email });
-    return user;
-  }
-
   async findOne(userId) {
     const user = await User.findOne({ userId });
     return user
@@ -45,5 +40,28 @@ export default class UserModel {
        
         return deletedUser;
       }
-      
-      }
+async setAdmin(userId) {
+    try {
+      const filter = { userId: userId };
+      const update = { role: "admin" };
+      const option = { new: true };
+      const updatedUser = await User.findOneAndUpdate(filter, update, option);
+      return updatedUser;
+    } catch (error) {
+      throw new Error(`Failed to set admin role for user ${userId}: ${error}`);
+    }
+  }
+  async setUser(userId) {
+    try {
+      const filter = { userId: userId };
+      const update = { role: "user" };
+      const option = { new: true };
+      const updatedUser = await User.findOneAndUpdate(filter, update, option);
+      return updatedUser;
+    } catch (error) {
+      throw new Error(`Failed to set user role for user ${userId}: ${error}`);
+    }
+  }
+  
+}
+
