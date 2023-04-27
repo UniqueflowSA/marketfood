@@ -12,44 +12,50 @@ const shoppingBtn = document.querySelector(".shopping__page__btn")
 
 // window.localStorage.setItem(nextCartNum, productInfoJson)
 
+//여기부터
+		const btn = document.querySelector('.btn')
+		let productInfo ={
+			_id : Math.floor(Math.random()*10), 
+			product: 'chill', 
+			price: 40000, 
+			amount: 2,
+			imgUrl: './image/art-4919768.gif',
+		}
 
-const btn = document.querySelector('.btn')
-let productObj ={
-  _id : 32432432222, 
-  product: 'chill', 
-  price: 40000, 
-  amount: 2,
-  imgUrl: './image/art-4919768.gif',
-}
+		btn.addEventListener('click',()=>{ 
+			const productInfoJson = JSON.stringify(productInfo);
+			const nextCartNum = `cart${localStorage.length+1}`
+				window.localStorage.setItem(nextCartNum, productInfoJson)
 
-btn.addEventListener('click',()=>{ 
-  localStorage.setItem(Math.floor(Math.random()*100), JSON.stringify(productObj))
-
-  console.log('이게뭐지')
-})
+			console.log('이게뭐지')
+		})
 //로컬데이터 생성 테스트
+//이까지는 지워요
 
 	const cartEmpty = document.querySelector('#cart__empty') //제품없을때 안내문 파트
 	const cartDetail = document.querySelector('.cart__detail') //배송비 및 토탈가격 포함 section
 	const cartHaveProduct = document.querySelector('#cart__have__product') //장바구니 상품리스트 페이지
 	const allDeleteBtn = document.querySelector('#all__delete') //전체상품 삭제 버튼
 
-const dataCount = localStorage.length;
-const orders = []
-
-for(let i=0;i<dataCount; i++){
-	const key = localStorage.key(i);
-	const data = JSON.parse(localStorage.getItem(key))
-	orders.push(data)
-}
-console.log(orders);
+	const dataCount = localStorage.length;
+	let nowcart = [];
+      for(let i = 0; i < dataCount; i++){
+         if(window.localStorage.key(i).includes("cart")){
+					const key = localStorage.key(i);
+					const data = JSON.parse(localStorage.getItem(key))
+          nowcart.push(data)
+         }
+				
+      }
+      
+console.log(nowcart);
 if(dataCount > 0){//장바구니 상품이 있을 때
 		allDeleteBtn.classList.remove('display__none')
 		cartEmpty.classList.add('display__none')
 		cartHaveProduct.classList.remove('display__none')
 		cartDetail.classList.remove('display__none')
 
-		orders.forEach((cartItem) =>{
+		nowcart.forEach((cartItem) =>{
 			const{ _id, product, price, amount, imgUrl} = cartItem
 			cartHaveProduct.insertAdjacentHTML('beforeend', 
 				`<div class="cart__product__list" id='productItem__${_id}'>
@@ -86,11 +92,10 @@ if(dataCount > 0){//장바구니 상품이 있을 때
 			const productItem = document.querySelector(`#productItem__${_id}`)
 			 
 
-			
-
 			plusBtn.addEventListener('click',()=>{
 				 amountNum.value = Number(amountNum.value)+1
 				 productPrice.innerHTML = (price * Number(amountNum.value))
+
 			})
 			minusBtn.addEventListener('click',()=>{
 				if(Number(amountNum.value) > 1){
@@ -99,8 +104,7 @@ if(dataCount > 0){//장바구니 상품이 있을 때
 				} else if(Number(amountNum.value) <= 1){
 					alert("수량 최소값입니다.")
 				}
-				
-
+			
 			})
 			deleteBtn.addEventListener('click', ()=>{
 				const key = localStorage.key(_id)
@@ -114,24 +118,24 @@ if(dataCount > 0){//장바구니 상품이 있을 때
 
 			const orderPriceFunc= ()=>{
 					let orderPriceNum = 0;
-					orders.forEach(cartItme =>{
+					nowcart.forEach(cartItme =>{
 						const{_id, price, amount} = cartItem
 						const productPriceNum = price*amount
 						orderPriceNum += productPriceNum
 					})
 					orderPrice.textContent = orderPriceNum
-					totalPrice.textContent = (orderPriceNum*1)+2500  
+					if(parseInt(orderPriceNum)>50000){
+						totalPrice.textContent =  orderPriceNum  
+				} else if(parseInt(orderPriceNum)<50000){
+					totalPrice.textContent =  parseInt(orderPriceNum)+2500
 				}
+			}
 				orderPriceFunc()
-				
 				orderpageBtn.addEventListener('click',()=>{
 					window.location.href = '../order/index.html'
 
 				})
-
-
-
-		})
+	})
 	}else if(dataCount === 0 ){ //장바구니 비었을 때
 			allDeleteBtn.classList.add('display__none')
 			cartEmpty.classList.remove('display__none')
