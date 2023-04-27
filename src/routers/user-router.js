@@ -16,3 +16,4 @@ userRouter.get("/admin/members", adminOnly, userController.getAdminUser);
 userRouter.patch("/admin/members/:userId", adminOnly, userController.updateAdminUser);
 
 export default userRouter
+
