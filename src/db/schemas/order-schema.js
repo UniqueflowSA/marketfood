@@ -22,7 +22,6 @@ const OrderSchema = new Schema({
   ],
   summaryTitle: {
     type: String,
-    required: true,
   },//브랜드, 색상 등 주문요약정보
   totalPrice: {
     type: Number,
@@ -41,8 +40,8 @@ const OrderSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ["ordered", "shipped", "delivered"],
-    default: "ordered",
+    enum: ["배송 준비중", "배송중", "배송 완료"],
+    default: "배송 준비중",
   },
 }, { timestamps: true });
 

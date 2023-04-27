@@ -4,11 +4,7 @@ import { OrderSchema } from "../schemas/order-schema.js";
 const Order = model("Order", OrderSchema);
 
 export default class OrderModel {
-  async create(orderInfo){
-    const newOrder = new Order(orderInfo);
-  await newOrder.save();
-  return newOrder;
-  }
+
   async findAllByUserId(userId) {
     const orders = await Order.find({ userId });
     return orders;

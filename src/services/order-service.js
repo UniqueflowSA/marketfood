@@ -1,11 +1,6 @@
 import OrderModel from "../db/models/order-model.js";
 
 export const orderService = {
-  async createOrder(orderInfo) {
-    const orderModel = new OrderModel();
-    const createdOrder = await orderModel.create(orderInfo)
-    return createdOrder;
-  },
 //모든 주문 조회
   async getOrdersByUserId(userId) {
     const orderModel = new OrderModel();
