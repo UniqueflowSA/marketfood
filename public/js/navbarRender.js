@@ -1,7 +1,7 @@
 function navbarRender(loggedInUser) {
     let navbar;
   
-    if (loggedInUser && loggedInUser.role === "admin") {
+    if (loggedInUser && loggedInUser.isAdmin === true) {
       // 관리자 navbar 어차피 어드민 페이지로 바로 이동해서 사용안할듯?, 혹시 모르니 작성
       navbar = `
       <div class="navbar-container">
