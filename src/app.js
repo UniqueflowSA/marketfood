@@ -56,7 +56,6 @@ app.use(productRouter);
 app.use(categoryRouter);
 app.use(nationRouter);
 app.use(orderRouter);
-//app.use("/api/auth", authRouter);
 
 // 에러 핸들러
 app.use(errorHandler);
