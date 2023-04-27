@@ -584,6 +584,12 @@ body {
 	font-size: 1.5rem;
 }
 
+#close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
 
 
 .register-product-form-box .input:focus,
