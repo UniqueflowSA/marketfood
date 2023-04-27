@@ -1,6 +1,3 @@
-
-
-// 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
 const postSearchBtn = document.getElementById("post-search-btn");
 const userId = document.getElementById("user-id");
@@ -8,9 +5,13 @@ const userPw = document.getElementById("user-pw");
 const userPwCfm = document.getElementById("user-pw-cfm");
 const userName = document.getElementById("user-name");
 const userPhone = document.getElementById("user-phone");
-const userAddr = document.getElementById("user_detail-addr");
 const userYear = document.getElementById("user-yy");
+const userMonth = document.getElementById("user-mm");
 const userDay = document.getElementById("user-dd");
+const userPost = document.getElementById("user-post");
+const userAddr = document.getElementById("user-addr");
+const userDetailAddr = document.getElementById("user-detail-addr");
+
 
 const idError = document.getElementById("id-error");
 const pwError = document.getElementById("pw-error");
@@ -34,6 +35,7 @@ const currentYear = new Date().getFullYear();
 const minYear = currentYear - 100;
 const maxYear = currentYear;
 
+//유효성 검사
 submitBtn.onclick = () => {
     // 아이디를 입력 안했을 때
     if(userId.value == "") {
@@ -42,22 +44,64 @@ submitBtn.onclick = () => {
         return false;
     }
     //비밀번호를 입력 안했을 때
-    if (userPw.value == "") {
+    else if (userPw.value == "") {
         userPw.placeholder = "비밀번호를 입력하세요";
         userPw.focus();//포커스를 Password박스로 이동.
         return false;
     }
     //이름을 입력 안했을 때
-    if (userName.value == "") {
+    else if (userName.value == "") {
         userName.placeholder = "이름을 입력하세요";
         userName.focus();//포커스를 Password박스로 이동.
         return false;
     }
     //핸드폰 번호를 입력 안했을 때
-    if (userPhone.value == "") {
+    else if (userPhone.value == "") {
         userPhone.placeholder = "핸드폰 번호를 입력하세요";
         userPhone.focus();//포커스를 Password박스로 이동.
         return false;
+    }
+    //데이터 보내기
+    else {
+        const data = {
+            userId: userId.value,
+            password: userPw.value,
+            name: userName.value,
+            phone: userPhone.value,
+<<<<<<< HEAD
+=======
+            address: {
+                postalCode: userPost.value,
+                address1: userAddr.value,
+                address2: userDetailAddr.value,
+              },
+            birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
+>>>>>>> 1dcc39c52907584d5daebc8c9cc3de53739d8d8c
+    
+        };
+        fetch("http://localhost:4000/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        })
+        .then((data) => {
+            alert(`정상적으로 회원가입되었습니다.`);
+      
+            // 로그인 페이지 이동
+            window.location.href = "/login";
+        })
+        .catch((err) => {
+            console.error(err.stack);
+            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        });
     }
 }
 //onchange_id
@@ -120,7 +164,7 @@ userName.onchange = () => {
 
 //onchange_address
 userAddr.onchange = () => {
-    const userAddrInput = userAddr.value;
+    const userAddrInput = userDetailAddr.value;
     if (!validAddr.test(userAddrInput)) {
         addrError.style.display = "block";
         addrError.style.color = "red";
@@ -182,12 +226,12 @@ postSearchBtn.onclick = () => {
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var jibunAddr = data.jibunAddress; // 지번 주소 변수
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('user_post').value = data.zonecode;
+            document.getElementById('user-post').value = data.zonecode;
             if(roadAddr !== ''){
-                document.getElementById("user_addr").value = roadAddr;
+                document.getElementById("user-addr").value = roadAddr;
             } 
             else if(jibunAddr !== ''){
-                document.getElementById("user_addr").value = jibunAddr;
+                document.getElementById("user-addr").value = jibunAddr;
             }
         }
     }).open();

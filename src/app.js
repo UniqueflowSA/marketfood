@@ -10,14 +10,16 @@ dotenv.config();
 import {
   userRouter,
   authRouter,
-  // categoryRouter,
-  // nationRouter,
+  categoryRouter,
+  productRouter,
+  nationRouter,
   // viewsRouter,
-   productRouter,
-  // orderRouter,
+  orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
+
 import mongoose from "mongoose";
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url); // 현재 파일 경로
 const __dirname = path.dirname(__filename); // 현재 파일이 위치한 디렉토리 경로
@@ -28,15 +30,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
-
-app.use(session({
-  secret: "mySecret",
-  resave: false,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // MongoDB 연결
 
@@ -54,16 +47,16 @@ db.once("open", function () {
 });
 
 // HTML, CSS, JS 라우팅
-//app.use("/", viewsRouter);
+// app.use("/", viewsRouter);
 
 // API 라우팅
 app.use(userRouter);
 app.use(authRouter);
-app.use("/product",productRouter);
+app.use(productRouter);
+app.use(categoryRouter);
+app.use(nationRouter);
+app.use(orderRouter);
 //app.use("/api/auth", authRouter);
-// app.use("/api/category", categoryRouter);
-// app.use("/api/nation", nationRouter);
-// app.use("/api/order", orderRouter);
 
 // 에러 핸들러
 app.use(errorHandler);

@@ -3,8 +3,8 @@ import { authService } from "../services/auth-service.js";
 export const handlelogin = async (req, res) => {
   const { userId, password } = req.body;
   try {
-    const token = await authService.login(userId, password);
-    res.status(200).json({ token });
+    const { token, isAdmin } = await authService.login(userId, password);
+    res.status(200).json({ token, isAdmin });
   } catch (err) {
     console.error(err);
     res.status(401).json({ error: err.message });
