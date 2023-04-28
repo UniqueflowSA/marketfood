@@ -11,6 +11,8 @@ a{
   display: none;
 }
 
+@import "/public/css/main.css";
+
 .btn__default{
   border-radius: 0;
   border: none;

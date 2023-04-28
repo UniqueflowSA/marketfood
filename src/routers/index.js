@@ -5,7 +5,8 @@ import categoryRouter from "./category-router.js";
 import nationRouter from "./nation-router.js";
 import productRouter from "./product-router.js";
 import orderRouter from "./order-router.js";
-import viewsRouter from "./views-router.js"
+// import viewsRouter from "./views-router.js"
+
 
 const router = Router();
 
