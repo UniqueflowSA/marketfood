@@ -45,7 +45,7 @@ function navbarRender(loggedInUser) {
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMpepole.png" alt="mypage-icon" class="navbar-icon">
-                  <a href="/" class="navbar-text">내 정보</a>
+                  <a href="/src/views/userinfo/userinfo.html" class="navbar-text">내 정보</a>
               </li>
           </ul>
       </nav>
