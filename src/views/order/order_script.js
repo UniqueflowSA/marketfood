@@ -77,9 +77,6 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 	const userPost = document.getElementById("user-post");
 	const userAddr = document.getElementById("user-addr");
 	const userDetailAddr = document.getElementById("user-detail-addr");
-	const oldAddrBtn = document.querySelector('#oldAddrBtn')
-	const newAddrBtn = document.querySelector('#newAddrBtn')
-
 
 		postSearchBtn.onclick = () => {
 			new daum.Postcode({
@@ -103,7 +100,11 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 						}
 				}).open();
 		}
-		
+		const oldAddrBtn = document.querySelector('#oldAddrBtn')
+		const newAddrBtn = document.querySelector('#newAddrBtn')
+
+
+
 		//회원정보 요청 및 주소 작성
 		fetch("http://localhost:4000/admin/members", {
 			method: "GET",
