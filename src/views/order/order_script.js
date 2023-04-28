@@ -102,11 +102,14 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 		}
 		const oldAddrBtn = document.querySelector('#oldAddrBtn')
 		const newAddrBtn = document.querySelector('#newAddrBtn')
-
-
-
+		const receiverName = document.getElementById("receiverName")
+		const receiverPhoneNumber = document.getElementById("receiverPhoneNumber")
+	
+		
 		//회원정보 요청 및 주소 작성
-		fetch("http://localhost:4000/admin/members", {
+		oldAddrBtn.addEventListener('change', () => {})
+			if (oldAddrBtn.checked) {
+		fetch("/admin/members", {
 			method: "GET",
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -115,10 +118,17 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 		})
 		.then((res) => res.json())
 		.then((userData) => {
-			document.getElementById("receiverName").value = userData.name;
-			document.getElementById("receiverPhoneNumber").value = userData.phone;
-			document.getElementById("user-addr").value = userData.address.address1;
-			document.getElementById("user-detail-addr").value = userData.address.address2;
-			document.getElementById("user-post").value = userData.address.postalCode;
+			receiverName.value = userData.name;
+			receiverPhoneNumber.value = userData.phone;
+			userAddr.value = userData.address.address1;
+			userDetailAddr.value = userData.address.address2;
+			userPost.value = userData.address.postalCode;
 		})
 		.catch((err) => console.log(err));
+	}else if(newAddrBtn.checked){
+		receiverName.value = ''
+			receiverPhoneNumber.value = ''
+			userAddr.value = ''
+			userDetailAddr.value = ''
+			userPost.value = ''
+	}

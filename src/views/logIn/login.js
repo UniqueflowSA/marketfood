@@ -9,7 +9,7 @@ submitBtn.onclick = () => {
         userId: userId.value,
         password: userPw.value,
     };
-    fetch("http://localhost:4000/login", {
+    fetch("/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
