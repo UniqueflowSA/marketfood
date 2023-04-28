@@ -4,9 +4,17 @@ import { CategorySchema } from "../schemas/category-schema.js";
 const Category = model("Category", CategorySchema);
 
 class CategoryModel {
-  async findById(categoryId) {
-      const category = await Category.findOne({ _id: categoryId });
+  async findById(cid) {
+    try {
+      const category = await Category.findOne({ _id: cid });
       return category;
+    } catch (err) {
+      const error = new Error(
+        "ID 기반으로 Catgory에 대한 정보를 불러오지 못하였습니다."
+      );
+      error.statusCode = 400;
+      throw error;
+    }
   }
 
   // async findByName(name) {
@@ -46,21 +54,13 @@ class CategoryModel {
     }
   }
 
-  async update(cid, categoryInfo) {
-    const filter = { _id: cid };
+  async update(categoryId, categoryInfo) {
+    const filter = { _id: categoryId };
     const option = { returnOriginal: true };
-    try {
-      const updatedCategory = await Category.findOneAndUpdate(
-        filter,
-        categoryInfo,
-        option
-      );
-      return updatedCategory;
-    } catch (err) {
-      const error = new Error("카테고리 수정에 실패하였습니다.");
-      error.statusCode = 400;
-      throw error;
-    }
+  
+    const updatedCategory = await Category.findOneAndUpdate(filter, categoryInfo,option);
+    return updatedCategory;
+    
   }
 
   async delete(cid) {

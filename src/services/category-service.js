@@ -2,12 +2,13 @@ import { categoryModel } from "../db/models/category-model.js";
 
 class CategoryService {
   async createCategory(categoryInfo) {
+    const name = categoryInfo; 
     const createdNewCategory = await categoryModel.create(categoryInfo);
     return createdNewCategory;
   }
 
-  async getCategoryById(categoryId) {
-    const category = await categoryModel.findById(categoryId);
+  async getCategoryById(cid) {
+    const category = await categoryModel.findById(cid);
     return category;
   }
 
@@ -21,8 +22,8 @@ class CategoryService {
     return categoryList;
   }
 
-  async updateCategory(cid, toUpdate) {
-    const updatedcategory = await categoryModel.update(cid, toUpdate);
+  async updateCategory(categoryId, categoryInfo) {
+    const updatedcategory = await categoryModel.update(categoryId, categoryInfo);
     return updatedcategory;
   }
 

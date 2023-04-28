@@ -4,13 +4,7 @@ import { Auth } from "../db/models/auth-model.js";
 const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
 
 export const authService = {
-  async login(userId, password) {
-    if (!userId) {
-      throw new Error("아이디를 입력해주세요.");
-    }
-    if (!password) {
-      throw new Error("비밀번호를 입력해주세요.");
-    }
+  async login(userId, password) {  
     const user = await Auth.findOne({ userId: userId });
     if (!user) {
       throw new Error("없는 아이디입니다.");

@@ -39,7 +39,6 @@ const ProductSchema = new Schema(
       required: true,
     },
     nation:{
-      // type: Schema.Types.ObjectId,
       type:String,
       required:true,
       ref:"nations",

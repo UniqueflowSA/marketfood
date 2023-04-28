@@ -14,10 +14,11 @@ class NationController{
     try {
       const nationList = await nationService.getNationList();
       return res.status(200).json(nationList);
-    } catch (error) {
-      next(error);
+    } catch (e) {
+      next(e);
     }
   }
+
   async getNationById(req, res, next) {
     try {
       const nationId = req.params.nationId;
@@ -28,27 +29,29 @@ class NationController{
       next(e);
     }
   }
-  async updateNation(req,res,next) {
-    try{
+  async updateNation(req, res, next) {
+    try {
       const nationId = req.params.nationId;
       const updateNation = req.body;
       const updatedNation = await nationService.updateNation(nationId, updateNation);
 
       return res.status(200).json(updatedNation);
-    }catch(e){
+    } catch (e) {
       next(e);
     }
   }
+
   async deleteNation(req, res, next) {
     try {
       const nationId = req.params.nationId;
       await nationService.deleteNation(nationId);
 
-      res.status(200).json(`나라 삭제 완료(ID : ${nationId})`);
+      res.status(200).json(`카테고리 삭제 완료(ID : ${nationId})`);
     } catch (e) {
       next(e);
     }
   }
+
 
 }
 

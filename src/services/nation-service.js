@@ -6,16 +6,16 @@ class NationService{
     return createNation;
   }
   async getNationList(){
-    const getNations = await nationModel.findAll();
-    return getNations;
+    const nationList = await nationModel.findAll();
+    return nationList;
   }
-  async getNationById(nationId) {
+  async getNationById(nationId){
     const nation = await nationModel.findById(nationId);
     return nation;
   }
-  async updateNation(nationId, toUpdate){
-    const updatedNation = await nationModel.update(nationId, toUpdate);
-    return updatedNation;
+  async updateNation(nationId, nationInfo){
+    const updateNation = await nationModel.update(nationId, nationInfo);
+    return updateNation;
   }
   async deleteNation(nationId) {
     await nationModel.delete(nationId);
