@@ -68,15 +68,12 @@ submitBtn.onclick = () => {
             password: userPw.value,
             name: userName.value,
             phone: userPhone.value,
-<<<<<<< HEAD
-=======
             address: {
                 postalCode: userPost.value,
                 address1: userAddr.value,
                 address2: userDetailAddr.value,
               },
             birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
->>>>>>> 1dcc39c52907584d5daebc8c9cc3de53739d8d8c
     
         };
         fetch("http://localhost:4000/signup", {
