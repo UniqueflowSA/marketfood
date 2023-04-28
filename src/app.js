@@ -14,7 +14,7 @@ import {
   viewsRouter,
   orderRouter,
 } from "./routers/index.js";
-import { errorHandler } from "./middlewares/error-handler.js";
+import errorHandler from "./middlewares/error-handler.js";
 
 import mongoose from "mongoose";
 dotenv.config();
