@@ -4,10 +4,13 @@ export default {
   async createOrder(req, res, next) {
     // req 에서 데이터 가져오기
     const orderInfo = req.body;
-    //const userId = req.userId;
+    const { userId, products, totalPrice, address, status } = orderInfo
+  
+    const user = req.userId
+    const newOrder = {userId:user, products, totalPrice, address, status }
     try {
-      const order = await orderService.createOrder(orderInfo)
-      res.status(201).json(order);
+      const order = await orderService.createOrder(newOrder)
+      res.status(201).json(orderInfo);
     } catch (error) {
       next(error);
     }

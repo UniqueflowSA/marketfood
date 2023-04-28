@@ -4,6 +4,8 @@ export const orderService = {
 //모든 주문 조회
 async createOrder(orderInfo) {
   const orderModel = new OrderModel();
+  //const {userId:user, products, totalPrice, address, status} = orderInfo
+  
   const createdOrder = await orderModel.create(orderInfo);
   return createdOrder;
 },
