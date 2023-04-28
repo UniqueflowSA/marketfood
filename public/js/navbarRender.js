@@ -12,7 +12,7 @@ function navbarRender(loggedInUser) {
           <ul class="navbar-nav">
               <li class="navbar-content">
                   <img src="/public/img/WMlogout.png" alt="logout-icon" class="navbar-icon">
-                  <a href="/src/views/main/main.html" class="navbar-text">로그아웃</a>
+                  <p class="navbar-text" id="logout">로그아웃</p>
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
@@ -25,7 +25,12 @@ function navbarRender(loggedInUser) {
           </ul>
       </nav>
     </div>
-          `;
+          `
+          const logout = document.querySelector("#logout");
+          logout.addEventListener("click", ()=>{
+            window.localStorage.removeItem("token");
+            window.location.href = "/src/views/main/main.html"
+          })
     } else if (loggedInUser) {
       // 일반 유저 navbar
       navbar = `
@@ -37,7 +42,7 @@ function navbarRender(loggedInUser) {
           <ul class="navbar-nav">
               <li class="navbar-content">
                   <img src="/public/img/WMlogout.png" alt="logout-icon" class="navbar-icon">
-                  <a href="/src/views/main/main.html" class="navbar-text">로그아웃</a>
+                  <p class="navbar-text">로그아웃</p>
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
@@ -50,7 +55,12 @@ function navbarRender(loggedInUser) {
           </ul>
       </nav>
     </div>
-          `;
+          `
+          const logout = document.querySelector("#logout");
+          logout.addEventListener("click", ()=>{
+            window.localStorage.removeItem("token");
+            window.location.href = "/src/views/main/main.html"
+          });
     } else {
       // 로그인하지 않은 유저의 navbar
       navbar = `

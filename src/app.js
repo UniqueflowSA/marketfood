@@ -2,8 +2,6 @@ import cors from "cors";
 import express from "express";
 import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
-import passport from "passport";
-import session from "express-session";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,7 +11,7 @@ import {
   categoryRouter,
   productRouter,
   nationRouter,
-  // viewsRouter,
+  viewsRouter,
   orderRouter,
 } from "./routers/index.js";
 import { errorHandler } from "./middlewares/error-handler.js";
@@ -47,7 +45,7 @@ db.once("open", function () {
 });
 
 // HTML, CSS, JS 라우팅
-// app.use("/", viewsRouter);
+app.use("/", viewsRouter);
 
 // API 라우팅
 app.use(userRouter);
