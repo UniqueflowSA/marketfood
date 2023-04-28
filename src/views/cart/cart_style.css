@@ -139,12 +139,13 @@ main{
 .quan__input{
   cursor: default;
   display: inline;
-  width: 30px;
+  width: 60px;
   text-align: center;
   border: none;
   font-size: 30px;
   font-weight: 700;
   color: #E94E33;
+  margin: 0 5px;
 }
 .minusbtn , .plusbtn{
   font-size: 15pt;

@@ -170,10 +170,9 @@ if(dataCount > 0){//장바구니 상품이 있을 때
 
 	})
 
-setTimeout(()=>{
-	const footer = document.querySelector("footer")
-	function resetfoot() {
-		footer.innerHTML= ""
-	}
-	resetfoot()
-},100)
+
+const footer = document.querySelector("footer")
+function resetfoot() {
+	footer.innerHTML= ""
+}
+resetfoot()

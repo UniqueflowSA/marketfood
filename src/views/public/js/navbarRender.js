@@ -7,7 +7,7 @@ function navbarRender(loggedInUser) {
       <div class="navbar-container">
       <nav class="navbar">
           <div class="navbar-logo-container">
-              <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+              <a href="/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
           <ul class="navbar-nav">
               <li class="navbar-content">
@@ -20,7 +20,7 @@ function navbarRender(loggedInUser) {
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMpepole.png" alt="mypage-icon" class="navbar-icon">
-                  <a href="/src/views/admin/admin.html" class="navbar-text">관리자페이지</a>
+                  <a href="/admin/admin.html" class="navbar-text">관리자페이지</a>
               </li>
           </ul>
       </nav>
@@ -33,7 +33,7 @@ function navbarRender(loggedInUser) {
       <div class="navbar-container">
       <nav class="navbar">
           <div class="navbar-logo-container">
-              <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+              <a href="/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
           <ul class="navbar-nav">
               <li class="navbar-content">
@@ -42,11 +42,11 @@ function navbarRender(loggedInUser) {
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
-                  <a href="/src/views/cart" class="navbar-text">장바구니</a>
+                  <a href="/cart" class="navbar-text">장바구니</a>
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMpeople.png" alt="mypage-icon" class="navbar-icon">
-                  <a href="/src/views/userinfo/userinfo.html" class="navbar-text">내 정보</a>
+                  <a href="/userinfo/userinfo.html" class="navbar-text">내 정보</a>
               </li>
           </ul>
       </nav>
@@ -59,16 +59,16 @@ function navbarRender(loggedInUser) {
       <div class="navbar-container">
       <nav class="navbar">
           <div class="navbar-logo-container">
-              <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+              <a href="/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
           <ul class="navbar-nav">
               <li class="navbar-content">
                   <img src="/public/img/WMlogin.png" alt="login-icon" class="navbar-icon">
-                  <a href="/src/views/logIn/login.html" class="navbar-text">로그인</a>
+                  <a href="/logIn/login.html" class="navbar-text">로그인</a>
               </li>
               <li class="navbar-content">
                   <img src="/public/img/WMcart.png" alt="cart-icon" class="navbar-icon">
-                  <a href="/src/views/cart" class="navbar-text">장바구니</a>
+                  <a href="/cart" class="navbar-text">장바구니</a>
               </li>
           </ul>
       </nav>
