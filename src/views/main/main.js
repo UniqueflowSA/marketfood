@@ -42,7 +42,7 @@ setInterval(function() {
     carouselImgs.animate({
         marginLeft: [from + "px", to + "px"]
     }, {
-        duration: 600,
+        duration: 400,
         easing: "ease",
         iterations: 1,
         fill: "both"
@@ -242,8 +242,8 @@ fetch("/product/product")
                         items.innerHTML += newproduct;
                     }) 
                 }
-            })},700)
-        })}, 1000);
+            })},200)
+        })}, 1500);
     })
     .catch((e)=> {
         alert(`에러 : ${e}`);
