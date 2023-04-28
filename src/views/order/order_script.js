@@ -1,6 +1,6 @@
 
-// import { main } from "/public/js/main.js";
-// const {loggedInUser} = await main();
+import { main, logout } from "/public/js/main.js";
+const { loggedInUser } = await main();
 
 const cartDetail = document.querySelector('.cart__detail') //배송비 및 토탈가격 포함 section
 	const cartHaveProduct = document.querySelector('#cart__have__product') //장바구니 상품리스트 페이지
@@ -65,10 +65,7 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 			}
 			orderPriceFunc()
 		})
-		const orderBtn = document.querySelector('#order__btn')
-		orderBtn.addEventListener('click',()=>{ // 주문자페이지로 데이터보내기
-			
-		})
+		
 		
 
 		//주소 검색버튼
@@ -104,17 +101,18 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 		const newAddrBtn = document.querySelector('#newAddrBtn')
 		const receiverName = document.getElementById("receiverName")
 		const receiverPhoneNumber = document.getElementById("receiverPhoneNumber")
+		const token = JSON.parse(localStorage.getItem("token"));
+		const userId = JSON.parse(localStorage.getItem("userId"));
+
 	
 		
 		//회원정보 요청 및 주소 작성
-		oldAddrBtn.addEventListener('change', () => {})
 			if (oldAddrBtn.checked) {
-		fetch("/admin/members", {
+		fetch(`/user/mypage/${userId}`,{
 			method: "GET",
 			headers: {
-				Authorization: `Bearer ${localStorage.getItem("token")}`,
-				"Content-Type": "application/json",
-			},
+					"Authorization": `Bearer ${token}`,
+			}
 		})
 		.then((res) => res.json())
 		.then((userData) => {
@@ -125,10 +123,83 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 			userPost.value = userData.address.postalCode;
 		})
 		.catch((err) => console.log(err));
-	}else if(newAddrBtn.checked){
-		receiverName.value = ''
-			receiverPhoneNumber.value = ''
-			userAddr.value = ''
-			userDetailAddr.value = ''
-			userPost.value = ''
 	}
+
+	
+	newAddrBtn.addEventListener('click',()=>{
+		receiverName.value = ''
+		receiverPhoneNumber.value = ''
+		userAddr.value = ''
+		userDetailAddr.value = ''
+		userPost.value = ''
+	})
+
+	const orderBtn = document.querySelector('#order__btn')
+		orderBtn.addEventListener('click',()=>{ 
+			// 주문자페이지로 데이터보내기
+    //이름을 입력 안했을 때
+    if (receiverName.value == "") {
+				receiverName.placeholder = "이름을 입력하세요";
+				receiverName.focus();//포커스를 Password박스로 이동.
+        return false;
+    }
+    //핸드폰 번호를 입력 안했을 때
+    else if (receiverPhoneNumber.value == "") {
+				receiverPhoneNumber.placeholder = "핸드폰 번호를 입력하세요";
+				receiverPhoneNumber.focus();//포커스를 Password박스로 이동.
+        return false;
+    }
+    //데이터 보내기
+    else {
+        const data = {
+            // userId: userId.value,
+            // password: userPw.value,
+            // name: userName.value,
+            // phone: userPhone.value,
+            // address: {
+            //     postalCode: userPost.value,
+            //     address1: userAddr.value,
+            //     address2: userDetailAddr.value,
+              },
+            birthdate: String(userYear.value) + userMonth.value + String(userDay.value), 
+        };
+        fetch("/user/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        })
+        .then((data) => {
+            alert(`정상적으로 회원가입되었습니다.`);
+      
+            // 로그인 페이지 이동
+            window.location.href = "/login/login.html";
+        })
+        .catch((err) => {
+            console.error(err.stack);
+            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
+        });
+    }
+			
+		})
+		
+	
+
+
+
+
+
+		
+	document.addEventListener("DOMContentLoaded", () => {
+    const logoutButton = document.querySelector("#logout");
+    if (logoutButton) {
+        logout(logoutButton);
+    }
+});
