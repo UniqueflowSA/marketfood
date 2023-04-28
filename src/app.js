@@ -2,8 +2,6 @@ import cors from "cors";
 import express from "express";
 import { fileURLToPath } from "url"; // fileURLToPath 함수 import
 import path from "path";
-import passport from "passport";
-import session from "express-session";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -16,7 +14,7 @@ import {
   // viewsRouter,
   orderRouter,
 } from "./routers/index.js";
-import { errorHandler } from "./middlewares/error-handler.js";
+import errorHandler from "./middlewares/error-handler.js";
 
 import mongoose from "mongoose";
 dotenv.config();
@@ -30,6 +28,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
+
+app.use(express.static(path.resolve("src","views")))
 
 // MongoDB 연결
 
@@ -50,13 +50,12 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
-app.use(userRouter);
-app.use(authRouter);
-app.use(productRouter);
-app.use(categoryRouter);
-app.use(nationRouter);
-app.use(orderRouter);
-//app.use("/api/auth", authRouter);
+app.use("/user",userRouter);
+app.use("/auth",authRouter);
+app.use("/product",productRouter);
+app.use("/category",categoryRouter);
+app.use("/nation",nationRouter);
+app.use("/order",orderRouter);
 
 // 에러 핸들러
 app.use(errorHandler);

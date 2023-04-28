@@ -1,3 +1,4 @@
+// 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
 const postSearchBtn = document.getElementById("post-search-btn");
 const userId = document.getElementById("user-id");
@@ -35,7 +36,6 @@ const currentYear = new Date().getFullYear();
 const minYear = currentYear - 100;
 const maxYear = currentYear;
 
-//유효성 검사
 submitBtn.onclick = () => {
     // 아이디를 입력 안했을 때
     if(userId.value == "") {
@@ -73,8 +73,7 @@ submitBtn.onclick = () => {
                 address1: userAddr.value,
                 address2: userDetailAddr.value,
               },
-            birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
-    
+            birthdate: String(userYear.value) + userMonth.value + String(userDay.value), 
         };
         fetch("http://localhost:4000/signup", {
             method: "POST",
@@ -93,7 +92,7 @@ submitBtn.onclick = () => {
             alert(`정상적으로 회원가입되었습니다.`);
       
             // 로그인 페이지 이동
-            window.location.href = "/login";
+            window.location.href = "/src/views/login/login.html";
         })
         .catch((err) => {
             console.error(err.stack);

@@ -28,6 +28,11 @@ export default class OrderModel {
     const orders = await Order.find();
     return orders;
   }
-  
-  
+  async updateOrderStatus(orderId, status) {
+    const updatedOrder = await Order.findByIdAndUpdate(orderId, { status }, { new: true });
+    return updatedOrder;
+    }
+    async deleteById(orderId) {
+      await Order.findByIdAndDelete(orderId);
+    }
 }
