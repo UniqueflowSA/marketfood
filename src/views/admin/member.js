@@ -1,6 +1,8 @@
 // API 데이터 받아오기
 function getMembers() {
-  fetch("http://localhost:4000/admin/members")
+  fetch("http://localhost:4000/admin/members"), {
+    credentials: "include"
+  }
     .then((res) => {
       if (res.ok) {
         return res.json();
