@@ -33,7 +33,7 @@ function navbarRender(loggedInUser) {
       <div class="navbar-container">
       <nav class="navbar">
           <div class="navbar-logo-container">
-              <a href="/"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
+              <a href="/src/views/main/main.html"><img src="/public/img/WMlogo.png" alt="nav-logo" class="navbar-logo"></a>
           </div>
           <ul class="navbar-nav">
               <li class="navbar-content">
