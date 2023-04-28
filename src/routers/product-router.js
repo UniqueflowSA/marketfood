@@ -10,4 +10,4 @@ productRouter.get('/product/:productId',productController.getProduct);
 productRouter.put('/product/:productId', loginRequired, productController.updateProduct);
 productRouter.delete('/product/:productId', loginRequired, productController.deleteProduct);
 
-export default productRouter;
+export {productRouter};
