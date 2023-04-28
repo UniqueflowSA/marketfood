@@ -1,4 +1,4 @@
-import { main, addCommas } from "/public/js/main.js";
+import { main, addCommas, logout } from "/public/js/main.js";
 const { loggedInUser } = await main();
 
 const items = document.querySelector(".main-item-container");
@@ -210,6 +210,7 @@ fetch("http://localhost:4000/product")
         
         categoryMenuList.forEach((categoryMenu) => {
             categoryMenu.addEventListener("click", (e) =>{
+                setTimeout(()=>{
                 const categoryitems = [];
                 const clickedcategory = e.target;
                 items.innerHTML = ""
@@ -241,12 +242,19 @@ fetch("http://localhost:4000/product")
                         items.innerHTML += newproduct;
                     }) 
                 }
-            })
+            })},700)
         })}, 1000);
     })
     .catch((e)=> {
         alert(`에러 : ${e}`);
     });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutButton = document.querySelector("#logout");
+    if (logoutButton) {
+        logout(logoutButton);
+    }
+});
 
 
 // 제품 선택 투명도 UI *작동안함이슈 CSS 호버로 임시대체

@@ -5,7 +5,7 @@ import categoryRouter from "./category-router.js";
 import nationRouter from "./nation-router.js";
 import productRouter from "./product-router.js";
 import orderRouter from "./order-router.js";
-// import viewsRouter from "./views-router.js"
+import viewsRouter from "./views-router.js"
 
 
 const router = Router();
@@ -14,8 +14,8 @@ router.use("/user", userRouter);
 router.use("/auth", authRouter);
 router.use("/category", categoryRouter);
 router.use("/nation",nationRouter);
-router.use("product",productRouter);
+router.use("/product",productRouter);
 router.use("/order", orderRouter);
-// router.use("/view",viewsRouter)
+// router.use(viewsRouter)
 
-export { router, userRouter, authRouter, categoryRouter, productRouter, orderRouter, nationRouter, viewsRouter };
+export { router, userRouter, authRouter, categoryRouter, productRouter, orderRouter, nationRouter, viewsRouter};
