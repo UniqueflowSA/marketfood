@@ -127,4 +127,3 @@ amountMinus.addEventListener("click", ()=>{
     orderedPrice.textContent = `₩${returnedPrice.toLocaleString()}` //곱해서 총 주문가격 출력
   }
 });
-

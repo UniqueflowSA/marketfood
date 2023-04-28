@@ -12,7 +12,7 @@ import {
   authRouter,
   categoryRouter,
   productRouter,
-  // nationRouter,
+  nationRouter,
   // viewsRouter,
   orderRouter,
 } from "./routers/index.js";
