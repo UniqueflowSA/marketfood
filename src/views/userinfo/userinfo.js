@@ -1,3 +1,6 @@
+import { main } from "/public/js/main.js";
+main();
+
 // 유효성 검사
 const submitBtn = document.getElementById("submit-btn");
 const postSearchBtn = document.getElementById("post-search-btn");
@@ -6,9 +9,6 @@ const userPw = document.getElementById("user-pw");
 const userPwCfm = document.getElementById("user-pw-cfm");
 const userName = document.getElementById("user-name");
 const userPhone = document.getElementById("user-phone");
-const userYear = document.getElementById("user-yy");
-const userMonth = document.getElementById("user-mm");
-const userDay = document.getElementById("user-dd");
 const userPost = document.getElementById("user-post");
 const userAddr = document.getElementById("user-addr");
 const userDetailAddr = document.getElementById("user-detail-addr");
@@ -20,8 +20,6 @@ const pwCrmError = document.getElementById("pw-cfm-error");
 const nameError = document.getElementById("name-error");
 const addrError = document.getElementById("addr-error");
 const phoneError = document.getElementById("phone-error");
-const yearError = document.getElementById("year-error");
-const dayError = document.getElementById("day-error");
 
 const validId = /^[a-zA-Z0-9]+$/;
 const validIdLength = /^.{4,12}$/;
@@ -29,12 +27,6 @@ const validPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
 const validName = /^[가-힣]{2,15}$/;
 const validAddr = /^[가-힣0-9\s]+$/;
 const validPhone = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;
-const validYear = /^(\d{4})$|^(\d{3}[0-9])$|^([1-9][0-9]{0,2})$/;
-const validDay = /^(?:[1-9]|[12]\d|3[01])$/;
-
-const currentYear = new Date().getFullYear();
-const minYear = currentYear - 100;
-const maxYear = currentYear;
 
 submitBtn.onclick = () => {
     // 아이디를 입력 안했을 때
@@ -63,7 +55,7 @@ submitBtn.onclick = () => {
     }
     //데이터 보내기
     else {
-        const data = {
+        const req = {
             userId: userId.value,
             password: userPw.value,
             name: userName.value,
@@ -72,33 +64,23 @@ submitBtn.onclick = () => {
                 postalCode: userPost.value,
                 address1: userAddr.value,
                 address2: userDetailAddr.value,
-              },
-            birthdate: String(userYear.value) + userMonth.value + String(userDay.value),
-    
+            },
         };
         fetch("http://localhost:4000/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(req),
         })
-        .then((response) => {
-            if (response.ok) {
-              return response.json();
+        .then((res) => res.json())
+        .then((res) => {
+            if(res.success) {
+                location.href = "/";
+            } else {
+                alert(res.msg);
             }
-            throw new Error(`HTTP error! status: ${response.status}`);
         })
-        .then((data) => {
-            alert(`정상적으로 회원가입되었습니다.`);
-      
-            // 로그인 페이지 이동
-            window.location.href = "/src/views/login/login.html";
-        })
-        .catch((err) => {
-            console.error(err.stack);
-            alert(`문제가 발생하였습니다. 확인 후 다시 시도해 주세요: ${err.message}`);
-        });
     }
 }
 //onchange_id
@@ -185,31 +167,6 @@ userPhone.onchange = () => {
     return false;
 }
 
-//onchange_yy
-userYear.onchange = () => {
-    const userYearInput = userYear.value;
-    if (!validYear.test(userYearInput) || userYearInput < minYear || userYearInput > maxYear) {
-        yearError.style.display = "block";
-        yearError.style.color = "red";
-        yearError.innerHTML = "유효한 4자리 연도를 적어주세요";
-    }else {
-        yearError.style.display = "none";
-    }
-    return;
-}
-
-//onchange_dd
-userDay.onchange = () => {
-    const userDayInput = userDay.value;
-    if (!validDay.test(userDayInput)) {
-        dayError.style.display = "block";
-        dayError.style.color = "red";
-        dayError.innerHTML = "유효한 일자를 적어주세요(앞자리에 '0' 사용 금지)";
-    }else {
-        dayError.style.display = "none";
-    }
-    return false;
-}
 // 주소 검색 함수
 postSearchBtn.onclick = () => {
 	new daum.Postcode({
