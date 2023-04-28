@@ -6,7 +6,9 @@ export const addCommas = (n) => {
 // 로그아웃시 동작
 export const logout = (element) => {  
     element.addEventListener("click", ()=>{
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("userId");
     const baseUrl = window.location.origin;
     const mainUrl = baseUrl + "/main/main.html";
     window.location.href = mainUrl
