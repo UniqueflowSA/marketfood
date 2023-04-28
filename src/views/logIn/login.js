@@ -30,6 +30,7 @@ submitBtn.onclick = () => {
                 }
             })
             .then((res) => res.json())
+            //회원 로그인 페이지 || 관리자 페이지 이동
             .then((mypageData) => {
                 if (mypageData.isAdmin) {
                     window.location.href = "/src/views/admin/index.html";
