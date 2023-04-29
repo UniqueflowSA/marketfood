@@ -1,4 +1,4 @@
-import { main } from "/public/js/main.js";
+import { main, logout } from "/public/js/main.js";
 const {loggedInUser} = await main();
 
 // detail 페이지 데이터요청
@@ -63,7 +63,7 @@ if(dataCount > 0){//장바구니 상품이 있을 때
 				`<div class="cart__product__list" id='productItem__${_id}'>
 			
 				<div class="list__img__block">
-							<a href="#none"><img id="product__img__${_id}" src=${imgUrl} alt="상품이미지파일"></a>
+							<a href="/detail/detail.html?${_id}"><img id="product__img__${_id}" src=${imgUrl} alt="상품이미지파일"></a>
 						</div>
 						<div class="list__name__block">
 							<!-- 상품정보 파트 -->
@@ -176,3 +176,10 @@ function resetfoot() {
 	footer.innerHTML= ""
 }
 resetfoot()
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutButton = document.querySelector("#logout");
+  if (logoutButton) {
+      logout(logoutButton);
+  }
+});

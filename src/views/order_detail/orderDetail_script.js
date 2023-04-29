@@ -135,6 +135,8 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
 	})
 
 	const orderBtn = document.querySelector('#order__btn')
+	const userIdKey = localStorage.key(userId);
+	const userIdData = JSON.parse(localStorage.getItem(userIdKey))
 	const totalPrice = document.querySelector('#total__price__num')
 	const products = nowcart.map((cartItem) => {
     const { _id, amount } = cartItem;
@@ -144,8 +146,6 @@ const cartDetail = document.querySelector('.cart__detail') //배송비 및 토�
     };
 });
 console.log(products)
-
-console.log(userId)
 
 
 
@@ -168,17 +168,13 @@ console.log(userId)
     //데이터 보내기
     else {
         const data = {
-					userId: userId,
+					userId: userIdData ,
 					products: products,
 					totalPrice: totalPrice.textContent ,
-					address: {
-						postalCode: userPost.value,
-						address1: userAddr.value,
-						address2: userDetailAddr.value,
-					} ,
+					address: userAddr.value ,
 					status: "배송 준비중",
         };
-      fetch(`/user/admin/orders/${userId}`, { //이부분 ordersPOST필요?
+        fetch("/user/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -193,13 +189,9 @@ console.log(userId)
         })
         .then((data) => {
             alert(`주문을 완료했습니다.`);
-            // 주문자 페이지
-            window.location.href = "/order_detail/index.html";
-						nowcart.forEach((cartItem) =>{
-							const{ _id} = cartItem
-						const key = localStorage.key(`cart${_id}`)
-						localStorage.removeItem(key)
-						})
+      
+            // 로그인 페이지 이동
+            window.location.href = "/login/login.html";
         })
         .catch((err) => {
             console.error(err.stack);
