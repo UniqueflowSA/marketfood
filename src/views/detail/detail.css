@@ -31,7 +31,7 @@
   /* main */
   .main-container {
     width: 100%;
-    height: 90%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -145,6 +145,7 @@
     text-align: center;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   .button-plus:hover,
@@ -179,6 +180,7 @@
   }
 
   .button-cart {
+    cursor: pointer;
     width: 100%;
     height: 50px;
     margin-bottom: 10px;
@@ -205,6 +207,7 @@
     align-items: center;
     color: white;
     font-weight: 600;
+    cursor: pointer;
   }
   
   /*footer*/

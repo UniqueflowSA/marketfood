@@ -5,17 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="cart_style.css">
-  <script defer src="cart_srcript.js"></script>
-  <title>Document</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <script defer src="cart_srcript.js" type="module"></script>
+  <title>WorldMarket</title>
 </head>
 <body>
+
   <!-- 공통 -->
-  <header></header>
+  <!-- <header><button class="btn">테스트버튼
+  </button></header> -->
 
   <main>
+    <main-cotainer class="main-cotainer">
     <header class="cart__header">
       <div class="cart__title">MY CART</div>
-      <button class="btn__default all_del" id="all__delete"> All Delete</button>
+      <button class="btn__default all__del" id="all__delete"> All Delete</button>
     </header>
     <!-- 카트가 비어있을 때(기본값) -->
     <section class="cart__detail__empty" id="cart__empty">
@@ -28,8 +32,9 @@
     </section>
 
     <!-- 카트 안에 물건이 있을 때 -->
-    <section class="cart__detail" id="cart__have__product">
-    <!-- 삽입되어야하는 부분 -->
+    <section class="cart__detail">
+      <div id="cart__have__product">
+        <!-- 삽입되어야하는 부분 -->
         <!-- <div class="cart__product__list"> -->
           <!-- <div class="list__img__block"> -->
             <!-- <a href="#none"><img id="product__img" src="" alt="sss"></a> -->
@@ -54,6 +59,7 @@
           <!-- </div> -->
         <!-- </div> -->
         <!-- 요까지 -->
+      </div>
         
         <div class="cart__order__list">
           <div class="blank"></div>
@@ -63,7 +69,7 @@
             <div class="total__price__block">
               <div class="order__price">
                 <span>가격:</span>
-                <span id="order__price__num">1111</span>  
+                <span id="order__price__num"></span>  
               </div>
                 
               <div id="deli__price">
@@ -71,13 +77,17 @@
                 <span id="deli__price__num"> 2,500</span>
               </div>
             
+              <div class="total__price__line"></div>
+              <div class="total__price__text">
                 <span>총합:</span>
                 <span id="total__price__num"></span>
+              </div>
+              <div class="total__price__line"></div>
             </div>
 
             <div class="cart__footer">
+              <button class="shopping__page__btn btn__default">메인페이지로</button>
               <button class="order__page__btn btn__default">결제페이지로</button>
-              <button class="shopping__page__btn btn__default">쇼핑페이지로</button>
             </div>
 
           </div>
@@ -86,11 +96,12 @@
           
 
     </section>
+  </main-cotainer>
 
-
+    
+  
   </main>
   <!-- 공통 -->
   <footer></footer>
-  
 </body>
 </html>

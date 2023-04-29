@@ -4,16 +4,15 @@ window.onload = function() {
 }
 
 // 관리자 메인 페이지 데이터 로드 함수
-function loadMainData() {
-    // API 호출하여 데이터 받아오기
-    // axios.get('/admin/main')
-    //   .then(function(response) {
-    //     // 데이터 적용
-    //     applyMainData(response.data);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+async function loadMainData() {
+    try {
+    const response = await fetch('/admin/main');
+    const data = await response.json();
+    applyMainData(data);
+    } catch (error) {
+    console.log(error);
+    }
+}
 
     // 임시 데이터
     const data = {
@@ -22,18 +21,39 @@ function loadMainData() {
         today_sales: '₩ 3,351,750',
         recent_status: [
             {
-            date: '2023-04-18',
+            date: '2023-04-28',
             user: '홍길동',
-            product: '사프란 1g',
-            price: '31,800원',
+            product: '베트남 스파이스',
+            price: '10,000원',
             status: 'completed'
+            },
+            {
+                date: '2023-04-28',
+                user: '조나단',
+                product: '스페인 솔트',
+                price: '15,000원',
+                status: 'cancel'
+            },
+            {
+                date: '2023-04-28',
+                user: '김미미',
+                product: '미국산 허브',
+                price: '15,000원',
+                status: 'pending'
+            },
+            {
+                date: '2023-04-29',
+                user: '홍길동',
+                product: '사프란 1g',
+                price: '31,800원',
+                status: 'process'
             }
-        ]
+        ],
     };
 
     // 데이터 적용
     applyMainData(data);
-}
+
 
 // 관리자 메인 페이지 데이터 적용 함수
 function applyMainData(data) {
@@ -72,9 +92,13 @@ function applyMainData(data) {
 function getStatusText(status) {
     switch (status) {
         case 'completed':
-            return '발송 완료';
-        case 'canceled':
-            return '취소';
+            return '배송 완료';
+        case 'cancel':
+            return '주문 취소';
+        case 'pending':
+            return '배송 준비중';
+        case 'process':
+            return '배송중';
         default:
             return '';
     }
