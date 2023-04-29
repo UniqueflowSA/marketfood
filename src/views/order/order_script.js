@@ -178,7 +178,7 @@ console.log(userId)
 					} ,
 					status: "배송 준비중",
         };
-      fetch(`/user/admin/orders/${userId}`, { //이부분 ordersPOST필요?
+      fetch(`/order/orders/`, { //이부분 ordersPOST필요?
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
