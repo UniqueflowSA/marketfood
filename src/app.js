@@ -29,16 +29,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
-app.use(express.static(path.resolve("src","views")))
+app.use(express.static(path.resolve("src", "views")));
 
 // MongoDB 연결
 
-mongoose.connect(process.env.MONGODB_URL, {
+mongoose
+  .connect("https://svc.sel5.cloudtype.app:32318/", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  } )
-.then(console.log("connected to mongodb"))
-.catch(console.error());
+  })
+  .then(console.log("connected to mongodb"))
+  .catch(console.error());
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -50,12 +51,12 @@ db.once("open", function () {
 // app.use("/", viewsRouter);
 
 // API 라우팅
-app.use("/user",userRouter);
-app.use("/auth",authRouter);
-app.use("/product",productRouter);
-app.use("/category",categoryRouter);
-app.use("/nation",nationRouter);
-app.use("/order",orderRouter);
+app.use("/user", userRouter);
+app.use("/auth", authRouter);
+app.use("/product", productRouter);
+app.use("/category", categoryRouter);
+app.use("/nation", nationRouter);
+app.use("/order", orderRouter);
 
 // 에러 핸들러
 app.use(errorHandler);
