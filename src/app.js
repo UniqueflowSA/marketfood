@@ -34,7 +34,7 @@ app.use(express.static(path.resolve("src", "views")));
 // MongoDB 연결
 
 mongoose
-  .connect("https://svc.sel5.cloudtype.app:32318/", {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
